@@ -1,0 +1,95 @@
+html, body {
+    width: 100%;
+    font-family: 'Noto Sans', 'Nanum Gothic','Malgun Gothic','Myriad','arial','宋體','simsun','Dotum';
+}
+.bg-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+.bg-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 105px;
+    z-index: -1;
+}
+.bg-top img, .bg-bottom img {
+    width: 100%;
+}
+
+.mobile-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+.mobile-content .login-wrapper {
+    width: 30%;
+    background-color: rgba(201, 201, 201, .3);
+    z-index: 10;
+    padding: 1rem 0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.mobile-content .login-wrapper .login-grid {
+    display: grid;
+    grid-template-rows: 1.3fr 1fr 1fr .5fr .5fr;
+    align-items: center;
+}
+
+.mobile-content .login-wrapper .login-icon {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.mobile-content .login-wrapper .login-label {
+    font-size: .7rem;
+}
+.mobile-content .login-wrapper input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+}
+.mobile-content .login-wrapper .save-pw {
+    font-size: .7rem;
+}
+.mobile-content .login-wrapper input[type="text"],
+.mobile-content .login-wrapper input[type="password"] {
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -ms-border-radius: 9px;
+    -o-border-radius: 9px;
+    margin: 15px 0 18px;
+}
+
+.mobile-content .login-wrapper .login-container {
+    width: 85%;
+    justify-self: center;
+}
+.mobile-content .login-wrapper .login-container input[type="submit"] {
+    width: 100%;
+    font-size: .7rem;
+    font-weight: 600;
+    background: rgba(56, 182, 255, .8);
+    padding: 10px 0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    cursor: pointer;
+}
+
+.mobile-content .login-service-info {
+    margin-top: .5rem;
+}

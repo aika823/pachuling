@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body>
+{% include 'header.html' %}
+{% include 'modal.html' %}
+<form id="formRefresh" action="" method="post">
+    <input type="hidden" name="action"      value="refresh">
+    <input type="hidden" name="filter"      value="<?php if(isset($_POST['filter'])) echo $_POST['filter']?>">
+    <input type="hidden" name="keyword"     value="<?php if(isset($_POST['keyword'])) echo $_POST['keyword']?>">
+    <input type="hidden" name="order"       value="<?php echo $_POST['order']?>">
+    <input type="hidden" name="direction"   value="<?php echo $_POST['direction']?>">
+</form>
+<div class="board-list auto-center">
+    {% include 'company/company_table.html' %}
+</div>
+<?php require_once(_VIEW . 'common/modal.php'); ?>
+</body>

@@ -1,0 +1,52 @@
+<!--//  $order = $_POST['order'];-->
+<!--//  $direction = $_POST['direction'];-->
+<!--//  $sql = "SELECT * FROM  `company` ";-->
+<!--//  $sql .= ($_POST['order'] && $_POST['direction']) ? "ORDER BY  `{$_POST['order']}` {$_POST['direction']} " : null;-->
+<!--//  $company_table = $this->model->getTable($sql);-->
+<!--//  echo json_encode($sql);-->
+<!--//  echo sizeof($company_table);-->
+<table id="company_table" width="100%">
+    <colgroup>
+        <col width="7%"><!--아이디-->
+        <col width="auto"><!--상호명-->
+        <col width="12%"><!--간단주소-->
+        <col width="12%"><!--업종-->
+        <col width="10%"><!--가입유형-->
+        <col width="15%"><!--비고-->
+        <col width="10%"><!--점수-->
+        <col width="7%"><!--별표-->
+        <col width="7%"><!--삭제-->
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="order link" id="refresh-companyID"> #</th>
+        <th class="order link" id="refresh-companyName"> 상호명</th>
+        <th class="order link" id="refresh-address"> 간단주소</th>
+        <th class="order link" id="refresh-businessType"> 업종</th>
+        <th class="order link">가입 유형</th>
+        <th class="link" id="refresh-endDate">비고</th>
+        <th class="order link" id="refresh-grade"> 점수</th>
+        <th class="order" id="refresh-bookmark"><span class="link fa fa-star"></span></th>
+        <th class="order" id="refresh-deleted"> X</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for company in companies %}
+    <tr class="tr-company" id="{{companyID}}">
+        <td class="al_c">{{company['companyID']}} <a href="view/{{companyID}}" {{companyID}}/></td>
+        <td class="al_l">{{company['companyName']}}</td>
+        <td class="al_c">{{company['address']}}</td>
+        <td class="al_c">{{company['businessType']}}</td>
+        <td class="al_c">가입 유형</td>
+        <td class="al_c">비고</td>
+        <td class="al_c">{{company['grade']}}점</td>
+        <td class="al_c"><span class="fa fa-star selectable "></span></td>
+        <td class="al_c"></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<script>
+
+</script>

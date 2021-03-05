@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body>
+{% include 'header.html' %}
+{% include 'modal.html' %}
+<div class="board-list scroll_list right auto-center">
+    {% include 'datepicker.html' %}
+    <form id="filterForm" method="post" style="display: none;">
+        <input type="hidden" name="action" value="">
+        <input type="hidden" name="callID" value="">
+        <input type="hidden" name="order" value="">
+        <input type="hidden" name="direction" value="">
+        <input type="hidden" name="filter" value="">
+    </form>
+    <div class="inline scroll_tbody call">
+        {% include 'call/call_table.html'%}
+    </div>
+</div>
+
+</body>
+<script>
+    $('.callRow').on('click',function () {
+       $(this).closest('table').find('.callRow').removeClass('selected');
+       $(this).addClass('selected');
+    });
+</script>
+</html>

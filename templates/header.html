@@ -1,0 +1,34 @@
+<div id="header">
+    <div class="header" id="headerMain">
+        <div class="dropdown logo">
+            <a href="{{url_for('call')}}"></a>
+            <button class="dropbtn" onClick="location.href='{{ url_for('call') }}'">
+                <img class="btn-img" src="{{url_for('static',filename='img/logo.png')}}">
+            </button>
+        </div>
+        <div class="nav_right">
+            <div class="dropdown nav_list">
+                <button class="dropbtn {{ page_list['call'] }}" onClick="location.href='{{ url_for('call') }}'">콜관리</button>
+                <div class="dropdown-content ">
+                    <a class="" href="{{url_for('call')}}">콜 만들기</a>
+                    <a class="" href="{{url_for('call')}}">고정콜/월급제 관리</a>
+                </div>
+            </div>
+            <div class="dropdown nav_list">
+                <button class="dropbtn {{ page_list['company'] }}" onClick="location.href='{{ url_for('company') }}'">거래처관리</button>
+            </div>
+            <div class="dropdown nav_list">
+                <button class=" dropbtn {{ page_list['employee'] }}" onClick="location.href='{{ url_for('employee') }}'">구직자관리</button>
+                <div class="dropdown-content">
+                    <a class="" href="{{ url_for('call') }}">근무 가능일/불가능일</a>
+                </div>
+            </div>
+            <div class="dropdown nav_list">
+                <button class="dropbtn ">기타</button>
+                <div class="dropdown-content">
+                    <a class="" href="{{ url_for('call') }}">블랙리스트 관리</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
