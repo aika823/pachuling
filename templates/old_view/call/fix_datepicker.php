@@ -1,6 +1,10 @@
 <?php
-//  $fixedCondition = " (`fixID` > 0) ";
-//  $monthlyCondition = " (`fixID` > 0 AND `salary` = 0) ";
+  $chargedCondition = " (`price` > 0) ";
+  $freeCondition = " (`price` = 0) ";
+  $pointCondition = " (`point` > 0) ";
+  $unfixedCondition = " (`fixID` = 0) ";
+  $fixedCondition = " (`fixID` > 0) ";
+  $monthlyCondition = " (`fixID` > 0 AND `salary` = 0) ";
   
   $year = ($_POST['year']) ? $_POST['year'] : date('Y', strtotime(_TODAY));
   
@@ -21,68 +25,70 @@
   } else {
     $set_date_picker = date('y-m-d', strtotime(_TODAY));
   }
+
+
 ?>
 <div class="inline" style="width: 15%; height: 100%;">
-  <div class="datepicker" id="fix-datepicker"></div>
-  
-  <form action="" id="toggleForm" method="post">
-    <input type="hidden" name="action" id="formAction">
-    <input type="hidden" name="date" id="toggleDate">
-    <input type="hidden" name="year" id="formYear">
-    <input type="hidden" name="order" value="<?php echo $_POST['order'] ?>">
-    <input type="hidden" name="direction" value="<?php echo $_POST['direction'] ?>">
-    <input type="hidden" name="filter" value="<?php echo $_POST['filter'] ?>">
-    <?php if ($this->param->action == 'available_date'): ?>
-      <input type="hidden" name="table" id="" value="employee_available_date">
-    <?php endif; ?>
-<!--    --><?php //foreach ($_POST as $key => $value): ?>
-<!--      --><?php //if ($key !== 'date'): ?>
-<!--        <input type="hidden" name="--><?php //echo $key ?><!--" value="--><?php //echo $value ?><!--">-->
-<!--      --><?php //endif; ?>
-<!--    --><?php //endforeach; ?>
-    <table>
-      <!--기간에 따른 필터링-->
-      <tr>
-        <td>
-          <label class="form-switch duration year">
-            <b>올해</b>
-            <input type="radio" name="year" value="<?php echo date('Y', strtotime(_TODAY)); ?>"
-                   id="form-input-year" <?php echo ($_POST['year'] && !$_POST['date'] && !$_POST['week']) ? 'checked' : null ?>>
-            <i></i>
-          </label>
-        </td>
-        <td>
-          <label class="form-switch duration month">
-            <b>이번달</b>
-            <input type="radio" name="month" value="<?php echo date('n', strtotime(_TODAY)); ?>"
-                   id="form-input-month" <?php echo ($_POST['month'] && !$_POST['date'] && !$_POST['week']) ? 'checked' : null ?>>
-            <i></i>
-          </label>
-        </td>
-        <td>
-          <label class="form-switch duration week">
-            <b>이번주</b>
-            <input type="radio" name="week" value="week"
-                   id="form-input-week" <?php echo ($_POST['week']) ? 'checked' : null ?>>
-            <i></i>
-          </label>
-        </td>
-      </tr>
-      <!--고정 유무에 따른 필터링-->
-      <tr>
-        <td><label class="form-switch">
-            <b>고정</b>
-            <input type="checkbox" checked><i id="fixed"></i>
-          </label>
-        </td>
-        <td><label class="form-switch">
-            <b>월급</b>
-            <input type="checkbox" checked><i id="salary"></i>
-          </label>
-        </td>
-      </tr>
-    </table>
-  </form>
+    <div class="datepicker" id="fix-datepicker"></div>
+
+    <form action="" id="toggleForm" method="post">
+        <input type="hidden" name="action" id="formAction">
+        <input type="hidden" name="date" id="toggleDate">
+        <input type="hidden" name="year" id="formYear">
+        <input type="hidden" name="order" value="<?php echo $_POST['order'] ?>">
+        <input type="hidden" name="direction" value="<?php echo $_POST['direction'] ?>">
+        <input type="hidden" name="filter" value="<?php echo $_POST['filter'] ?>">
+      <?php if ($this->param->action == 'available_date'): ?>
+          <input type="hidden" name="table" id="" value="employee_available_date">
+      <?php endif; ?>
+      <?php foreach ($_POST as $key => $value): ?>
+        <?php if ($key !== 'date'): ?>
+              <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>">
+        <?php endif; ?>
+      <?php endforeach; ?>
+        <table>
+            <!--기간에 따른 필터링-->
+            <tr>
+                <td>
+                    <label class="form-switch duration year">
+                        <b>올해</b>
+                        <input type="radio" name="year" value="<?php echo date('Y', strtotime(_TODAY)); ?>"
+                               id="form-input-year" <?php echo ($_POST['year'] && !$_POST['date'] && !$_POST['week']) ? 'checked' : null ?>>
+                        <i></i>
+                    </label>
+                </td>
+                <td>
+                    <label class="form-switch duration month">
+                        <b>이번달</b>
+                        <input type="radio" name="month" value="<?php echo date('n', strtotime(_TODAY)); ?>"
+                               id="form-input-month" <?php echo ($_POST['month'] && !$_POST['date'] && !$_POST['week']) ? 'checked' : null ?>>
+                        <i></i>
+                    </label>
+                </td>
+                <td>
+                    <label class="form-switch duration week">
+                        <b>이번주</b>
+                        <input type="radio" name="week" value="week"
+                               id="form-input-week" <?php echo ($_POST['week']) ? 'checked' : null ?>>
+                        <i></i>
+                    </label>
+                </td>
+            </tr>
+            <!--고정 유무에 따른 필터링-->
+            <tr>
+                <td><label class="form-switch">
+                        <b>고정</b>
+                        <input type="checkbox" checked><i id="fixed"></i>
+                    </label>
+                </td>
+                <td><label class="form-switch">
+                        <b>월급</b>
+                        <input type="checkbox" checked><i id="salary"></i>
+                    </label>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 <script>
     if (window.history.replaceState) {
@@ -92,6 +98,8 @@
         set_date_picker();
         click_duration();
         switch_click();
+        calculate_assign();
+        calculate_price();
     });
 
     function set_date_picker() {
@@ -155,12 +163,14 @@
                 }
             }
         );
-        $("#fix-datepicker").datepicker('setDate', '<?php echo $set_date_picker ?>');
+        $("#datepicker").datepicker('setDate', '<?php echo $set_date_picker ?>');
     }
 
     function switch_click() {
         $('.form-switch i').on('mouseup', function () {
             setTimeout(toggle_filter($(this)), 100);
+            setTimeout(calculate_assign, 100);
+            setTimeout(calculate_price, 100);
         });
     }
 
@@ -185,7 +195,7 @@
     function toggle_filter(element) {
         let id = element.attr('id');
         let status = element.parent().find('input[type=checkbox]').prop('checked');
-        let rows = $('.fixRow ');
+        let rows = $('.callRow');
         if (status) {
             rows.each(function () {
                 if ($(this).hasClass(id)) {

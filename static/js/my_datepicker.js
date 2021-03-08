@@ -1,9 +1,6 @@
 const elem = document.getElementById('range');
 const dateRangePicker = new DateRangePicker(elem);
 
-
-
-
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
 }
@@ -28,8 +25,6 @@ function test(){
         }
     });
 }
-
-
 
 function set_date_picker() {
     console.log("set_date_picker")
