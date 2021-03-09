@@ -1,0 +1,76 @@
+<<<<<<< HEAD
+<a class="makeCall" href="{{ url_for('callForm') }}">콜 만들기</a>
+<h1>{{ detail }}</h1>
+<table id="call_table" style="width:100%; height: 50px;">
+=======
+<h1>{{ detail }}</h1>
+<table id="call_table" style="width=100%; height: 50px;">
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
+    <colgroup>
+        <col width="10%">
+        <col width="10%">
+        <col width="15%">
+        <col width="8%">
+        <col width="auto">
+        <col width="10%">
+        <col width="10%">
+        <col width="10%">
+        <col width="6%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="call call-order link al_l round1" id="refresh-workDate">근무날짜</th>
+        <th class="call call-order link al_l" id="refresh-startTime">근무시간</th>
+        <th class="call call-order link al_l" id="refresh-companyName">상호명</th>
+        <th class="call call-order link al_l" id="refresh-workField">업종</th>
+        <th class="call call-order link al_l" id="refresh-detail">요청사항</th>
+        <th class="call call-order link al_r" id="refresh-salary">일당</th>
+        <th class="call call-order link al_r" id="refresh-price">콜비</th>
+        <th class="call call-order link al_c" id="refresh-employeeName">구직자</th>
+        <th class="call call-order link al_c round2" id="refresh-cancelled">취소</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% if(calls|length > 0) %}
+        {% for call in calls %}
+        <tr>
+<<<<<<< HEAD
+            <td class="al_l">{{call['workDate']}}</td>
+            <td class="al_l">{{call['startTime']}} {{call['endTime']}}</td>
+            <td class="al_l">{{call['companyName'] | safe}}</td>
+            <td class="al_l">{{call['workField'] | safe}}</td>
+            <td class="al_l">{{call['detail'] | safe}}</td>
+            <td class="al_r">{{call['price'] | safe}}</td>
+            <td class="al_r">{{call['salary'] | safe}}</td>
+=======
+            <td>{{call['workDate']}}</td>
+            <td>{{call['startTime']}} {{call['endTime']}}</td>
+            <td>{{call['companyName'] | safe}}</td>
+            <td>{{call['workField'] | safe}}</td>
+            <td>{{call['detail'] | safe}}</td>
+            <td>{{call['price'] | safe}}</td>
+            <td>{{call['salary'] | safe}}</td>
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
+            <td>{{call['employeeName'] | safe}}</td>
+            {% if(call['cancelled'] == 1) %}
+            <td>(취소됨)</td>
+            {% else %}
+            <td>
+                <button type="button" class="btn-call-cancel-modal btn btn-small btn-danger" id="{{call['callID']}}">
+                    취소
+                </button>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="9">검색된 콜이 없습니다</td>
+        </tr>
+    {% endif %}
+
+
+
+    </tbody>
+</table>

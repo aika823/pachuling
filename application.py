@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+from flask import Flask, render_template, request
+=======
 from flask import Flask, render_template, request, json
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
 import db as db
 # import call_fuction as call_function
 
@@ -16,8 +20,18 @@ def select_page(page):
 def call():
     select_page('call')
     calls = db.get_calls()
+<<<<<<< HEAD
+    return render_template('call/call.html', calls=calls, page_list=page_list)
+
+@application.route('/callForm')
+def callForm():
+    select_page('callForm')
+    calls = db.get_calls()
+    return render_template('call/callForm.html')
+=======
     test = "test99999999999"
     return render_template('call/call.html', calls=calls, page_list=page_list, test=test)
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
 
 
 @application.route('/call', methods=['POST'])
@@ -30,8 +44,13 @@ def search_call():
         calls = db.get_calls(start, end, content)
         # if len(calls) > 0:
         #     calls = call_function.search_mark(calls, content)
+<<<<<<< HEAD
+        return render_template('call/call.html', calls=calls, start=start, end=end, content=content,
+                               page_list=page_list)
+=======
         return render_template('call/call.html',
                                calls=calls, start=start, end=end, content=content, page_list=page_list)
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
 
 
 @application.route('/company')

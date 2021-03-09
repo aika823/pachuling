@@ -1,0 +1,65 @@
+<<<<<<< HEAD
+{% extends "layout.html" %}
+{% block head %}
+    {% block title %}"스마트 파출 솔루션, 파출링!"{% endblock %}
+{% endblock %}
+
+{% block content %}
+=======
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body>
+<h1>{{test}}</h1>
+{% include 'header.html' %}
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
+{% include 'modal.html' %}
+<div class="board-list scroll_list right auto-center">
+    {% include 'datepicker.html' %}
+    <form id="filterForm" method="post" style="display: none;">
+        <input type="hidden" name="action" value="">
+        <input type="hidden" name="callID" value="">
+        <input type="hidden" name="order" value="">
+        <input type="hidden" name="direction" value="">
+        <input type="hidden" name="filter" value="">
+    </form>
+    <div class="inline scroll_tbody call">
+        {% include 'call/call_table.html'%}
+    </div>
+</div>
+
+<<<<<<< HEAD
+{% endblock %}
+<script>
+=======
+</body>
+
+<script src="{{url_for('static', filename='js/call_test.js')}}"></script>
+<script>
+    $(document).ready(function () {
+
+        console.log("document ready test");
+        console.log("{{test}}");
+
+        set_date_picker();
+        click_duration();
+        switch_click();
+        calculate_assign();
+        calculate_price();
+    });
+
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
+    $('.callRow').on('click',function () {
+       $(this).closest('table').find('.callRow').removeClass('selected');
+       $(this).addClass('selected');
+    });
+<<<<<<< HEAD
+</script>
+=======
+
+</script>
+</html>
+>>>>>>> 6cbbcdea06bcd1d6262cee84770f07aff47b996a
