@@ -18,6 +18,12 @@ def call():
     calls = db.get_calls()
     return render_template('call/call.html', calls=calls, page_list=page_list)
 
+@application.route('/callForm')
+def callForm():
+    select_page('callForm')
+    calls = db.get_calls()
+    return render_template('call/callForm.html')
+
 
 @application.route('/call', methods=['POST'])
 def search_call():

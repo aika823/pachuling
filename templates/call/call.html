@@ -5,6 +5,7 @@
 </head>
 
 <body>
+<h1>{{test}}</h1>
 {% include 'header.html' %}
 {% include 'modal.html' %}
 <div class="board-list scroll_list right auto-center">
@@ -22,10 +23,25 @@
 </div>
 
 </body>
+
+<script src="{{url_for('static', filename='js/call_test.js')}}"></script>
 <script>
+    $(document).ready(function () {
+
+        console.log("document ready test");
+        console.log("{{test}}");
+
+        set_date_picker();
+        click_duration();
+        switch_click();
+        calculate_assign();
+        calculate_price();
+    });
+
     $('.callRow').on('click',function () {
        $(this).closest('table').find('.callRow').removeClass('selected');
        $(this).addClass('selected');
     });
+
 </script>
 </html>
