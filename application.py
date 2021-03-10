@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, json, flash, redirect, url_for
 import db as db
+import forms
+
 # import call_fuction as call_function
 
 application = Flask(__name__)
@@ -30,8 +32,7 @@ def search_call():
         calls = db.get_calls(start, end, content)
         # if len(calls) > 0:
         #     calls = call_function.search_mark(calls, content)
-        return render_template('call/call.html',
-                               calls=calls, start=start, end=end, content=content, page_list=page_list)
+        return render_template('call/call.html', calls=calls, start=start, end=end, content=content, page_list=page_list)
 
 
 @application.route('/company')
@@ -45,6 +46,27 @@ def company():
 def employee():
     select_page('employee')
     return render_template('employee.html', page_list=page_list)
+
+
+@application.route('/ceo/<id>')
+def show_ceo(id):
+    return render_template('ceo/home.html', id=id)
+
+
+@application.route('/login')
+def login():
+    form = forms.RegistrationForm()
+    return render_template('login/login.html', form=form)
+
+
+@application.route('/login', methods=['POST'])
+def register():
+    form = forms.RegistrationForm()
+    if form.validate_on_submit():
+        # 알람 카테고리에 따라 부트스트랩에서 다른 스타일을 적용 (success, danger)
+        flash(f'{form.username.data} 님 가입 완료!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', form=form)
 
 
 if __name__ == "__main__":

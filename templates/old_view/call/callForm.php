@@ -1,7 +1,7 @@
 <form action="" id="callForm" method="post">
     <input type="hidden" name="action" id="formAction">
     <input type="hidden" name="companyID" id="companyID"
-           value="<?php if (isset($this->companyID)) echo $this->companyID ?>">
+value="<?php if (isset($this->companyID)) echo $this->companyID ?>">
     <input type="hidden" name="employeeID" class="employee" id="employeeID">
     <input type="hidden" name="startTime" class="startTime" id="startTime">
     <input type="hidden" name="endTime" class="endTime" id="endTime">
