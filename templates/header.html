@@ -8,7 +8,7 @@
         </div>
         <div class="nav_right">
             <div class="dropdown nav_list">
-                <button class="dropbtn {{ page_list['call'] }}" onClick="location.href='{{ url_for('call') }}'">콜관리</button>
+                <button class="dropbtn {{ page_list['call'] }} {{ page_list['callForm'] }}" onClick="location.href='{{ url_for('call') }}'">콜관리</button>
             </div>
             <div class="dropdown nav_list">
                 <button class="dropbtn {{ page_list['company'] }}" onClick="location.href='{{ url_for('company') }}'">거래처관리</button>

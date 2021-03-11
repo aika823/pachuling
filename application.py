@@ -22,7 +22,7 @@ def call():
 def callForm():
     select_page('callForm')
     calls = db.get_calls()
-    return render_template('call/callForm.html')
+    return render_template('call/callForm.html', page_list=page_list)
 
 
 @application.route('/call', methods=['POST'])
