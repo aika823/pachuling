@@ -17,7 +17,7 @@
                 <button class=" dropbtn {{ page_list['employee'] }} {{ page_list['employeeForm'] }}" onClick="location.href='{{ url_for('employee') }}'">구직자관리</button>
             </div>
             <div class="dropdown nav_list">
-                <button class="dropbtn ">블랙리스트 관리</button>
+                <button class="dropbtn {{ page_list['black'] }}" onClick="location.href='{{ url_for('manage') }}'">블랙리스트 관리</button>
             </div>
         </div>
     </div>
