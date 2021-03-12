@@ -64,7 +64,7 @@ def employeeForm():
     return render_template('employee/employeeForm.html', page_list=page_list)
 
 @application.route('/manage')
-def company():
+def manage():
     select_page('black')
     companies = db.get_companies()
     return render_template('manage/black.html', companies=companies, page_list=page_list)
