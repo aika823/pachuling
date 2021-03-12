@@ -19,27 +19,27 @@
     </colgroup>
     <thead>
     <tr>
-        <th class="order link" id="refresh-companyID"> #</th>
-        <th class="order link" id="refresh-companyName"> 상호명</th>
-        <th class="order link" id="refresh-address"> 간단주소</th>
-        <th class="order link" id="refresh-businessType"> 업종</th>
-        <th class="order link">가입 유형</th>
-        <th class="link" id="refresh-endDate">비고</th>
-        <th class="order link" id="refresh-grade"> 점수</th>
-        <th class="order" id="refresh-bookmark"><span class="link fa fa-star"></span></th>
-        <th class="order" id="refresh-deleted"> X</th>
+        <th class="order link com-th first al_l" id="refresh-companyID"> #</th>
+        <th class="order link com-th al_l" id="refresh-companyName"> 상호명</th>
+        <th class="order link com-th al_l" id="refresh-address"> 간단주소</th>
+        <th class="order link com-th al_l" id="refresh-businessType"> 업종</th>
+        <th class="order link com-th al_l">가입 유형</th>
+        <th class="link com-th" id="refresh-endDate">비고</th>
+        <th class="order link com-th al_r" id="refresh-grade"> 점수</th>
+        <th class="order com-th" id="refresh-bookmark"><span class="link fa fa-star"></span></th>
+        <th class="order com-th last" id="refresh-deleted"> X</th>
     </tr>
     </thead>
     <tbody>
     {% for company in companies %}
     <tr class="tr-company" id="{{companyID}}">
-        <td class="al_c">{{company['companyID']}} <a href="view/{{companyID}}" {{companyID}}/></td>
+        <td class="al_l">{{company['companyID']}} <a href="view/{{companyID}}" {{companyID}}/></td>
         <td class="al_l">{{company['companyName']}}</td>
-        <td class="al_c">{{company['address']}}</td>
-        <td class="al_c">{{company['businessType']}}</td>
-        <td class="al_c">가입 유형</td>
-        <td class="al_c">비고</td>
-        <td class="al_c">{{company['grade']}}점</td>
+        <td class="al_l">{{company['address']}}</td>
+        <td class="al_l">{{company['businessType']}}</td>
+        <td class="al_l">가입 유형</td>
+        <td class="al_l">비고</td>
+        <td class="al_r">{{company['grade']}}점</td>
         <td class="al_c"><span class="fa fa-star selectable "></span></td>
         <td class="al_c"></td>
     </tr>

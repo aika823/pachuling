@@ -45,6 +45,12 @@ def company():
     companies = db.get_companies()
     return render_template('company/company.html', companies=companies, page_list=page_list)
 
+@application.route('/companyForm')
+def companyForm():
+    select_page('companyForm')
+    companies = db.get_companies()
+    return render_template('company/companyForm.html', page_list=page_list)
+
 
 @application.route('/employee')
 def employee():
