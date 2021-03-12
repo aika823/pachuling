@@ -3,7 +3,7 @@ import db as db
 # import call_fuction as call_function
 
 application = Flask(__name__)
-page_list = {'call': None, 'company': None, 'employee': None}
+page_list = {'call': None, 'company': None, 'employee': None, 'manage':None}
 
 
 def select_page(page):
@@ -55,7 +55,19 @@ def companyForm():
 @application.route('/employee')
 def employee():
     select_page('employee')
-    return render_template('employee.html', page_list=page_list)
+    # employees = db.get_employees()
+    return render_template('employee/employee.html', page_list=page_list)
+
+@application.route('/employeeForm')
+def employeeForm():
+    select_page('employeeForm')
+    return render_template('employee/employeeForm.html', page_list=page_list)
+
+@application.route('/manage')
+def company():
+    select_page('black')
+    companies = db.get_companies()
+    return render_template('manage/black.html', companies=companies, page_list=page_list)
 
 
 if __name__ == "__main__":
