@@ -34,10 +34,9 @@
       <input type="text" id="inputKeyword" name="keyword" placeholder="검색할 내용을 입력하세요" value="">
       <button class="btn btn-submit" type="submit" id="btnSearch">검색</button>
       <button type="button" id="btnAddCompany" class="btn btn-insert" onClick="location.href='{{ url_for('employeeForm') }}'">신규 추가</button>
-      <a class="makeCall2" href="<?php echo _URL ?>employee/available_date">근무 가능일/불가능일</a>
+      <a class="makeCall2" href="{{ url_for('employeeAvailable') }}">근무 가능일/불가능일</a>
   </form>
 </div>
-
 
 <div class="board-list auto-center">
   {% include "employee/employee_table.html" %}

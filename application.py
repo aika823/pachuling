@@ -63,6 +63,11 @@ def employeeForm():
     select_page('employeeForm')
     return render_template('employee/employeeForm.html', page_list=page_list)
 
+@application.route('/employeeAvailable')
+def employeeAvailable():
+    select_page('employeeAvailable')
+    return render_template('employee/employeeAvailable.html', page_list=page_list)
+
 @application.route('/manage')
 def manage():
     select_page('black')
