@@ -1,4 +1,5 @@
 <a class="makeCall" href="/call/write">콜만들기</a>
+<a class="makeCall" href="{{ url_for('callForm') }}">콜만들기</a>
 <h1>{{ detail }}</h1>
 <table id="call_table" style="width:100%; height: 50px;">
     <colgroup>
@@ -37,6 +38,8 @@
             <td class="al_l">{{call['detail'] | safe}}</td>
             <td class="al_r">{{call['salary'] | safe}}</td>
             <td class="al_r">{{call['price'] | safe}}</td>
+            <td class="al_r">{{call['price'] | safe}}</td>
+            <td class="al_r">{{call['salary'] | safe}}</td>
             <td>{{call['employeeName'] | safe}}</td>
             {% if(call['cancelled'] == 1) %}
             <td>(취소됨)</td>

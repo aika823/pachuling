@@ -38,6 +38,7 @@ def call():
     call_dict = call_function.calculate_price(calls)
     return render_template('call/call.html', calls=calls, call_dict=call_dict, page_list=page_list)
 
+
 @application.route('/callForm')
 def callForm():
     select_page('callForm')
@@ -70,6 +71,7 @@ def company():
     companies = db.get_companies()
     return render_template('company/company.html', companies=companies, page_list=page_list)
 
+
 @application.route('/companyForm')
 def companyForm():
     select_page('companyForm')
@@ -88,6 +90,7 @@ def employee():
     # employees = db.get_employees()
     return render_template('employee/employee.html', page_list=page_list)
 
+
 @application.route('/employeeForm')
 def employee_form():
     select_page('employeeForm')
@@ -98,6 +101,7 @@ def employee_form():
 def employee_available():
     select_page('employeeAvailable')
     return render_template('employee/employeeAvailable.html', page_list=page_list)
+
 
 @application.route('/manage')
 def manage():
