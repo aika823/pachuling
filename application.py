@@ -20,13 +20,6 @@ def call():
     return render_template('call/call.html', calls=calls, call_dict=call_dict, page_list=page_list)
 
 
-@application.route('/callForm')
-def callForm():
-    select_page('callForm')
-    calls = db.get_calls()
-    return render_template('call/callForm.html', page_list=page_list)
-
-
 @application.route('/call', methods=['POST'])
 def search_call():
     select_page('call')
@@ -53,13 +46,6 @@ def company():
     return render_template('company/company.html', companies=companies, page_list=page_list)
 
 
-@application.route('/companyForm')
-def companyForm():
-    select_page('companyForm')
-    companies = db.get_companies()
-    return render_template('company/companyForm.html', page_list=page_list)
-
-
 @application.route('/company/write')
 def company_form():
     return render_template('company/companyForm.html', page_list=page_list)
@@ -72,7 +58,7 @@ def employee():
     return render_template('employee/employee.html', page_list=page_list)
 
 
-@application.route('/employeeForm')
+@application.route('/employee/write')
 def employee_form():
     select_page('employeeForm')
     return render_template('employee/employeeForm.html', page_list=page_list)
