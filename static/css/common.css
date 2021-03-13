@@ -21,7 +21,8 @@
 #filterSub #inputKeyword{width: 30%; height:2.2rem; padding: 0 0 0 1.5rem; float: left; box-sizing: border-box; display: inline-block; border: 1px solid #e4e4e4;}
 #filterSub #btnSearch{width: 10%; height: 2.2rem; padding: 0;float: left; font-size: .7rem; }
 #filterSub #btnSearch:hover { background: #3d98ff;}
-#filterSub #btnAddCompany{float:right;}
+#filterSub #btnAddCompany{float:right; background: #fff;}
+#filterSub #btnAddCompany:hover {background: #3d98ff;}
 #filterMain .btn{color: gray;font-size: 0.7rem;display: block;float: left;background: #FFF; box-shadow: none; padding: 0 20px 0 0; border: none;}
 #filterMain .btn.selected{color:var(--main-color); border-bottom:solid 4px;}
 span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid #ccc;border-right: 1px solid #ccc;}
@@ -64,7 +65,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 
 /* 콜 만들기 */
 .makeCall,
-.makeCall2 { position: absolute; top: 100px; right: 250px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; cursor: pointer;}
+.makeCall2 { position: absolute; top: 100px; right: 250px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; cursor: pointer; background: #fff;}
 .makeCall2 { top: 153px;}
 .makeCall:hover,
 .makeCall2:hover { background: #268DFF; color: #fff; box-shadow: 3px 3px 5px #c1c1c1;}
@@ -150,8 +151,8 @@ a.btn{padding:10px;}
 #call_table thead tr th:hover { background: #0873ee;}
 #call_table thead tr th.round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
 #call_table thead tr th.round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
+
 .inline.scroll_tbody.call { width: 75%;}
-mark {background-color: yellow; color: black;}/*검색시 형광펜 표시*/
 
 /*div with class table*/
 .table { table-layout: fixed; word-break: break-all;}
@@ -319,34 +320,74 @@ label { color:rgba(0, 0, 0, 0.5)}
 
 /* 블랙리스트 관리 */
 .btn-group { display: inline-block;}
+.btn-group.al_r { display: block; margin-top: 3rem;}
+.btn-group.al_r button { padding: 10px;}
 .btn-group .search-input { width: 280px; border: 1px solid #dbdbdb; vertical-align: middle; padding: .4rem .6rem;}
 .btn-group.group2 { display: inline;}
 
 /* 추가하기 페이지 레이아웃 */
-.write-layout { margin: 100px 11rem; background: #fff; box-shadow: 15px 15px 20px #e1e1e1, -15px 15px 20px #e1e1e1; padding: 0 0 43px 0; border-radius: 70px; -webkit-border-radius: 70px; -moz-border-radius: 70px; -ms-border-radius: 70px; -o-border-radius: 70px; }
+.write-layout { margin: 100px 16rem; background: #fff; box-shadow: 15px 15px 20px #e1e1e1, -15px 15px 20px #e1e1e1; padding: 0 0 43px 0; border-radius: 70px; -webkit-border-radius: 70px; -moz-border-radius: 70px; -ms-border-radius: 70px; -o-border-radius: 70px; }
 .write-layout .board-write { padding: 1rem 2rem;}
-.callForm-flex { display: flex; align-items: center; margin: 1rem 0;}
+.callForm-flex { display: flex; align-items: center; margin: 3rem 0 1rem;}
 .callForm-flex label { display: block; font-weight: 600;}
-.callForm-flex.callForm-header { flex-direction: column;}
+.callForm-header.callFormBtn { display: flex; justify-content: center; margin-top: 1rem;}
+.callForm-flex.callForm-header { margin-top: 1rem;}
 .callForm-flex .num-wrap { width: 5%;}
 .callForm-flex .num-wrap img { width: 100%;}
-.callForm-company { width: 35%; margin: 1rem 0;}
+.callForm-flex .callForm-etc { width: 100%;}
+.callForm-flex textarea { width: 100%;}
+.callForm-flex .callForm-etc textarea.textarea-detail { height: 220px;}
+.callForm-company { width: 43%;}
+.callForm-flex input[type="text"],
+.callForm-flex input[type="number"] { height: 1.7rem; }
+.callForm-company input[type="text"] { height: 1.8rem; line-height: 1.8rem;}
 .callForm-term.input-endDate { padding-left: 1rem;}
 .callForm-term.input-endDate label { margin-left: 1rem;}
-/* .callForm-term label { font-weight: bold; display: block;} */
-/* .callForm-term label.endDateLabel { margin-left:2rem;} */
 .callForm-term .workDate,
 .callForm-term .endDate { padding: .4rem 2.7rem .4rem .7rem; color: #c1c1c1;}
 .callForm-term .endDate { margin-left: .5rem;}
 /* .callForm-term .endDate { margin-left: 2rem;} */
-.pl { padding: 0 5rem;}
+/* .pl { padding: 0 2rem;} */
 .npd { margin-bottom: .5rem;}
-.callForm-term,
-.callForm-time { margin-top: 1.5rem;}
 .callForm-time label { display: block;}
 .callForm-time .time { height: 2rem; font-size: .7rem;}
-.btn-wrap { padding-left: 5rem;}
+.btn-wrap { padding-left: 2rem;}
 .between { justify-content: space-between;}
+.callForm-flex .three { width: 25%;}
+.callForm-flex .callForm-tel { width: 30%;}
+.callForm-flex .callForm-tel.second { margin-left: 7rem;}
+.callForm-flex .simple_address { width: 50%;}
+.callForm-flex .detail_address {width: 100%;}
+.callForm-flex .score { width: 15%;}
+
+.form-style-1 { width: 100%;}
+#formInsertCompany { width: 100%;}
+
+/* 거래처 추가 */
+.flex-col { display: flex; flex-direction: column;}
+.flex-col h1 { text-align: center; margin-top: 3rem;}
+.flex-col .callForm-flex { justify-content: center; margin-top: .5rem;}
+
+.callForm-flex .term { width: 100%;}
+/* .callForm-flex .term.end{ margin-left: 6rem; width: 100%;} */
+.callForm-flex .term label { width: 100%;}
+.callForm-flex .term input { padding-left: 1rem; width: 50%; height: 2.2rem;}
+
+.join-wrap { width: 100%; margin-top: 1rem; padding: 10px 0; }
+.join-wrap label,
+#company-price,
+#company-joinDetail { display: block;}
+#company-price { width: 20%;}
+#company-joinDetail { width: 95%;}
+
+/* 구직자 추가 */
+.callForm-flex.job-kind { justify-content: space-between;}
+.callForm-flex.em { margin: 1rem 0;}
+.callForm-flex .detail-address { width: 95%;}
+.callForm-flex .detail-address input[type="text"] { width: 100%;}
+.callForm-flex .detail-address textarea { width: 100%; height: 270px;}
+.callForm-flex .w30 { width: 30%;}
+#refresh-imminent { overflow: hidden;}
 
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
@@ -379,7 +420,11 @@ label { color:rgba(0, 0, 0, 0.5)}
     .makeCall,
     .makeCall2  { right: 150px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
 }
+@media all and (max-width: 1350px) {
+    .write-layout { margin: 100px 5rem;}
+}
 @media all and (max-width: 1168px) {
+    .write-layout { margin: 100px 2rem;}
     .call_top_percentage { width: 85%; grid-template-columns: 50% 50%;}
     .call_top_percentage .grid_layout { grid-template-columns: 70% 20%;}
     .call_top_percentage .week_btn {padding-left: 45px;}
@@ -392,7 +437,8 @@ label { color:rgba(0, 0, 0, 0.5)}
     .dropdown.logo { width: 50%; margin-left: 1rem;}
 
     .inline.scroll_tbody.call,
-    .board-list.auto-center #company_table { width: 90%;}
+    .board-list.auto-center #company_table,
+    .board-list.auto-center #employee_table { width: 90%;}
     .board-write.auto-center #blackListTable { width: 100%;}
 
     #filter-wrapper { margin: 3rem 5rem 0;}
@@ -400,7 +446,13 @@ label { color:rgba(0, 0, 0, 0.5)}
 @media all and (max-width: 952px) {
     .makeCall,
     .makeCall2 { right: 50px; font-size: .7rem; padding: .4rem .6rem;}
-    #btnAddCompany { right: 50px; font-size: .5rem;}
+    #btnAddCompany { right: 50px; font-size: .7rem;}
+    .write-layout { margin: 100px 1rem;}
+    
+    #header .nav_right { padding-right: 0;}
+    .dropdown .dropbtn { padding: 4px 0.3rem;}
+
+    #filterSub button { width: 13%;}
 }
 @media all and (max-width: 768px) {
     .graph .bar { height: 1em; line-height: 1em;}
@@ -409,8 +461,6 @@ label { color:rgba(0, 0, 0, 0.5)}
     .al_c .btn-call-check-modal { padding: 2px;}
     .btn-call-cancel-modal.btn.btn-small.btn-danger { padding: 3px;}
     .call_top_percentage .datepick .calender h2, .call_top_percentage .datepick .section_search h2 {margin-right: -4px;}
-    #header .nav_right { padding-right: 0;}
-    .dropdown .dropbtn { padding: 4px 0.3rem;}
 
     #filterMain .btn { font-size: 0.4rem;}
     #filterSub #inputKeyword, 

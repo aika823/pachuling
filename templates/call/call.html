@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    {% include 'head.html' %}
-</head>
+{% extends "layout.html" %}
 
-<body>
+{% block content %}
+
 <h1>{{test}}</h1>
-{% include 'header.html' %}
 {% include 'modal.html' %}
 <div class="board-list scroll_list right auto-center">
     {% include 'datepicker.html' %}
@@ -21,8 +17,7 @@
         {% include 'call/call_table.html'%}
     </div>
 </div>
-
-</body>
+{% endblock %}
 
 <script src="{{url_for('static', filename='js/call_test.js')}}"></script>
 <script>
