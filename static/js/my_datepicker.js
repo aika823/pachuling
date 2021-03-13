@@ -113,9 +113,14 @@ function toggle_filter(element) {
 }
 
 function calculate_assign() {
-    let total = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
-    let assigned = $('.callRow:visible .assignedEmployee a').length;
-    let not_assigned = total - assigned;
+//    let total = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
+//    let assigned = $('.callRow:visible .assignedEmployee a').length;
+//    let not_assigned = total - assigned;
+
+    let total = call_dict['cnt_total']
+    let assigned = call_dict['cnt_assigned']
+    let not_assigned = call_dict['cnt_not_assigned']
+
     let percentage = parseFloat((assigned * 100 / total).toFixed(1));
     if (total > 0) {
         $('.assign-percentage').text("배정률 : " + percentage + "%");
@@ -132,27 +137,36 @@ function calculate_assign() {
 }
 
 function calculate_price() {
-    let paid = 0;
-    let paid_price = 0;
-    let unpaid = 0;
-    let unpaid_price = 0;
-    let get_money_btn = $('.callRow:visible .btn-money');
-    let paid_money_btn = $('.call-price .paid:visible');
-    paid_money_btn.each(function () {
-        paid += 1;
-        paid_price += parseInt($(this).text());
-    });
-    get_money_btn.each(function () {
-        unpaid += 1;
-        unpaid_price += parseInt($(this).text());
-    });
-    let total = paid + unpaid;
-    let total_price = paid_price + unpaid_price;
+
+//    let paid = 0;
+//    let paid_price = 0;
+//    let unpaid = 0;
+//    let unpaid_price = 0;
+    let total = call_dict['cnt_total_price']
+    let total_price = call_dict['price_total']
+    let paid = call_dict['cnt_paid'];
+    let paid_price = call_dict['price_paid'];
+    let unpaid = call_dict['cnt_unpaid'];
+    let unpaid_price = call_dict['price_unpaid'];
+
+//    let get_money_btn = $('.callRow:visible .btn-money');
+//    let paid_money_btn = $('.call-price .paid:visible');
+//    paid_money_btn.each(function () {
+//        paid += 1;
+//        paid_price += parseInt($(this).text());
+//    });
+//    get_money_btn.each(function () {
+//        unpaid += 1;
+//        unpaid_price += parseInt($(this).text());
+//    });
+//    let total = paid + unpaid;
+//    let total_price = paid_price + unpaid_price;
+
     let percentage = parseFloat((paid_price * 100 / total_price).toFixed(1));
     if (total > 0) {
         $('.paid-percentage').text("수금률 : " + percentage + "%");
         $('.paid_count_status').text("총 " + total + " (수금 " + paid + " / 미수 " + unpaid + ")");
-        $('.paid_price_status').text("수금: " + number_format(paid_price * 1000) + "원 / 미수금: " + number_format(unpaid_price * 1000) + "원");
+        $('.paid_price_status').text("수금: " + (paid_price) + "원 / 미수금: " + (unpaid_price) + "원");
         $('.bar.paid').width(percentage + '%');
         $('.bar.paid').text(percentage + "%");
     }
