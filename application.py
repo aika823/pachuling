@@ -1,27 +1,8 @@
 from flask import Flask, render_template, request
 import db as db
 import call_fuction as call_function
-import json
-from flask.json import JSONEncoder
-from datetime import date
-
-
-class CustomJSONEncoder(JSONEncoder):
-    def default(self, obj):
-        try:
-            if isinstance(obj, date):
-                return obj.strftime('%Y-%m-%d')
-            iterable = iter(obj)
-        except TypeError:
-            pass
-        else:
-            return list(iterable)
-        return JSONEncoder.default(self, obj)
-
 
 application = Flask(__name__)
-
-application.json_encoder = CustomJSONEncoder
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
 
 
