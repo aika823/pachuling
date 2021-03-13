@@ -9,10 +9,15 @@ cursor = conn.cursor()
 
 def get_calls(start=date.today(), end=date.today(), content=None, limit=100):
     cur = conn.cursor(pymysql.cursors.DictCursor)
-    sql = "SELECT call.workDate, call.startTime, call.endTime, company.companyName, call.workField, call.detail, call.salary, call.price, employee.employeeName" \
+    sql = "SELECT " \
+          "call.workDate, call.startTime, call.endTime, call.workField, call.detail, call.salary, call.price, call.paid,  " \
+          "company.companyName, " \
+          "employee.employeeName, " \
+          "workField.workField" \
           " FROM `call` " \
+          "LEFT JOIN `company` on call.companyID = company.companyID " \
           "LEFT JOIN `employee` on call.employeeID = employee.employeeID " \
-          "LEFT JOIN `company` on call.companyID = company.companyID "
+          "LEFT JOIN `workField` on call.workField = workField.workFieldID "
     print(sql)
     conditions = []
     if start and end:
