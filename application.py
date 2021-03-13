@@ -64,7 +64,7 @@ def employee_form():
     return render_template('employee/employeeForm.html', page_list=page_list)
 
 
-@application.route('/employeeAvailable')
+@application.route('/employee/available')
 def employee_available():
     select_page('employeeAvailable')
     return render_template('employee/employeeAvailable.html', page_list=page_list)
