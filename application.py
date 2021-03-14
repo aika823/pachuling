@@ -28,10 +28,12 @@ def search_call():
         end = request.form['end']
         content = request.form['content']
         calls = db.get_calls(start, end, content)
+        call_dict = call_function.calculate_price(calls)
         if len(calls) > 0:
-            calls = call_function.search_mark(calls, content)
+            if content:
+                calls = call_function.search_mark(calls, content)
         return render_template('call/call.html',
-                               calls=calls, start=start, end=end, content=content, page_list=page_list)
+                               calls=calls, call_dict=call_dict, start=start, end=end, content=content, page_list=page_list)
 
 
 @application.route('/call/write')

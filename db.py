@@ -7,25 +7,28 @@ conn = pymysql.connect(host=secret.host, port=secret.port, user=secret.user, pas
 cursor = conn.cursor()
 
 
-def get_calls(start=date.today(), end=date.today(), content=None, limit=100):
+def get_calls(start=date.today(), end=date.today(), content=None, limit=1000):
     cur = conn.cursor(pymysql.cursors.DictCursor)
-    sql = "SELECT " \
-          "call.workDate, call.startTime, call.endTime, call.workField, call.detail, call.salary, call.price, call.paid,  " \
-          "company.companyName, " \
-          "employee.employeeName, " \
-          "workField.workField" \
+    sql = " SELECT " \
+          " call.workDate, call.startTime, call.endTime, call.workField, " \
+          " call.detail, call.salary, call.price, call.paid, " \
+          " company.companyName, " \
+          " employee.employeeName, " \
+          " workField.workField " \
           " FROM `call` " \
-          "LEFT JOIN `company` on call.companyID = company.companyID " \
-          "LEFT JOIN `employee` on call.employeeID = employee.employeeID " \
-          "LEFT JOIN `workField` on call.workField = workField.workFieldID "
-    print(sql)
+          " LEFT JOIN `company` on call.companyID = company.companyID " \
+          " LEFT JOIN `employee` on call.employeeID = employee.employeeID " \
+          " LEFT JOIN `workField` on call.workField = workField.workFieldID "
     conditions = []
     if start and end:
         conditions.append(" (`workDate` between '{}' and '{}') ".format(start, end))
     if content:
-        content_sql = " ( (call.detail LIKE '%{}%') OR (companyName LIKE '%{}%') OR (employeeName LIKE '%{}%') ) "
-        conditions.append(content_sql.format(content, content, content))
-
+        content_sql = " ( " \
+                      " (call.detail LIKE '%{}%') OR " \
+                      " (companyName LIKE '%{}%') OR " \
+                      " (employeeName LIKE '%{}%') OR " \
+                      " (call.workField LIKE '%{}%') ) "
+        conditions.append(content_sql.format(content, content, content, content))
     sql += " WHERE " + " AND ".join(conditions)
     sql += " LIMIT {} ".format(str(limit))
     cur.execute(sql)
