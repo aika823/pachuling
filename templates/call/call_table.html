@@ -28,33 +28,44 @@
     <tbody>
 
     {% if(calls|length > 0) %}
-        {% for call in calls %}
-        <tr>
-            <td class="al_l">{{call['workDate']}}</td>
-            <td class="al_l">{{call['startTime']}} {{call['endTime']}}</td>
-            <td class="al_l">{{call['companyName'] | safe}}</td>
-            <td class="al_l">{{call['workField'] | safe}}</td>
-            <td class="al_l">{{call['detail'] | safe}}</td>
-            <td class="al_r">{{call['salary'] | safe}}</td>
-            <td class="al_r">{{call['price'] | safe}}</td>
-            <td>{{call['employeeName'] | safe}}</td>
-            {% if(call['cancelled'] == 1) %}
-            <td>(취소됨)</td>
+    {% for call in calls %}
+    <tr>
+        <td class="al_l">{{call['workDate']}}</td>
+        <td class="al_l">{{call['startTime']}} {{call['endTime']}}</td>
+        <td class="al_l">{{call['companyName'] | safe}}</td>
+        <td class="al_l">{{call['workField'] | safe}}</td>
+        <td class="al_l">{{call['detail'] | safe}}</td>
+        <td class="al_r">{{call['salary'] | safe}}</td>
+        <td class="al_r">
+            {% if call['price'] > 0 %}
+            <button type="button"
+                    class="btn btn-money getMoneyBtn_call"
+                    id="{{call['callID'] | safe}}"
+                    value="{{call['price'] | safe}}">
+                <i class="fa fa-won"></i>
+                {{call['price'] | safe}}
+            </button>
             {% else %}
-            <td>
-                <button type="button" class="btn-call-cancel-modal btn btn-small btn-danger" id="{{call['callID']}}">
-                    취소
-                </button>
-            </td>
+            무료
             {% endif %}
-        </tr>
-        {% endfor %}
+        </td>
+        <td>{{call['employeeName'] | safe}}</td>
+        {% if(call['cancelled'] == 1) %}
+        <td>(취소됨)</td>
+        {% else %}
+        <td>
+            <button type="button" class="btn-call-cancel-modal btn btn-small btn-danger" id="{{call['callID']}}">
+                취소
+            </button>
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
     {% else %}
-        <tr>
-            <td colspan="9">검색된 콜이 없습니다</td>
-        </tr>
+    <tr>
+        <td colspan="9">검색된 콜이 없습니다</td>
+    </tr>
     {% endif %}
-
 
 
     </tbody>
