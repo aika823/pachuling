@@ -44,6 +44,22 @@ def get_companies():
     return companies
 
 
+def get_company(company_id):
+    cur = conn.cursor(pymysql.cursors.DictCursor)
+    sql = "select * from company where companyID = " + str(company_id)
+    cur.execute(sql)
+    company = cur.fetchall()
+    return company
+
+
+def get_ceo(ceo_id):
+    cur = conn.cursor(pymysql.cursors.DictCursor)
+    sql = "select * from company left join ceo on company.ceoID = ceo.ceoID where company.ceoID = " + str(ceo_id)
+    cur.execute(sql)
+    ceo = cur.fetchall()
+    return ceo
+
+
 def insert_details(name, email, comment, gender):
     cur = conn.cursor()
     cur.execute("INSERT INTO Details (name,email,comment,gender) VALUES (%s,%s,%s,%s)", (name, email, comment, gender))

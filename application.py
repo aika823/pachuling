@@ -33,7 +33,8 @@ def search_call():
             if content:
                 calls = call_function.search_mark(calls, content)
         return render_template('call/call.html',
-                               calls=calls, call_dict=call_dict, start=start, end=end, content=content, page_list=page_list)
+                               calls=calls, call_dict=call_dict, start=start, end=end, content=content,
+                               page_list=page_list)
 
 
 @application.route('/call/write')
@@ -46,6 +47,13 @@ def company():
     select_page('company')
     companies = db.get_companies()
     return render_template('company/company.html', companies=companies, page_list=page_list)
+
+
+@application.route('/company/view/<company_id>')
+def view_company(company_id):
+    select_page('company')
+    my_company = db.get_company(company_id)
+    return render_template('company/view.html', company=my_company, page_list=page_list)
 
 
 @application.route('/company/write')
@@ -77,6 +85,12 @@ def manage():
     select_page('black')
     companies = db.get_companies()
     return render_template('manage/black.html', companies=companies, page_list=page_list)
+
+
+@application.route('/ceo/<ceo_id>')
+def show_ceo(ceo_id):
+    ceo = db.get_ceo(ceo_id)
+    return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
 
 
 if __name__ == "__main__":
