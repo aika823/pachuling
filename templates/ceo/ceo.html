@@ -1,20 +1,14 @@
-<?php
-  header('Access-Control-Allow-Origin: *');
-  header("Content-type:text/html;charset=utf8");
-?>
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/public/css/default.css?<?php echo time() ?>">
-    <link rel="stylesheet" href="/public/css/common.css?<?php echo time() ?>">
-    <link rel="stylesheet" href="/public/css/reset.css?<?php echo time() ?>">
-    <link rel="stylesheet" href="/public/css/mobile.css?<?php echo time() ?>">
+    <link rel="stylesheet" href="/static/css/default.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/mobile.css">
     <!--  jquery-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -30,15 +24,24 @@
         </ul>
     </nav>
     <ul class="cd-tabs_content js-cd-content">
-        <li data-content="home" class="cd-selected"><?php require_once 'home.php' ?></li>
-        <li data-content="call"><?php require_once 'call.php' ?></li>
-        <li data-content="list"><?php require 'list.php' ?></li>
-        <li data-content="pay"><?php require 'pay.php'; ?></li>
+        <li data-content="home" class="cd-selected">
+            {% include 'ceo/home.html' %}
+        </li>
+        <li data-content="call">
+            {% include 'ceo/call.html' %}
+        </li>
+        <li data-content="list">
+            {% include 'ceo/list.html' %}
+        </li>
+        <li data-content="pay">
+            {% include 'ceo/pay.html' %}
+        </li>
     </ul>
 </div>
 
-<?php require_once _VIEW . 'common/modal.php'; ?>
-<script src="/public/js/ceo.js"></script>
+{% include 'modal.html' %}
+
+<script src="/static/js/ceo.js"></script>
 <!--<script>-->
 <!--    $(document).ready(function () {-->
 <!--        change('all');-->
@@ -50,6 +53,6 @@
 <!--        initiate(endHour.val() - startHour.val());-->
 <!--    });-->
 <!--</script>-->
-<script src="/public/js/mobile.js"></script>
+<script src="/static/js/mobile.js"></script>
 </body>
 </html>

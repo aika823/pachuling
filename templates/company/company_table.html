@@ -32,11 +32,15 @@
     </thead>
     <tbody>
     {% for company in companies %}
-    <tr class="tr-company" id="{{companyID}}">
-        <td class="al_l">{{company['companyID']}} <a href="view/{{companyID}}" {{companyID}}/></td>
-        <td class="al_l">{{company['companyName']}}</td>
-        <td class="al_l">{{company['address']}}</td>
-        <td class="al_l">{{company['businessType']}}</td>
+        <tr class="tr-company" id="{{companyID}}">
+        <td class="al_l">{{company['companyID']}}</td>
+        <td class="al_l">
+            <a href="/company/view/{{company['companyID']}}">
+                {{company['companyName'] | safe}}
+            </a>
+        </td>
+        <td class="al_l">{{company['address'] | safe}}</td>
+        <td class="al_l">{{company['businessType'] | safe}}</td>
         <td class="al_l">가입 유형</td>
         <td class="al_l">비고</td>
         <td class="al_r">{{company['grade']}}점</td>

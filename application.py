@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import db as db
 import call_fuction as call_function
+import company_function
 
 application = Flask(__name__)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
@@ -33,7 +34,8 @@ def search_call():
             if content:
                 calls = call_function.search_mark(calls, content)
         return render_template('call/call.html',
-                               calls=calls, call_dict=call_dict, start=start, end=end, content=content, page_list=page_list)
+                               calls=calls, call_dict=call_dict, start=start, end=end, content=content,
+                               page_list=page_list)
 
 
 @application.route('/call/write')
@@ -48,6 +50,25 @@ def company():
     return render_template('company/company.html', companies=companies, page_list=page_list)
 
 
+@application.route('/company', methods=['POST'])
+def search_company():
+    select_page('company')
+    if request.method == 'POST':
+        content = request.form['keyword']
+        companies = db.get_companies(content=content)
+        if len(companies) > 0:
+            if content:
+                companies = company_function.search_mark(companies, content)
+        return render_template('company/company.html', companies=companies, content=content, page_list=page_list)
+
+
+@application.route('/company/view/<company_id>')
+def view_company(company_id):
+    select_page('company')
+    my_company = db.get_company(company_id)
+    return render_template('company/view.html', company=my_company, page_list=page_list)
+
+
 @application.route('/company/write')
 def company_form():
     return render_template('company/companyForm.html', page_list=page_list)
@@ -56,8 +77,8 @@ def company_form():
 @application.route('/employee')
 def employee():
     select_page('employee')
-    # employees = db.get_employees()
-    return render_template('employee/employee.html', page_list=page_list)
+    employees = db.get_employees()
+    return render_template('employee/employee.html', employees=employees, page_list=page_list)
 
 
 @application.route('/employee/write')
@@ -77,6 +98,12 @@ def manage():
     select_page('black')
     companies = db.get_companies()
     return render_template('manage/black.html', companies=companies, page_list=page_list)
+
+
+@application.route('/ceo/<ceo_id>')
+def show_ceo(ceo_id):
+    ceo = db.get_ceo(ceo_id)
+    return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
 
 
 if __name__ == "__main__":
