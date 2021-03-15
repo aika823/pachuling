@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import db as db
 import call_fuction as call_function
+import company_function
 
 application = Flask(__name__)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
@@ -49,6 +50,18 @@ def company():
     return render_template('company/company.html', companies=companies, page_list=page_list)
 
 
+@application.route('/company', methods=['POST'])
+def search_company():
+    select_page('company')
+    if request.method == 'POST':
+        content = request.form['keyword']
+        companies = db.get_companies(content=content)
+        if len(companies) > 0:
+            if content:
+                companies = company_function.search_mark(companies, content)
+        return render_template('company/company.html', companies=companies, content=content, page_list=page_list)
+
+
 @application.route('/company/view/<company_id>')
 def view_company(company_id):
     select_page('company')
@@ -64,8 +77,8 @@ def company_form():
 @application.route('/employee')
 def employee():
     select_page('employee')
-    # employees = db.get_employees()
-    return render_template('employee/employee.html', page_list=page_list)
+    employees = db.get_employees()
+    return render_template('employee/employee.html', employees=employees, page_list=page_list)
 
 
 @application.route('/employee/write')

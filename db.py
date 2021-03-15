@@ -36,9 +36,15 @@ def get_calls(start=date.today(), end=date.today(), content=None, limit=1000):
     return calls
 
 
-def get_companies():
+def get_companies(content=None):
     cur = conn.cursor(pymysql.cursors.DictCursor)
-    sql = "select * from company limit 100"
+    sql = "select * from company "
+    if content:
+        content_sql = " WHERE " \
+                      " (company.companyName LIKE '%{}%') OR " \
+                      " (company.businessType LIKE '%{}%') OR " \
+                      " (company.address LIKE '%{}%') "
+        sql += content_sql.format(content, content, content)
     cur.execute(sql)
     companies = cur.fetchall()
     return companies
@@ -50,6 +56,14 @@ def get_company(company_id):
     cur.execute(sql)
     company = cur.fetchall()
     return company
+
+
+def get_employees():
+    cur = conn.cursor(pymysql.cursors.DictCursor)
+    sql = "select * from employee "
+    cur.execute(sql)
+    employees = cur.fetchall()
+    return employees
 
 
 def get_ceo(ceo_id):
