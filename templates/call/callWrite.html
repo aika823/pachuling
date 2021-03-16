@@ -18,16 +18,22 @@
     <div class="form-row">
         <div class="callForm">
             <div class="row-in-row">
-                <h2 class="form-title">상호명</h2>
-                <input type="text" class="input-companyName" list="companyList" name="companyName" id="companyName"
-                    placeholder="배정 요청한 거래처를 입력하세요">
-                <datalist id="companyList" class="input-field">
-                    <!-- <?php foreach ($companyList as $key => $data): ?>
-                        <option value="<?php echo $data['companyName'] ?>">
-                            <?php echo "(" . $this->model->joinType($data['companyID'], 'kor') . ")"; ?>
-                        </option>
-                    <?php endforeach ?> -->
-                </datalist>
+                <h2 class="form-title">
+                    상호명
+                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                    <!-- <i class="fas fa-chevron-down"></i> -->
+                </h2>
+                <div class="row-content">
+                    <input type="text" class="input-companyName" list="companyList" name="companyName" id="companyName"
+                        placeholder="배정 요청한 거래처를 입력하세요">
+                    <datalist id="companyList" class="input-field">
+                        <!-- <?php foreach ($companyList as $key => $data): ?>
+                            <option value="<?php echo $data['companyName'] ?>">
+                                <?php echo "(" . $this->model->joinType($data['companyID'], 'kor') . ")"; ?>
+                            </option>
+                        <?php endforeach ?> -->
+                    </datalist>
+                </div>
             </div>
             
             <div class="row-in-row">
@@ -52,7 +58,10 @@
     <div class="form-row">
         <div class="callForm" id="workDay">
             <div class="row-in-row">
-                <h2 class="form-title">근무요일</h2>
+                <h2 class="form-title">
+                    근무요일
+                    <button class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                </h2>
                 <table style="width: 700px">
                     <tr>
                         <td><input type="checkbox" name="dow[]" value="monday"></td>
@@ -80,7 +89,10 @@
     <div class="form-row">
         <div class="callForm">
             <div class="row-in-row">
-                <h2 class="form-title">근무기간</h2>
+                <h2 class="form-title">
+                    근무기간
+                    <button class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                </h2>
                 <div class="btn-wrap">
                     <button class="fixable btn btn-option fix-auto-date half-month" type="button" style="display: none" value="15">15일</button>
                     <button class="fixable btn btn-option fix-auto-date one-month" type="button" style="display: none" value="1">1개월</button>
@@ -113,36 +125,41 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="callForm-time" id="">
-                    <h2 class="form-title">근무시간</h2>
+                    <h2 class="form-title">
+                        근무시간
+                        <button class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                    </h2>
                     <div class="btn-wrap">
                         <button type="button" class="btn btn-option timeSelect selected" id="morningBtn">오전</button>
                         <button type="button" class="btn btn-option timeSelect" id="afternoonBtn">오후</button>
                         <button type="button" class="btn btn-option timeSelect" id="allDayBtn">종일</button>
                     </div>
-                    <select id="startHour" class="time hour" form="callForm" required>
-                        <option value="" selected disabled hidden>근무 시작 시간</option>
-                        <!-- <?php for ($i = 1; $i < 25; $i++): ?>
-                            <option class="startOption" value="<?php echo $i ?>">
-                                <?php echo $this->getTime($i); ?>
-                            </option>
-                        <?php endfor; ?> -->
-                    </select>
-                    <select class="time minute" id="startMin" form="callForm" required>
-                        <option value="00">00분</option>
-                        <option value="30">30분</option>
-                    </select>
-                    <select id="endHour" class="time hour" form="callForm" required>
-                        <option value="" selected disabled hidden>근무 종료 시간</option>
-                        <!-- <?php for ($i = 1; $i < 37; $i++): ?>
-                            <option class="endOption" value="<?php echo $i ?>">
-                                <?php echo $this->getTime($i); ?>
-                            </option>
-                        <?php endfor; ?> -->
-                    </select>
-                    <select class="time minute" id="endMin" form="callForm" required>
-                        <option value="00">00분</option>
-                        <option value="30">30분</option>
-                    </select>
+                    <div class="workTime">
+                        <select id="startHour" class="time hour" form="callForm" required>
+                            <option value="" selected disabled hidden>근무 시작 시간</option>
+                            <!-- <?php for ($i = 1; $i < 25; $i++): ?>
+                                <option class="startOption" value="<?php echo $i ?>">
+                                    <?php echo $this->getTime($i); ?>
+                                </option>
+                            <?php endfor; ?> -->
+                        </select>
+                        <select class="time minute" id="startMin" form="callForm" required>
+                            <option value="00">00분</option>
+                            <option value="30">30분</option>
+                        </select>
+                        <select id="endHour" class="time hour" form="callForm" required>
+                            <option value="" selected disabled hidden>근무 종료 시간</option>
+                            <!-- <?php for ($i = 1; $i < 37; $i++): ?>
+                                <option class="endOption" value="<?php echo $i ?>">
+                                    <?php echo $this->getTime($i); ?>
+                                </option>
+                            <?php endfor; ?> -->
+                        </select>
+                        <select class="time minute" id="endMin" form="callForm" required>
+                            <option value="00">00분</option>
+                            <option value="30">30분</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -152,8 +169,11 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="">
-                    <h2 class="form-title">임금</h2>
-                    <p id="salaryInfo" style="display:inline-table;    width: 100%; padding: 0 10px; margin: 0;">근무시간을
+                    <h2 class="form-title">
+                        임금
+                        <button class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                    </h2>
+                    <p id="salaryInfo">근무시간을
                         선택해주세요</p>
                 </div>
             </div>
@@ -165,15 +185,16 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="callForm-jobs">
-                    <h2 class="form-title">업종</h2>
+                    <h2 class="form-title">
+                        업종
+                        <button class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                    </h2>
                     <div class="container-jobs btn-wrap">
                         <button type="button" class="btn btn-option btn-work-field wash">설거지</button>
                         <button type="button" class="btn btn-option btn-work-field kitchen selected ">주방보조</button>
                         <button type="button" class="btn btn-option btn-work-field hall">홀서빙</button>
                     </div>
-                    <select class="selector-work-field" name="workField"
-                            style="background: #fff; height: 40px; margin-right: 10px; font-size: 16px; padding: 3px;"
-                            id="workField" form="callForm" required>
+                    <select class="selector-work-field" name="workField" id="workField" form="callForm" required>
                         <!-- <?php foreach ($this->get_workfield_list() as $data): ?>
                             <option value="<?php echo $data['workField']?>">
                                 <?php echo $data['workField']?>
@@ -205,7 +226,10 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="callForm-etc">
-                    <h2 class="form-title">기타 요청 사항</h2>
+                    <h2 class="form-title">
+                        기타 요청 사항
+                        <button class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                    </h2>
                     <textarea name="detail" id="detail" cols="30" rows="6">
                     </textarea>
                 </div>
@@ -213,8 +237,9 @@
         </div>
     </div>
     <!--콜 보내기 버튼-->
-    <div class="btn-group al_r" style="position: fixed;bottom: 0;width: 100%;max-width: 500px;">
-        <h1 class="callPrice"></h1>
+    <div class="btn-area">
+        <!-- <h1 class="callPrice"></h1> -->
+        <button id="btnSendCancel" class="btn btn-insert callBtn" type="button">취소</button>
         <button id="btnSendCall" class="btn btn-insert callBtn" type="button">콜 신청하기</button>
         <!-- <?php if ($this->param->page_type != 'ceo'): ?> -->
             <input type="submit" id="submitFixedCallBtn" class="btn btn-insert callBtn fixBtn" type="button" style="display: none" value="고정 콜 만들기">
@@ -224,3 +249,11 @@
         <!-- <?php endif; ?> -->
     </div>
 </form>
+
+<script>
+    function closeInput(){
+        // $('.icon-up').on('click', function () {
+            $('row-content').hide();
+        // });
+    }
+</script>
