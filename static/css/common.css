@@ -181,7 +181,7 @@ a.btn{padding:10px;}
 .table > .tr > .td > .textarea-detail{height: 200px;width: 375px;margin: 0;resize: none;}
 .table table{display: inline-table;}
 .title-table{ display: flex; justify-content: center; padding: 10px 5px; color: #fff; background: #268DFF; border-radius: 100px 100px 0 0; -webkit-border-radius: 100px 100px 0 0; -moz-border-radius: 100px 100px 0 0; -ms-border-radius: 100px 100px 0 0; -o-border-radius: 100px 100px 0 0; }
-.title-table .title-main{font-size: 35px; margin: 0; font-weight: 400;}
+.title-table .title-main{font-size: 35px; margin: 1rem 0; font-weight: 400;}
 /* .title-table *{display: table-cell;height: 100%;vertical-align: middle;} */
 .title-table .btn-group{margin-left: 40px;}
 .title-table .btn-select-join-type{width: 70px; height:37px; margin: 0 2px;padding: 0;font-size: 15px;}
@@ -218,6 +218,16 @@ tr.assign-employee.recommend {border-left:1px solid var(--main-color); border-ri
 tr.assign-employee.recommend:last-child {border-bottom:3px solid var(--main-color); color: red}
 tr.assign-employee.recommend th{background: var(--main-color); color: white;}
 
+/* 콜 만들기 */
+/* #callForm { margin: 0 auto;} */
+.top-title { margin: 3rem 8rem 0; padding: 0 2rem;}
+.form-row { margin-top: 20px; margin-bottom: 20px;}
+.form-row .callForm { padding: 0 1rem; border-radius: 4px ; border: 1px solid #dbdde2; box-shadow: 0 2px 3px 0 rgb(0 0 0 / 5%); -webkit-border-radius: 4px ; -moz-border-radius: 4px ; -ms-border-radius: 4px ; -o-border-radius: 4px ; }
+.form-row .callForm .row-in-row { padding: 1rem 0;}
+.form-row .callForm .form-title { margin: 2px 30px 10px;}
+.form-row .callForm input[type="text"] { margin: 2px 30px 0; width: 60%; padding: 7px 17px;}
+.form-row .callForm .callForm-term .workDate { margin: 2px 30px 0; width: 30%; padding: 7px 17px;}
+.form-row .callForm .callForm-etc #detail { width: 95%; margin: 2px 30px 0; border: 1px solid #e2e7ef;}
 
 /*dropdown, navigation*/
 .navbar {width:100%;}
@@ -256,7 +266,7 @@ tr.assign-employee.recommend th{background: var(--main-color); color: white;}
 .modal-content button[class*="btn"] { font-size: .8rem; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; }
 
 input[type="checkbox"]{width: 13px; cursor: pointer; margin-left: 0; margin-right: 0; margin-bottom: 0;}
-input[type="date"]{font-size: 20px;}
+input[type="date"]{font-size: .7rem;}
 label { color:rgba(0, 0, 0, 0.5)}
 .ellipsis{overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 
@@ -326,7 +336,7 @@ label { color:rgba(0, 0, 0, 0.5)}
 .btn-group.group2 { display: inline;}
 
 /* 추가하기 페이지 레이아웃 */
-.write-layout { margin: 100px 16rem; background: #fff; box-shadow: 15px 15px 20px #e1e1e1, -15px 15px 20px #e1e1e1; padding: 0 0 43px 0; border-radius: 70px; -webkit-border-radius: 70px; -moz-border-radius: 70px; -ms-border-radius: 70px; -o-border-radius: 70px; }
+.write-layout { margin: 1rem 8rem; background: #fff; padding: 0 0 43px 0;}
 .write-layout .board-write { padding: 1rem 2rem;}
 .callForm-flex { display: flex; align-items: center; margin: 3rem 0 1rem;}
 .callForm-flex label { display: block; font-weight: 600;}
@@ -334,24 +344,22 @@ label { color:rgba(0, 0, 0, 0.5)}
 .callForm-flex.callForm-header { margin-top: 1rem;}
 .callForm-flex .num-wrap { width: 5%;}
 .callForm-flex .num-wrap img { width: 100%;}
-.callForm-flex .callForm-etc { width: 100%;}
-.callForm-flex textarea { width: 100%;}
 .callForm-flex .callForm-etc textarea.textarea-detail { height: 220px;}
 .callForm-company { width: 43%;}
 .callForm-flex input[type="text"],
 .callForm-flex input[type="number"] { height: 1.7rem; }
-.callForm-company input[type="text"] { height: 1.8rem; line-height: 1.8rem;}
+.callForm-company input[type="text"] { height: 1rem; line-height: 1rem; font-size: .7rem;}
 .callForm-term.input-endDate { padding-left: 1rem;}
 .callForm-term.input-endDate label { margin-left: 1rem;}
 .callForm-term .workDate,
-.callForm-term .endDate { padding: .4rem 2.7rem .4rem .7rem; color: #c1c1c1;}
+.callForm-term .endDate { padding: 10px 15px 10px; color: #c1c1c1;}
 .callForm-term .endDate { margin-left: .5rem;}
 /* .callForm-term .endDate { margin-left: 2rem;} */
 /* .pl { padding: 0 2rem;} */
 .npd { margin-bottom: .5rem;}
 .callForm-time label { display: block;}
 .callForm-time .time { height: 2rem; font-size: .7rem;}
-.btn-wrap { padding-left: 2rem;}
+.btn-wrap { margin: 2px 30px 0;}
 .between { justify-content: space-between;}
 .callForm-flex .three { width: 25%;}
 .callForm-flex .callForm-tel { width: 30%;}
