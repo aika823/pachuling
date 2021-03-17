@@ -1,133 +1,230 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="top-title">
+    <h1 class="title-main">구직자정보</h1>
+</div>
 
 <div class="write-layout">
-    <div class="title-table">
-        <h1>구직자 정보</h1>
-    </div>
     <div class="board-write auto-center">
-        <div class="form-default">
+        <div class="form-style-1">
             <form id="formInsertEmployee" action="" method="post">
                 <fieldset>
                     <input type="hidden" name="action"
                         value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
                     <input type="hidden" name="employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
-                    <div class="">
-                        <div class="callForm-flex job-kind em">
-                            <div class="">
-                                <label for="">성명</label>
-                                <input type="text" name="employeeName" required autofocus
-                                    value="<?php echo $this->employeeData['employeeName']; ?>" placeholder="성명">
-                            </div>
-                            <div class="">
-                                <label for="">성별</label>
-                                <input type="text" list="sexList" name="sex" required autofocus
-                                    value="<?php if (isset ($this->employeeData['sex'])) {
-                                        echo $this->employeeData['sex'];
-                                    } else echo "여" ?>">
-                                <datalist id="sexList" class="input-field">
-                                    <option value="여"></option>
-                                    <option value="남"></option>
-                                </datalist>
-                            </div>
-                            <div class="">
-                                <label for="">생년월일</label>
-                                <input type="date" name="birthDate" size="20" required autofocus
-                                    style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
-                                    value="<?php echo $this->employeeData['birthDate']; ?>">
+                        
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    성명
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="employeeName" required autofocus value="<?php echo $this->employeeData['employeeName']; ?>" placeholder="성명">
+                                </div>
                             </div>
                         </div>
-                        <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
-                        <div class="callForm-flex job-kind em">
-                            <div class="">
-                                <label for="">업종1</label>
-                                <input type="text" list="workFieldList" name="workField1" size="20" required
-                                    value="<?php echo $this->employeeData['workField1']; ?>" placeholder="업종">
-                                <datalist id="workFieldList" class="input-field">
-                                    <?php foreach ($workField_List as $data): ?>
-                                        <option value="<?php echo $data['workField']?>"></option>
-                                    <?php endforeach ?>
-                                </datalist>
-                            </div>
-                            <div class="">
-                                <label for="">업종2</label>
-                                <input type="text" list="workFieldList" name="workField2" size="20"
-                                    value="<?php echo $this->employeeData['workField2']; ?>" placeholder="업종">
-                                <datalist id="workFieldList" class="input-field">
-                                    <?php foreach ($workField_List as $data): ?>
-                                        <option value="<?php echo $data['workField'] ?>"></option>
-                                    <?php endforeach ?>
-                                </datalist>
-                            </div>
-                            <div class="">
-                                <label for="">업종3</label>
-                                <input type="text" list="workFieldList" name="workField3" size="20"
-                                    value="<?php echo $this->employeeData['workField3']; ?>" placeholder="업종">
-                                <datalist id="workFieldList" class="input-field">
-                                    <?php foreach ($workField_List as $data): ?>
-                                        <option value="<?php echo $data['workField'] ?>"></option>
-                                    <?php endforeach ?>
-                                </datalist>
+                    </div>
+                        
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    성별
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="sexList" name="sex" required autofocus value="<?php if (isset ($this->employeeData['sex'])) { echo $this->employeeData['sex']; } else echo "여" ?>">
+                                    <datalist id="sexList" class="input-field">
+                                        <option value="여"></option>
+                                        <option value="남"></option>
+                                    </datalist>
+                                </div>        
                             </div>
                         </div>
-                            <div class="">
-                                <label for="">전화번호</label>
-                                <input type="text" name="employeePhoneNumber" size="20" required
-                                    value="<?php echo $this->employeeData['employeePhoneNumber']; ?>" placeholder="010-XXXX-XXXX">
-                            </div>
-                        <div class="callForm-flex job-kind em">
-                            <div class="">
-                                <label for="">희망근무지</label>
-                                <input type="text" list="addressList" name="workPlace"
-                                    value="<?php echo $this->employeeData['workPlace']; ?>" placeholder="청담">
-                                <datalist id="addressList">
-                                    <?php foreach ($this->address_List as $data): ?>
-                                        <option value="<?php echo $data['address']?>"></option>
-                                    <?php endforeach ?>
-                                </datalist>
-                            </div>
-                            <div class="">
-                                <label for="">간단주소</label>
-                                <input type="text" list="addressList" name="address" required
-                                    value="<?php echo $this->employeeData['address']; ?>" placeholder="청담">
-                                <datalist id="addressList">
-                                    <?php foreach ($this->address_List as $data): ?>
-                                        <option value="<?php echo $data['address']?>"></option>
-                                    <?php endforeach ?>
-                                </datalist>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    생년월일
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="date" name="birthDate" size="20" required autofocus
+                                        style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
+                                        value="<?php echo $this->employeeData['birthDate']; ?>">
+                                </div>
                             </div>
                         </div>
-                        <div class="callForm-flex em">
-                            <div class="detail-address">
-                                <label for="">상세주소</label>
-                                <input type="text" name="detailAddress" size="20"
-                                    value="<?php echo $this->employeeData['detailAddress']; ?>" placeholder="서울특별시 중구 00동 00로 ...">
+                    </div>
+                        
+                    <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
+                        
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    업종
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="workFieldList" name="workField1" size="20" required
+                                        value="<?php echo $this->employeeData['workField1']; ?>" placeholder="업종">
+                                    <datalist id="workFieldList" class="input-field">
+                                        <?php foreach ($workField_List as $data): ?>
+                                            <option value="<?php echo $data['workField']?>"></option>
+                                        <?php endforeach ?>
+                                    </datalist>
+                            </div>
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    업종2
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="workFieldList" name="workField2" size="20"
+                                        value="<?php echo $this->employeeData['workField2']; ?>" placeholder="업종">
+                                    <datalist id="workFieldList" class="input-field">
+                                        <?php foreach ($workField_List as $data): ?>
+                                            <option value="<?php echo $data['workField'] ?>"></option>
+                                        <?php endforeach ?>
+                                    </datalist>
+                                </div>
+                            </div>
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    업종3
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="workFieldList" name="workField3" size="20"
+                                        value="<?php echo $this->employeeData['workField3']; ?>" placeholder="업종">
+                                    <datalist id="workFieldList" class="input-field">
+                                        <?php foreach ($workField_List as $data): ?>
+                                            <option value="<?php echo $data['workField'] ?>"></option>
+                                        <?php endforeach ?>
+                                    </datalist>
+                                </div>
                             </div>
                         </div>
-                        <div class="callForm-flex job-kind em">
-                            <div class="w30">
-                                <label for="">한국어</label>
-                                <input type="text" list="languageList" name="language" size="2"
-                                    value="<?php if (isset($this->employeeData['language'])) echo $this->employeeData['language']; else echo "상"; ?>">
-                                <datalist id="languageList" class="input-field">
-                                    <option value="상"></option>
-                                    <option value="중"></option>
-                                    <option value="하"></option>
-                                </datalist>
-                            </div>
-                            <div class="w30">
-                                <label for="">점수</label>
-                                <input type="text" name="grade" size="20"
-                                    value="<?php if (isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "100"; ?>">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    전화번호
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="employeePhoneNumber" size="20" required
+                                        value="<?php echo $this->employeeData['employeePhoneNumber']; ?>" placeholder="010-XXXX-XXXX">
+                                </div>
                             </div>
                         </div>
-                        <div class="callForm-flex em">
-                            <div class="detail-address">
-                                <label for="">비고</label>
-                                <textarea class="textarea-detail" name="detail" required><?php echo $this->get_detail($this->employeeData,'employee');?></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    희망근무지
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="addressList" name="workPlace"
+                                        value="<?php echo $this->employeeData['workPlace']; ?>" placeholder="청담">
+                                    <datalist id="addressList">
+                                        <?php foreach ($this->address_List as $data): ?>
+                                            <option value="<?php echo $data['address']?>"></option>
+                                        <?php endforeach ?>
+                                    </datalist>
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    간단주소
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="addressList" name="address" required
+                                        value="<?php echo $this->employeeData['address']; ?>" placeholder="청담">
+                                    <datalist id="addressList">
+                                        <?php foreach ($this->address_List as $data): ?>
+                                            <option value="<?php echo $data['address']?>"></option>
+                                        <?php endforeach ?>
+                                    </datalist>
+                                </div>
+                            </div>
+                        
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    상세주소
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="detailAddress" size="20"
+                                        value="<?php echo $this->employeeData['detailAddress']; ?>" placeholder="서울특별시 중구 00동 00로 ...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    한국어
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="languageList" name="language" size="2"
+                                        value="<?php if (isset($this->employeeData['language'])) echo $this->employeeData['language']; else echo "상"; ?>">
+                                    <datalist id="languageList" class="input-field">
+                                        <option value="상"></option>
+                                        <option value="중"></option>
+                                        <option value="하"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    점수
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="grade" size="20"
+                                        value="<?php if (isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "100"; ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <div class="callForm-etc">
+                                    <h2 class="form-title">
+                                        비고
+                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
+                                    <textarea class="textarea-detail" name="detail" id="detail" required><?php echo $this->get_detail($this->employeeData,'employee');?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                         <div class="callForm-flex em">
                             <div>
                                 <?php require_once 'employeeAvailableDayTable.php' ?>
@@ -135,19 +232,30 @@
                         </div>
 
                         <?php if ($this->employeeData['actCondition'] == "삭제됨") : ?>
-                            <div class="tr">
-                                <div class="td td-4">
-                                    <label for="">삭제비고</label>
-                                    <textarea
-                                            name="deleteDetail"><?php echo $this->employeeData['deleteDetail']; ?></textarea>
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <div class="callForm-etc">
+                                    <h2 class="form-title">
+                                        삭제비고
+                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
+                                    <textarea name="deleteDetail" id="detail"><?php echo $this->employeeData['deleteDetail']; ?></textarea>
                                 </div>
                             </div>
+                        </div>
+                    </div>
                         <?php endif; ?>
 
                         <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
-                            <div class="callForm-flex">
-                                <div class="td td-9">
-                                    <label for="">블랙</label>
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    블랙
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
                                     <table>
                                         <thead>
                                         <tr>
@@ -177,59 +285,79 @@
                                     </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
                         <?php endif; ?>
                         <?php if (($this->param->action == 'view') && (sizeof($availableDateArray) > 0)): ?>
-                            <div class="tr">
-                                <div class="td td-9">
-                                    <label for="" style="max-width: 200px;">일 주세요 / 일 못가</label>
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th width="150">날짜</th>
-                                            <th width="150">종류</th>
-                                            <th width="150">사유</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php foreach ($availableDateArray as $value) { ?>
+                        <div class="form-row">
+                            <div class="callForm">
+                                <div class="row-in-row">
+                                    <h2 class="form-title">
+                                        일 주세요 / 일 못가
+                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
+                                    <div class="row-content">
+                                        <table>
+                                            <thead>
                                             <tr>
-                                                <td>
-                                                    <?php echo $value['availableDate'] > 0 ? $value['availableDate'] : $value['notAvailableDate'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['availableDate'] > 0 ? "일 주세요" : "못가요"; ?>
-                                                </td>
-                                                <td class="<?php echo $value['detail'] ? 'al_l' : 'al_c'?>">
-                                                    <?php echo $value['detail'] ? $value['detail'] : '-'; ?>
-                                                </td>
+                                                <th width="150">날짜</th>
+                                                <th width="150">종류</th>
+                                                <th width="150">사유</th>
                                             </tr>
-                                        <?php } ?>
-                                        <tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php foreach ($availableDateArray as $value) { ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $value['availableDate'] > 0 ? $value['availableDate'] : $value['notAvailableDate'] ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $value['availableDate'] > 0 ? "일 주세요" : "못가요"; ?>
+                                                    </td>
+                                                    <td class="<?php echo $value['detail'] ? 'al_l' : 'al_c'?>">
+                                                        <?php echo $value['detail'] ? $value['detail'] : '-'; ?>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                            <tr>
 
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         <?php endif; ?>
                     </div>
 
                     <?php if (!isset($this->param->idx)) : ?>
-                        <div class="flex-col">
-                            <h1>가입 정보</h1>
-                        </div>
+                    <div class="middle-title">
+                        <h1 class="title-main">가입 정보</h1>
+                    </div>
 
-                        <div class="table table-add-join" id="employeeAddJoinTable">
-                            <div class="callForm-flex em">
-                                <div class="term">
-                                    <label for="startDate">가입시작일</label>
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    가입시작일
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
                                     <input type="date" id="startDate" name="startDate" required>
                                 </div>
-                                <div class="term end">
-                                    <label for="endDate">가입만기일</label>
-                                    <input type="date" id="endDate" name="endDate" required>
+                                <div class="row-in-row">
+                                    <h2 class="form-title">
+                                        가입만기일
+                                    </h2>
+                                    <div class="row-content">
+                                        <input type="date" id="endDate" name="endDate" required>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
                             <div class="">
                                 <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('today')"
                                         style="width: 100px; margin: 23px 0;">오늘부터
@@ -241,27 +369,48 @@
                                     </button>
                                 <?php endif; ?>
                             </div>
-                            <div class="callForm-flex job-kind em">
-                                <div class="">
-                                    <label for="price">가입금액</label>
+
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    가입금액
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
                                     <input type="number" id="price" name="price" required placeholder="30000">
                                 </div>
-                                <div class="">
-                                    <label for="">수금
-                                        <input type="checkbox" id="paid" name="paid" value="1" style="margin-left: 16px;">
-                                    </label>
+                            </div>
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    수금
+                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="checkbox" id="paid" name="paid" value="1" style="margin-left: 16px;">
                                     <input type="text" id="paid" name="receiver" value="지명희" required>
                                 </div>
                             </div>
-                            <div class="callForm-flex em">
-                                <div class="detail-address">
-                                    <label for="joinDetail">가입비고</label>
+                        </div>
+                    </div>
+ 
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <div class="callForm-etc">
+                                    <h2 class="form-title">
+                                        가입비고
+                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
                                     <textarea name="joinDetail">내용: </textarea>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
                     <?php endif; ?>
-                    <div class="btn-group al_r">
+                    <div class="btn-area">
                         <a class="btn btn-default" href='<?php echo $this->param->get_page ?>'>취소</a>
                         <button class="btn btn-<?php echo ($this->param->action == 'write') ? 'insert' : 'submit' ?>"
                                 type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?></button>
