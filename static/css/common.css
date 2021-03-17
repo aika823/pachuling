@@ -346,7 +346,7 @@ label { color:rgba(0, 0, 0, 0.5)}
 .btn-group.group2 { display: inline;}
 
 /* 추가하기 페이지 레이아웃 */
-.write-layout { margin: 1rem 8rem; background: #fff; padding: 0 0 43px 0;}
+.write-layout { margin: 0 8rem 1rem; background: #fff; padding: 0 0 43px 0;}
 .write-layout .board-write { padding: 1rem 2rem;}
 .callForm-flex { display: flex; align-items: center; margin: 3rem 0 1rem;}
 .callForm-flex label { display: block; font-weight: 600;}
