@@ -44,5 +44,5 @@
             show_snack_bar('테스트입니다.');
         });
     </script>
-<script src="/public/js/create_call.js"></script>
+<script src="/static/js/create_call.js"></script>
 </div>

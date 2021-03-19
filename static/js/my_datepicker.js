@@ -113,9 +113,9 @@ function toggle_filter(element) {
 }
 
 function calculate_assign() {
-    let total = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
-    let assigned = $('.callRow:visible .assignedEmployee a').length;
-    let not_assigned = total - assigned;
+    let total = call_dict['cnt_total']
+    let assigned = call_dict['cnt_assigned']
+    let not_assigned = call_dict['cnt_not_assigned']
     let percentage = parseFloat((assigned * 100 / total).toFixed(1));
     if (total > 0) {
         $('.assign-percentage').text("배정률 : " + percentage + "%");
@@ -132,27 +132,17 @@ function calculate_assign() {
 }
 
 function calculate_price() {
-    let paid = 0;
-    let paid_price = 0;
-    let unpaid = 0;
-    let unpaid_price = 0;
-    let get_money_btn = $('.callRow:visible .btn-money');
-    let paid_money_btn = $('.call-price .paid:visible');
-    paid_money_btn.each(function () {
-        paid += 1;
-        paid_price += parseInt($(this).text());
-    });
-    get_money_btn.each(function () {
-        unpaid += 1;
-        unpaid_price += parseInt($(this).text());
-    });
-    let total = paid + unpaid;
-    let total_price = paid_price + unpaid_price;
+    let total = call_dict['cnt_total_price']
+    let total_price = call_dict['price_total']
+    let paid = call_dict['cnt_paid'];
+    let paid_price = call_dict['price_paid'];
+    let unpaid = call_dict['cnt_unpaid'];
+    let unpaid_price = call_dict['price_unpaid'];
     let percentage = parseFloat((paid_price * 100 / total_price).toFixed(1));
     if (total > 0) {
         $('.paid-percentage').text("수금률 : " + percentage + "%");
         $('.paid_count_status').text("총 " + total + " (수금 " + paid + " / 미수 " + unpaid + ")");
-        $('.paid_price_status').text("수금: " + number_format(paid_price * 1000) + "원 / 미수금: " + number_format(unpaid_price * 1000) + "원");
+        $('.paid_price_status').text("수금: " + (paid_price) + "원 / 미수금: " + (unpaid_price) + "원");
         $('.bar.paid').width(percentage + '%');
         $('.bar.paid').text(percentage + "%");
     }
@@ -196,15 +186,11 @@ function setDateToday(){
 
 function setDateTomorrow(){
     let tomorrow = new Date();
-
     let year = tomorrow.getFullYear();
     let month = tomorrow.getMonth() + 1;
     let date = tomorrow.getDate() + 1;
-
     let _tomorrow = year + '/' + month + '/' + date;
-
     $('.calender .date').attr('value', _tomorrow);
-
     $('.today_btn').removeClass('active');
     $('.tomorrow_btn').addClass('active');
     $('.thisWeek_btn').removeClass('active');
@@ -217,24 +203,18 @@ function setDateThisWeek(){
     var theMonth = currentDay.getMonth();
     var theDate  = currentDay.getDate();
     var theDayOfWeek = currentDay.getDay();
-
     var thisWeek = [];
-
     for(var i=0; i<7; i++) {
         var resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek));
         var yyyy = resultDay.getFullYear();
         var mm = Number(resultDay.getMonth()) + 1;
         var dd = resultDay.getDate();
-
         mm = String(mm).length === 1 ? '0' + mm : mm;
         dd = String(dd).length === 1 ? '0' + dd : dd;
-
         thisWeek[i] = yyyy + '/' + mm + '/' + dd;
     }
-
     $('.calender .date#start').attr('value', thisWeek[0]);
     $('.calender .date#end').attr('value', thisWeek[6]);
-
     $('.today_btn').removeClass('active');
     $('.tomorrow_btn').removeClass('active');
     $('.thisWeek_btn').addClass('active');
@@ -244,13 +224,10 @@ function setDateThisWeek(){
 function setDateThisMonth(){
     var now = new Date();
     var firstDate, lastDate;
-
     firstDate = new Date(now.getFullYear(),now.getMonth(), 1);
     lastDate = new Date(now.getFullYear(),now.getMonth()+1, 0);
-
     $('.calender .date#start').attr('value', moment(firstDate).format('YYYY/MM/DD'));
     $('.calender .date#end').attr('value', moment(lastDate).format('YYYY/MM/DD'));
-
     $('.today_btn').removeClass('active');
     $('.tomorrow_btn').removeClass('active');
     $('.thisWeek_btn').removeClass('active');
