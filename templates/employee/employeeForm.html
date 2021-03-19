@@ -19,7 +19,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     성명
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" name="employeeName" required autofocus value="<?php echo $this->employeeData['employeeName']; ?>" placeholder="성명">
@@ -33,7 +33,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     성별
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" list="sexList" name="sex" required autofocus value="<?php if (isset ($this->employeeData['sex'])) { echo $this->employeeData['sex']; } else echo "여" ?>">
@@ -51,7 +51,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     생년월일
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="date" name="birthDate" size="20" required autofocus
@@ -69,7 +69,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     업종
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" list="workFieldList" name="workField1" size="20" required
@@ -79,12 +79,9 @@
                                             <option value="<?php echo $data['workField']?>"></option>
                                         <?php endforeach ?>
                                     </datalist>
-                            </div>
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    업종2
-                                </h2>
-                                <div class="row-content">
+                                    <h2 class="form-subtitle">
+                                        업종2
+                                    </h2>
                                     <input type="text" list="workFieldList" name="workField2" size="20"
                                         value="<?php echo $this->employeeData['workField2']; ?>" placeholder="업종">
                                     <datalist id="workFieldList" class="input-field">
@@ -92,13 +89,9 @@
                                             <option value="<?php echo $data['workField'] ?>"></option>
                                         <?php endforeach ?>
                                     </datalist>
-                                </div>
-                            </div>
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    업종3
-                                </h2>
-                                <div class="row-content">
+                                    <h2 class="form-subtitle">
+                                        업종3
+                                    </h2>
                                     <input type="text" list="workFieldList" name="workField3" size="20"
                                         value="<?php echo $this->employeeData['workField3']; ?>" placeholder="업종">
                                     <datalist id="workFieldList" class="input-field">
@@ -116,7 +109,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     전화번호
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" name="employeePhoneNumber" size="20" required
@@ -131,7 +124,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     희망근무지
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" list="addressList" name="workPlace"
@@ -151,7 +144,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     간단주소
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" list="addressList" name="address" required
@@ -161,14 +154,10 @@
                                             <option value="<?php echo $data['address']?>"></option>
                                         <?php endforeach ?>
                                     </datalist>
-                                </div>
-                            </div>
                         
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    상세주소
-                                </h2>
-                                <div class="row-content">
+                                    <h2 class="form-subtitle">
+                                        상세주소
+                                    </h2>
                                     <input type="text" name="detailAddress" size="20"
                                         value="<?php echo $this->employeeData['detailAddress']; ?>" placeholder="서울특별시 중구 00동 00로 ...">
                                 </div>
@@ -181,7 +170,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     한국어
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" list="languageList" name="language" size="2"
@@ -201,7 +190,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     점수
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" name="grade" size="20"
@@ -217,7 +206,7 @@
                                 <div class="callForm-etc">
                                     <h2 class="form-title">
                                         비고
-                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                     </h2>
                                     <textarea class="textarea-detail" name="detail" id="detail" required><?php echo $this->get_detail($this->employeeData,'employee');?></textarea>
                                 </div>
@@ -238,7 +227,7 @@
                                 <div class="callForm-etc">
                                     <h2 class="form-title">
                                         삭제비고
-                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                     </h2>
                                     <textarea name="deleteDetail" id="detail"><?php echo $this->employeeData['deleteDetail']; ?></textarea>
                                 </div>
@@ -253,7 +242,7 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     블랙
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <table>
@@ -295,7 +284,7 @@
                                 <div class="row-in-row">
                                     <h2 class="form-title">
                                         일 주세요 / 일 못가
-                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                     </h2>
                                     <div class="row-content">
                                         <table>
@@ -341,18 +330,15 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     가입시작일
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="date" id="startDate" name="startDate" required>
-                                </div>
-                                <div class="row-in-row">
-                                    <h2 class="form-title">
+                                
+                                    <h2 class="form-subtitle">
                                         가입만기일
                                     </h2>
-                                    <div class="row-content">
-                                        <input type="date" id="endDate" name="endDate" required>
-                                    </div>
+                                    <input type="date" id="endDate" name="endDate" required>
                                 </div>
                             </div>
                         </div>
@@ -376,18 +362,14 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     가입금액
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="number" id="price" name="price" required placeholder="30000">
-                                </div>
-                            </div>
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    수금
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
-                                </h2>
-                                <div class="row-content">
+                                    <h2 class="form-title">
+                                        수금
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
                                     <input type="checkbox" id="paid" name="paid" value="1" style="margin-left: 16px;">
                                     <input type="text" id="paid" name="receiver" value="지명희" required>
                                 </div>
@@ -401,7 +383,7 @@
                                 <div class="callForm-etc">
                                     <h2 class="form-title">
                                         가입비고
-                                        <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                     </h2>
                                     <textarea name="joinDetail">내용: </textarea>
                                 </div>
@@ -534,4 +516,8 @@
     });
 </script>
 
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/toggleForm.js')}}"></script>
 {% endblock %}
