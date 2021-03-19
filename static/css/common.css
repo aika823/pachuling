@@ -409,8 +409,6 @@ label { color:rgba(0, 0, 0, 0.5)}
 .callForm-flex .w30 { width: 30%;}
 #refresh-imminent { overflow: hidden;}
 
-#call_table td.show { display: none;}
-
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}
@@ -502,10 +500,39 @@ label { color:rgba(0, 0, 0, 0.5)}
 .v_mobile { display: none;}
 button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; font-size: 1rem;}
 
+/* 네비게이션 반응형 sidenav */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    background-color: #edf7ff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.sidenav a { text-align: left; margin: 10px 0; padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s; cursor: pointer;}
+.sidenav a:hover { color: #2e2e2e;}
+.sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;}
+
+#main { transition: margin-right .5s; padding: 16px; -webkit-transition: margin-right .5s; -moz-transition: margin-right .5s; -ms-transition: margin-right .5s; -o-transition: margin-right .5s; }
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
 /* 콜 관리 반응형 */
 @media all and (max-width: 768px) {
     #header #headerMain { justify-content: space-between; margin: 0 auto; width: 90%;}
-    #header .nav_right .fas.fa-bars {font-size: 1.3rem;}
+    #header .nav_right.v_mobile { cursor: pointer;}
+    #header .nav_right .fas.fa-bars {font-size: 1.3rem; color: #268DFF;}
     .board-list.scroll_list { padding: 30px 0 120px;}
     .call_top_percentage { display: block; width: 95%;}
     .call_top_percentage .percent {display: none;}
@@ -513,7 +540,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage #range { width: 68%;}
     .call_top_percentage input[type="text"].date { width: 40%; height: 36px;}
     .call_top_percentage .week_btn button { padding: .3rem; width: 3.45rem;}
-    .call_top_percentage .submit_btn button { height: 40px; border-radius: 0; -webkit-border-radius:; -moz-border-radius:; -ms-border-radius:; -o-border-radius:; }
+    .call_top_percentage .submit_btn button { height: 40px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
 
     .inline.scroll_tbody.call { width: 95%;}
     #call_table { box-shadow: none;}
