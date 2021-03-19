@@ -1,4 +1,4 @@
-<a class="makeCall v_pc" href="{{ url_for('callForm') }}">콜만들기</a>
+<a class="makeCall v_pc" href="call/write">콜만들기</a>
 <h1>{{ detail }}</h1>
 <div class="grid-style">
     <div class="call call-order link al_l round1" id="refresh-workDate">근무날짜</div>
@@ -42,6 +42,6 @@
     {% endif %}
         
 </div>
-<button class="circle v_mobile" onClick="location.href='{{ url_for('callForm')}}'">
+<button class="circle v_mobile" onClick="location.href='call/write'">
     <i class="fas fa-plus"></i>
 </button>

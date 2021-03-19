@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
-import db as db
-import call_fuction as call_function
+from flask import Flask, render_template, request, session
+
+import call_function
 import company_function
+import db as db
 
 application = Flask(__name__)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
@@ -104,6 +105,14 @@ def manage():
 def show_ceo(ceo_id):
     ceo = db.get_ceo(ceo_id)
     return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
+
+
+@application.route('/login/', methods=('GET', 'POST'))
+def login():
+    if 'name' in session:
+        return render_template('call/call.html')
+    else:
+        return "no login"
 
 
 if __name__ == "__main__":
