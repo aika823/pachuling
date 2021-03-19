@@ -1,65 +1,5 @@
 <a class="makeCall v_pc" href="{{ url_for('callForm') }}">콜만들기</a>
 <h1>{{ detail }}</h1>
-<!-- <table id="call_table" style="width:100%; height: 50px;">
-    <colgroup>
-        <col width="10%">
-        <col width="10%">
-        <col width="15%">
-        <col width="8%">
-        <col width="auto">
-        <col width="10%">
-        <col width="10%">
-        <col width="10%">
-        <col width="6%">
-    </colgroup>
-    <thead>
-    <tr>
-        <th class="call call-order link al_l round1" id="refresh-workDate">근무날짜</th>
-        <th class="call call-order link al_l" id="refresh-startTime">근무시간</th>
-        <th class="call call-order link al_l" id="refresh-companyName">상호명</th>
-        <th class="call call-order link al_l" id="refresh-workField">업종</th>
-        <th class="call call-order link al_l" id="refresh-detail">요청사항</th>
-        <th class="call call-order link al_r" id="refresh-salary">일당</th>
-        <th class="call call-order link al_r" id="refresh-price">콜비</th>
-        <th class="call call-order link al_c" id="refresh-employeeName">구직자</th>
-        <th class="call call-order link al_c round2" id="refresh-cancelled">취소</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    {% if(calls|length > 0) %}
-        {% for call in calls %}
-        <tr class="mobile_view">
-            <td data-th="근무날짜" class="m_td al_l top">{{call['workDate']}}</td>
-            <td data-th="근무시간" class="m_td al_l">{{call['startTime']}} {{call['endTime']}}</td>
-            <td data-th="상호명" class="m_td al_l">{{call['companyName'] | safe}}</td>
-            <td data-th="업종" class="m_td al_l">{{call['workField'] | safe}}</td>
-            <td data-th="요청사항" class="m_td al_l">{{call['detail'] | safe}}</td>
-            <td data-th="일당" class="m_td al_r">{{call['price'] | safe}}</td>
-            <td data-th="콜비" class="m_td al_r">{{call['salary'] | safe}}</td>
-            <td data-th="구직자" class="m_td bottom">{{call['employeeName'] | safe}}</td>
-            {% if(call['cancelled'] == 1) %}
-            <td>(취소됨)</td>
-            {% else %}
-            <td class="hide">
-                <button type="button" class="btn-call-cancel-modal btn btn-small btn-danger" id="{{call['callID']}}">
-                    취소
-                </button>
-            </td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    {% else %}
-        <tr>
-            <td colspan="9">검색된 콜이 없습니다</td>
-        </tr>
-    {% endif %}
-
-
-
-    </tbody>
-</table> -->
-
 <div class="grid-style">
     <div class="call call-order link al_l round1" id="refresh-workDate">근무날짜</div>
     <div class="call call-order link al_l" id="refresh-startTime">근무시간</div>
@@ -76,15 +16,13 @@
         {% for call in calls %}
         <div class="grid-style grid-wrapper">
             <div data-th="근무날짜" class="cell date">{{call['workDate']}}</div>
-            <div data-th="근무시간" class="cell time">{{call['startTime']}} {{call['endTime']}}</div>
+            <div data-th="근무시간" class="cell time">{{call['startTime']}} ~ {{call['endTime']}}</div>
             <div data-th="상호명" class="cell company">{{call['companyName'] | safe}}</div>
             <div data-th="업종" class="cell job">{{call['workField'] | safe}}</div>
             <div data-th="요청사항" class="cell etc">{{call['detail'] | safe}}</div>
             <div data-th="일당" class="cell wage">{{call['price'] | safe}}</div>
             <div data-th="콜비" class="cell call_fee">{{call['salary'] | safe}}</div>
             <div data-th="구직자" class="cell employee">{{call['employeeName'] | safe}}</div>
-            <!-- <div data-th="요청사항" class="cell v_mobile etc">{{call['detail'] | safe}}</div> -->
-            <!-- <button type="button" class="icon-up v_mobile"><i class="fas fa-chevron-up"></i></button> -->
             {% if(call['cancelled'] == 1) %}
             <div>(취소됨)</div>
             {% else %}

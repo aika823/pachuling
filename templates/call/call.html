@@ -6,6 +6,7 @@
 {% include 'modal.html' %}
 <div class="board-list scroll_list right auto-center">
     {% include 'datepicker.html' %}
+    
     <form id="filterForm" method="post" style="display: none;">
         <input type="hidden" name="action" value="">
         <input type="hidden" name="callID" value="">
@@ -14,6 +15,11 @@
         <input type="hidden" name="filter" value="">
     </form>
     <div class="inline scroll_tbody call">
+        <h2 class="strikethrough_title v_mobile">
+            <span class="title_text">
+                콜 목록
+            </span>
+        </h2>
         {% include 'call/call_table.html'%}
     </div>
 </div>

@@ -521,7 +521,12 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 .sidenav a:hover { color: #2e2e2e;}
 .sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;}
 
-#main { transition: margin-right .5s; padding: 16px; -webkit-transition: margin-right .5s; -moz-transition: margin-right .5s; -ms-transition: margin-right .5s; -o-transition: margin-right .5s; }
+#content { transition: margin-right .5s; padding: 16px; -webkit-transition: margin-right .5s; -moz-transition: margin-right .5s; -ms-transition: margin-right .5s; -o-transition: margin-right .5s; }
+
+/* 테이블 제목 */
+.strikethrough_title { margin-bottom: 4px; text-align: center; position: relative; font-size: 28px; line-height: 32px; margin: 27px 0 18px 0;}
+.strikethrough_title::before { position: absolute; content: ""; display: block; top: 50%; left: 50%; height: 1px; width: 100%; transform: translate(-50%, -50%); background-color: #268DFF; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
+.strikethrough_title .title_text { font-size: 24px; font-weight: bold; background: #fff; color: #505152; padding: 0 1em; display: inline-block; position: relative;}
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
@@ -529,7 +534,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 }
 
 /* 콜 관리 반응형 */
-@media all and (max-width: 768px) {
+@media all and (max-width: 990px) {
     #header #headerMain { justify-content: space-between; margin: 0 auto; width: 90%;}
     #header .nav_right.v_mobile { cursor: pointer;}
     #header .nav_right .fas.fa-bars {font-size: 1.3rem; color: #268DFF;}
@@ -549,23 +554,23 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .grid-style.grid-wrapper .time { grid-area: time;}
     .grid-style.grid-wrapper .company { grid-area: company;}
     .grid-style.grid-wrapper .job { grid-area: job;}
-    .grid-style.grid-wrapper .wage { grid-area: wage;}
-    .grid-style.grid-wrapper .call_fee { grid-area: call_fee;}
-    .grid-style.grid-wrapper .employee { grid-area: employee;}
+    .grid-style.grid-wrapper .wage { grid-area: wage; text-align: center;}
+    .grid-style.grid-wrapper .call_fee { grid-area: call_fee; text-align: center;}
+    .grid-style.grid-wrapper .employee { grid-area: employee; text-align: center;}
     .grid-style.grid-wrapper .etc { grid-area: etc;}
     .grid-style.grid-wrapper .cancel { grid-area: cancel; text-align: center;}
     .grid-style.grid-wrapper { 
         font-size: .7rem;
         border: 1px solid #dbdde2; 
         margin-bottom: 25px;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 20% 20% 20% 20% 20%;
         grid-template-areas:
-            " date   time    .   .   cancel   "
+            " date    date   time    time    cancel   "
             " company   job    .    .   . "
             " etc etc etc etc etc"
             "  .   .   wage    call_fee   employee  ";
     }
-    .grid-style.grid-wrapper .cell:before { content: attr(data-th) " "; font-weight: bold; width: 6.5em; display: inline-block;}
+    .grid-style.grid-wrapper .cell:before { content: attr(data-th) ""; font-weight: bold; width: 6.5em; display: inline-block;}
     .v_pc { display: none;}
     .v_mobile { display: block;}
 
@@ -573,18 +578,3 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .top-title { margin: 3rem 1.5rem 0;}
     .write-layout { margin: 1rem; }
 }
-
-/* @media all and (max-width: 768px) {
-    .inline.scroll_tbody.call { width: 95%;}
-    #call_table { box-shadow: none; border-collapse: collapse; border-spacing: 0 27px;}
-    #call_table thead,
-    #call_table colgroup {display: none;}
-    #call_table .mobile_view { font-size: .7rem; padding: 50px; border-radius: 4px ; border: 1px solid #dbdde2; box-shadow: 0 2px 3px 0 rgb(0 0 0 / 5%); -webkit-border-radius: 4px ; -moz-border-radius: 4px ; -ms-border-radius: 4px ; -o-border-radius: 4px ;}
-    #call_table td {border-bottom: none; display: block; text-align: left; padding: 0;}
-    #call_table td.hide { display: none;}
-    #call_table td.show { display: block;}
-    #call_table td.m_td { padding-left: 3rem;}
-    #call_table td.m_td.top { padding-top: 2rem;}
-    #call_table td.m_td.bottom { padding-bottom: 2rem;}
-    #call_table td.m_td:before { content: attr(data-th) ": "; font-weight: bold; width: 6.5em; display: inline-block;}
-} */
