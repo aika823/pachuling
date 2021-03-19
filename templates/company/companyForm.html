@@ -9,49 +9,50 @@
         <div class="form-style-1">
             <form id="formInsertCompany" action="" method="post" style="width: 100%;">
                 <!-- <fieldset> -->
-                    <input type="hidden" name="action"
-                        value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
-                    <input type="hidden" name="companyID" value="<?php echo $companyData['companyID'] ?>">
-                    <input type="hidden" name="ceoID" value="<?php echo $this->ceoData['ceoID'] ?>">
-                    <div class="">
-                        <div class="form-row">
-                            <div class="callForm">
-                                <div class="row-in-row">
-                                    <h2 class="form-title">
-                                    상호명
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
-                                    </h2>
-                                    <div class="row-content">
-                                        <input type="text" name="companyName" size="20" required autofocus
-                                        value="" placeholder="상호명">
-                                    </div>
-                                </div>
-                            
-                                <div class="row-in-row">
-                                    <h2 class="form-title">
-                                        대표자명
-                                    </h2>
-                                    <div class="row-content">
-                                        <input type="text" list="ceoList" name="ceoName" size="20" required
-                                            value="" placeholder="대표자명">
-                                        <datalist id="ceoList" class="input-field">
-                                        <!-- <?php foreach ($this->ceo_List as $data): ?>
-                                            <option value="<?php echo $data['ceoName']?>"></option>
-                                        <?php endforeach ?> -->
-                                        </datalist>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <input type="hidden" name="action"
+                    value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
+                <input type="hidden" name="companyID" value="<?php echo $companyData['companyID'] ?>">
+                <input type="hidden" name="ceoID" value="<?php echo $this->ceoData['ceoID'] ?>">
+                <div class="">
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
                                 <h2 class="form-title">
-                                    업종
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                상호명
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
+                                <div class="row-content">
+                                    <input type="text" name="companyName" size="20" required autofocus
+                                    value="" placeholder="상호명">
+                                </div>
+                            </div>
+                        
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    대표자명
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="ceoList" name="ceoName" size="20" required
+                                        value="" placeholder="대표자명">
+                                    <datalist id="ceoList" class="input-field">
+                                    <!-- <?php foreach ($this->ceo_List as $data): ?>
+                                        <option value="<?php echo $data['ceoName']?>"></option>
+                                    <?php endforeach ?> -->
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="callForm">
+                        <div class="row-in-row">
+                            <h2 class="form-title">
+                                업종
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                            </h2>
+                            <div class="row-content">
                                 <input type="text" list="businessTypeList" name="businessType" size="20"
                                     required value="" placeholder="업종">
                                 <datalist id="businessTypeList" class="input-field">
@@ -62,52 +63,45 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- <div class="tr">
-                        <div id="companyNameDuplicate">이름을 입력 해 주세요</div>
-                    </div> -->
+                <!-- <div class="tr">
+                    <div id="companyNameDuplicate">이름을 입력 해 주세요</div>
+                </div> -->
 
-                    <div class="form-row">
-                        <div class="callForm">
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    거래처 전화
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
-                                </h2>
+                <div class="form-row">
+                    <div class="callForm">
+                        <div class="row-in-row">
+                            <h2 class="form-title">
+                                거래처 전화
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                            </h2>
                             <div class="row-content">
                                 <input type="text" name="companyPhoneNumber" size="20" required value="" placeholder="010-XXXX-XXXX">
-                            </div>
-                        
-                            <div class="row-in-row">
-                                <h2 class="form-title">
+                                <h2 class="form-subtitle">
                                     사장 전화
                                 </h2>
-                                <div class="row-content">
-                                    <input type="text" name="ceoPhoneNumber" size="20" required value="" placeholder="010-XXXX-XXXX">
-                                </div>
-                            </div>
+                                <input type="text" name="ceoPhoneNumber" size="20" required value="" placeholder="010-XXXX-XXXX">
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="callForm">
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    간단주소
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
-                                </h2>
-                                <div class="row-content">
-                                    <input type="text" list="addressList" name="address" value="" placeholder="청담">
-                                </div>
+                <div class="form-row">
+                    <div class="callForm">
+                        <div class="row-in-row">
+                            <h2 class="form-title">
+                                간단주소
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                            </h2>
+                            <div class="row-content">
+                                <input type="text" list="addressList" name="address" value="" placeholder="청담">
                                 <datalist id="addressList">
                                 <!-- <?php foreach ($this->address_List as $data): ?>
                                     <option value="<?php echo $data['address']?>"></option>
-                                <?php endforeach ?> -->
+                                    <?php endforeach ?> -->
                                 </datalist>
-                            </div>
-                        
-                            <div class="row-in-row">
-                                <h2 class="form-title">
+                    
+                                <h2 class="form-subtitle">
                                     상세주소
                                 </h2>
                                 <div class="row-content">
@@ -123,7 +117,7 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 점수
-                                <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
                                 <input type="number" name="grade" min="0" max="100" required value=""placeholder="100">
@@ -138,9 +132,11 @@
                             <div class="callForm-etc">
                                 <h2 class="form-title">
                                     비고
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
-                                <textarea id="detail" class="textarea-detail" name="detail"><?php echo $this->get_detail($companyData, 'company'); ?></textarea>
+                                <div class="row-content">
+                                    <textarea id="detail" class="textarea-detail" name="detail"><?php echo $this->get_detail($companyData, 'company'); ?></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,9 +149,11 @@
                             <div class="callForm-etc">
                                 <h2 class="form-title">
                                     삭제비고
-                                    <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
-                                <textarea class="textarea-detail" id="detail" name="deleteDetail"><?php echo $companyData['deleteDetail']; ?></textarea>
+                                <div class="row-content">
+                                    <textarea class="textarea-detail" id="detail" name="deleteDetail"><?php echo $companyData['deleteDetail']; ?></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +166,7 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 블랙
-                                <button class="icon-up" onclick="closeInput();"><i class="fas fa-chevron-up"></i></button>
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
                                 <table>
@@ -217,4 +215,8 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/toggleForm.js')}}"></script>
 {% endblock %}
