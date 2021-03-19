@@ -560,10 +560,10 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
         margin-bottom: 25px;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-areas:
-            " date   time    time   .   cancel   "
+            " date   time    .   .   cancel   "
             " company   job    .    .   . "
             " etc etc etc etc etc"
-            " wage   call_fee   .    .employee  ";
+            "  .   .   wage    call_fee   employee  ";
     }
     .grid-style.grid-wrapper .cell:before { content: attr(data-th) " "; font-weight: bold; width: 6.5em; display: inline-block;}
     .v_pc { display: none;}
