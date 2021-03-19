@@ -6,7 +6,7 @@
                 <img class="btn-img" src="{{url_for('static',filename='img/logo.png')}}">
             </button>
         </div>
-        <div class="nav_right">
+        <div class="nav_right v_pc">
             <div class="dropdown nav_list">
                 <button class="dropbtn {{ page_list['call'] }} {{ page_list['callForm'] }}" onClick="location.href='{{ url_for('call') }}'">콜관리</button>
             </div>
@@ -19,6 +19,9 @@
             <div class="dropdown nav_list">
                 <button class="dropbtn {{ page_list['black'] }}" onClick="location.href='{{ url_for('manage') }}'">블랙리스트 관리</button>
             </div>
+        </div>
+        <div class="nav_right v_mobile">
+            <i class="fas fa-bars"></i>
         </div>
     </div>
 </div>

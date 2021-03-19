@@ -409,6 +409,8 @@ label { color:rgba(0, 0, 0, 0.5)}
 .callForm-flex .w30 { width: 30%;}
 #refresh-imminent { overflow: hidden;}
 
+#call_table td.show { display: none;}
+
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}
@@ -487,3 +489,72 @@ label { color:rgba(0, 0, 0, 0.5)}
     #filterSub #btnSearch { height: 1.6rem;}
     #filterSub #inputKeyword { padding: 0; font-size: .3rem;}
 }
+
+/* grid-style */
+/* table -> div */
+.grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 10% 10% 10% 9%;}
+.grid-style .call.call-order { background: #268DFF; color: #fff; padding: 15px 20px;}
+.grid-style .call.call-order.round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
+.grid-style .call.call-order.round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
+.grid-style .cell { padding: 20px;}
+.circle { position: fixed; bottom: 50px; right: 50px; cursor: pointer; background: #268dff; color: #fff; width: 50px; height: 50px; border: none;border-radius: 100px ; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
+.circle .fas.fa-plus { font-size: 1.5rem;}
+.v_mobile { display: none;}
+
+/* 콜 관리 반응형 */
+@media all and (max-width: 768px) {
+    #header #headerMain { justify-content: space-between; margin: 0 auto; width: 90%;}
+    #header .nav_right .fas.fa-bars {font-size: 1.3rem;}
+    .board-list.scroll_list { padding: 30px 0 120px;}
+    .call_top_percentage { display: block; width: 95%;}
+    .call_top_percentage .percent {display: none;}
+    .call_top_percentage .datepick .section_search input.search_date { width: 100%; }
+    .call_top_percentage #range { width: 100%;}
+    .call_top_percentage input[type="text"].date { width: 40%;}
+    .call_top_percentage .week_btn button { padding: .3rem; width: 3.5rem;}
+
+    .inline.scroll_tbody.call { width: 95%;}
+    #call_table { box-shadow: none;}
+    .grid-style .call.call-order {display: none;}
+    .grid-style.grid-wrapper .date { grid-area: date;}
+    .grid-style.grid-wrapper .time { grid-area: time;}
+    .grid-style.grid-wrapper .company { grid-area: company;}
+    .grid-style.grid-wrapper .job { grid-area: job;}
+    .grid-style.grid-wrapper .wage { grid-area: wage;}
+    .grid-style.grid-wrapper .call_fee { grid-area: call_fee;}
+    .grid-style.grid-wrapper .employee { grid-area: employee;}
+    .grid-style.grid-wrapper .etc { grid-area: etc;}
+    .grid-style.grid-wrapper .cancel { grid-area: cancel; text-align: center;}
+    .grid-style.grid-wrapper { 
+        font-size: .7rem;
+        border: 1px solid #dbdde2; 
+        margin-bottom: 10px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            " date   time    .   .   .   "
+            " company   job    .    .   cancel "
+            " wage   call_fee   .    .employee  "
+            " etc etc etc etc etc";
+    }
+    .v_pc { display: none;}
+    .v_mobile { display: block;}
+
+    /* form 추가페이지 반응형 */
+    .top-title { margin: 3rem 1.5rem 0;}
+    .write-layout { margin: 1rem; }
+}
+
+/* @media all and (max-width: 768px) {
+    .inline.scroll_tbody.call { width: 95%;}
+    #call_table { box-shadow: none; border-collapse: collapse; border-spacing: 0 27px;}
+    #call_table thead,
+    #call_table colgroup {display: none;}
+    #call_table .mobile_view { font-size: .7rem; padding: 50px; border-radius: 4px ; border: 1px solid #dbdde2; box-shadow: 0 2px 3px 0 rgb(0 0 0 / 5%); -webkit-border-radius: 4px ; -moz-border-radius: 4px ; -ms-border-radius: 4px ; -o-border-radius: 4px ;}
+    #call_table td {border-bottom: none; display: block; text-align: left; padding: 0;}
+    #call_table td.hide { display: none;}
+    #call_table td.show { display: block;}
+    #call_table td.m_td { padding-left: 3rem;}
+    #call_table td.m_td.top { padding-top: 2rem;}
+    #call_table td.m_td.bottom { padding-bottom: 2rem;}
+    #call_table td.m_td:before { content: attr(data-th) ": "; font-weight: bold; width: 6.5em; display: inline-block;}
+} */
