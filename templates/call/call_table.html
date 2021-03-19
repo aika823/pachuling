@@ -79,18 +79,19 @@
             <div data-th="근무시간" class="cell time">{{call['startTime']}} {{call['endTime']}}</div>
             <div data-th="상호명" class="cell company">{{call['companyName'] | safe}}</div>
             <div data-th="업종" class="cell job">{{call['workField'] | safe}}</div>
-            <div data-th="요청사항" class="cell v_pc etc">{{call['detail'] | safe}}</div>
+            <div data-th="요청사항" class="cell etc">{{call['detail'] | safe}}</div>
             <div data-th="일당" class="cell wage">{{call['price'] | safe}}</div>
             <div data-th="콜비" class="cell call_fee">{{call['salary'] | safe}}</div>
             <div data-th="구직자" class="cell employee">{{call['employeeName'] | safe}}</div>
-            <div data-th="요청사항" class="cell v_mobile etc">{{call['detail'] | safe}}</div>
+            <!-- <div data-th="요청사항" class="cell v_mobile etc">{{call['detail'] | safe}}</div> -->
             <!-- <button type="button" class="icon-up v_mobile"><i class="fas fa-chevron-up"></i></button> -->
             {% if(call['cancelled'] == 1) %}
             <div>(취소됨)</div>
             {% else %}
             <div class="cancel">
-                <button type="button" class="btn-call-cancel-modal btn btn-small btn-danger" id="{{call['callID']}}">
-                    취소
+                <button type="button" class="btn-call-cancel-modal btn btn-small" id="{{call['callID']}}">
+                    <!-- 취소 -->
+                    <i class="fas fa-trash-alt"></i>
                 </button>
             </div>
             {% endif %}

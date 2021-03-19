@@ -500,6 +500,7 @@ label { color:rgba(0, 0, 0, 0.5)}
 .circle { position: fixed; bottom: 50px; right: 50px; cursor: pointer; background: #268dff; color: #fff; width: 50px; height: 50px; border: none;border-radius: 100px ; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
 .circle .fas.fa-plus { font-size: 1.5rem;}
 .v_mobile { display: none;}
+button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; font-size: 1rem;}
 
 /* 콜 관리 반응형 */
 @media all and (max-width: 768px) {
@@ -508,10 +509,11 @@ label { color:rgba(0, 0, 0, 0.5)}
     .board-list.scroll_list { padding: 30px 0 120px;}
     .call_top_percentage { display: block; width: 95%;}
     .call_top_percentage .percent {display: none;}
-    .call_top_percentage .datepick .section_search input.search_date { width: 100%; }
-    .call_top_percentage #range { width: 100%;}
-    .call_top_percentage input[type="text"].date { width: 40%;}
-    .call_top_percentage .week_btn button { padding: .3rem; width: 3.5rem;}
+    .call_top_percentage .datepick .section_search input.search_date { width: 60%; height: 36px;}
+    .call_top_percentage #range { width: 68%;}
+    .call_top_percentage input[type="text"].date { width: 40%; height: 36px;}
+    .call_top_percentage .week_btn button { padding: .3rem; width: 3.45rem;}
+    .call_top_percentage .submit_btn button { height: 40px; border-radius: 0; -webkit-border-radius:; -moz-border-radius:; -ms-border-radius:; -o-border-radius:; }
 
     .inline.scroll_tbody.call { width: 95%;}
     #call_table { box-shadow: none;}
@@ -528,14 +530,15 @@ label { color:rgba(0, 0, 0, 0.5)}
     .grid-style.grid-wrapper { 
         font-size: .7rem;
         border: 1px solid #dbdde2; 
-        margin-bottom: 10px;
+        margin-bottom: 25px;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-areas:
-            " date   time    .   .   .   "
-            " company   job    .    .   cancel "
-            " wage   call_fee   .    .employee  "
-            " etc etc etc etc etc";
+            " date   time    time   .   cancel   "
+            " company   job    .    .   . "
+            " etc etc etc etc etc"
+            " wage   call_fee   .    .employee  ";
     }
+    .grid-style.grid-wrapper .cell:before { content: attr(data-th) " "; font-weight: bold; width: 6.5em; display: inline-block;}
     .v_pc { display: none;}
     .v_mobile { display: block;}
 
