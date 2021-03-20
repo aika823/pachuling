@@ -5,17 +5,17 @@
 <!--//  $company_table = $this->model->getTable($sql);-->
 <!--//  echo json_encode($sql);-->
 <!--//  echo sizeof($company_table);-->
-<table id="company_table" width="100%">
+<!-- <table id="company_table" width="100%">
     <colgroup>
-        <col width="7%"><!--아이디-->
-        <col width="auto"><!--상호명-->
-        <col width="12%"><!--간단주소-->
-        <col width="12%"><!--업종-->
-        <col width="10%"><!--가입유형-->
-        <col width="15%"><!--비고-->
-        <col width="10%"><!--점수-->
-        <col width="7%"><!--별표-->
-        <col width="7%"><!--삭제-->
+        <col width="7%">
+        <col width="auto">
+        <col width="12%">
+        <col width="12%">
+        <col width="10%">
+        <col width="15%">
+        <col width="10%">
+        <col width="7%">
+        <col width="7%">
     </colgroup>
     <thead>
     <tr>
@@ -45,7 +45,41 @@
     </tr>
     {% endfor %}
     </tbody>
-</table>
+</table> -->
+<!--//  $order = $_POST['order'];-->
+<!--//  $direction = $_POST['direction'];-->
+<!--//  $sql = "SELECT * FROM  `company` ";-->
+<!--//  $sql .= ($_POST['order'] && $_POST['direction']) ? "ORDER BY  `{$_POST['order']}` {$_POST['direction']} " : null;-->
+<!--//  $company_table = $divis->model->getTable($sql);-->
+<!--//  echo json_encode($sql);-->
+<!--//  echo sizeof($company_table);-->
+
+<div class="grid-style companyTable">
+    <div class="order link com-div first al_l" id="refresh-companyID"> #</div>
+    <div class="order link com-div al_l" id="refresh-companyName"> 상호명</div>
+    <div class="order link com-div al_l" id="refresh-address"> 간단주소</div>
+    <div class="order link com-div al_l" id="refresh-businessType"> 업종</div>
+    <div class="order link com-div al_l">가입 유형</div>
+    <div class="link com-div" id="refresh-endDate">비고</div>
+    <div class="order link com-div al_r" id="refresh-grade"> 점수</div>
+    <div class="order com-div" id="refresh-bookmark"><span class="link fa fa-star"></span></div>
+    <div class="order com-div last" id="refresh-deleted"> X</div>
+</div>
+<div id="company_table">
+{% for company in companies %}
+    <div class="grid-style grid-wrapper companyTable">
+        <div class="al_l">{{company['companyID']}} <a href="view/{{companyID}}" {{companyID}}/></div>
+        <div class="al_l">{{company['companyName']}}</div>
+        <div class="al_l">{{company['address']}}</div>
+        <div class="al_l">{{company['businessType']}}</div>
+        <div class="al_l">가입 유형</div>
+        <div class="al_l">비고</div>
+        <div class="al_r">{{company['grade']}}점</div>
+        <div class="al_c"><span class="fa fa-star selectable "></span></div>
+        <div class="al_c"></div>
+    </div>
+    {% endfor %}
+</div>
 
 <script>
 
