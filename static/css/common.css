@@ -21,7 +21,7 @@
 #filterSub #inputKeyword{width: 30%; height:2.2rem; padding: 0 0 0 1.5rem; float: left; box-sizing: border-box; display: inline-block; border: 1px solid #e4e4e4;}
 #filterSub #btnSearch{width: 10%; height: 2.2rem; padding: 0;float: left; font-size: .7rem; }
 #filterSub #btnSearch:hover { background: #3d98ff;}
-#filterSub #btnAddCompany{float:right; background: #fff;}
+#filterSub #btnAddCompany{float:right; background: #fff; z-index: 9;}
 #filterSub #btnAddCompany:hover {background: #3d98ff;}
 #filterMain .btn{color: gray;font-size: 0.7rem;display: block;float: left;background: #FFF; box-shadow: none; padding: 0 20px 0 0; border: none;}
 #filterMain .btn.selected{color:var(--main-color); border-bottom:solid 4px;}
@@ -65,7 +65,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 
 /* 콜 만들기 */
 .makeCall,
-.makeCall2 { position: absolute; top: 100px; right: 250px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; cursor: pointer; background: #fff;}
+.makeCall2 { z-index: 9; position: absolute; top: 100px; right: 250px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; cursor: pointer; background: #fff;}
 .makeCall2 { top: 153px;}
 .makeCall:hover,
 .makeCall2:hover { background: #268DFF; color: #fff; box-shadow: 3px 3px 5px #c1c1c1;}
@@ -94,7 +94,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 #btnSendCancel { background-color: #fff; color: #c1c1c1; border: 1px solid #c1c1c1;}
 
 /* call top */
-.call_top_percentage {width: 70%; /* 너비는 callTable.php 의 너비와 동일 */ display: grid; grid-template-columns: 1fr 1.1fr; justify-content: space-evenly; margin-bottom: 1.5rem; align-items: end;}
+.call_top_percentage {width: 80%; display: grid; grid-template-columns: 1fr 1.1fr; justify-content: space-evenly; margin-bottom: 1.5rem; align-items: end;}
 
 /* 날짜 선택 */
 .call_top_percentage .grid_layout { display: grid; grid-template-columns: 1fr .7fr;}
@@ -175,7 +175,7 @@ a.btn{padding:10px;}
 #call_table thead tr th.round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
 #call_table thead tr th.round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
 
-.inline.scroll_tbody.call { width: 75%;}
+.inline.scroll_tbody.call { width: 85%;}
 
 /*div with class table*/
 .table { table-layout: fixed; word-break: break-all;}
@@ -438,10 +438,7 @@ label { color:rgba(0, 0, 0, 0.5)}
     /* #filter-wrapper { margin: 3rem 8rem 0;} */
     #btnAddCompany,
     .makeCall,
-    .makeCall2  { right: 150px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
-}
-@media all and (max-width: 1350px) {
-    .write-layout { margin: 100px 5rem;}
+    .makeCall2  { right: 40px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
 }
 @media all and (max-width: 952px) {
     .makeCall,
@@ -474,15 +471,23 @@ label { color:rgba(0, 0, 0, 0.5)}
 .grid-style.companyTable .com-div { background: #268DFF; color: #fff; padding: 15px 20px;}
 .grid-style .round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
 .grid-style .round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
-/* .grid-style .cell { padding: 20px;} */
-#filter-wrapper { width: 70%;}
+.grid-style .cell,
+.grid-style .date,
+.grid-style .time,
+.grid-style .cancel { padding: 20px;}
+.grid-style .wage,
+.grid-style .call_fee,
+.grid-style .score { text-align: right;}
+.grid-style .employee,
+.grid-style .cancel { text-align: center;}
+#filter-wrapper { width: 80%;}
 
 .circle { position: fixed; bottom: 50px; right: 50px; cursor: pointer; background: #268dff; color: #fff; width: 75px; height: 75px; border: none;border-radius: 100px ; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
 .circle .fas.fa-plus { font-size: 1.5rem;}
 
 .v_mobile { display: none;}
 
-button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; font-size: 1rem;}
+button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; font-size: .8rem;}
 
 /* 네비게이션 반응형 sidenav */
 .sidenav {
@@ -512,8 +517,12 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 .strikethrough_title::before { position: absolute; content: " \A"; display: block; top: 50%; left: 50%; height: 1px; width: 100%; transform: translate(-50%, -50%); background-color: #268DFF; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
 .strikethrough_title .title_text { font-size: 24px; font-weight: bold; background: #fff; color: #505152; padding: 0 1em; display: inline-block; position: relative;}
 
+@media all and (max-width: 1260px) {
+    .top-title { margin: 3rem 3rem 0;}
+    .write-layout { margin: 0 3rem 1rem;}
+}
+
 @media all and (max-width: 1168px) {
-    .write-layout { margin: 100px 2rem;}
     .call_top_percentage { width: 85%; grid-template-columns: 50% 50%;}
     .call_top_percentage .grid_layout { grid-template-columns: 70% 20%;}
     .call_top_percentage .week_btn {padding-left: 45px;}
@@ -576,8 +585,18 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     button.v_mobile.employee.no-assigned { position: absolute; bottom: 25px; width: 86%; border: none; padding: .6em; cursor: pointer; border-radius: 0.3em; -webkit-border-radius: 0.3em; -moz-border-radius: 0.3em; -ms-border-radius: 0.3em; -o-border-radius: 0.3em; }
     button.v_mobile.employee { background: #b8b8b8; color: #fff; font-size: .9em;}
     button.v_mobile.employee.no-assigned { background: #268DFF; color: #fff;}
+    button.btn-call-cancel-modal.btn.btn-small { font-size: 1rem;}
     .grid-style.grid-wrapper .cell { margin-bottom: 8px;}
     .grid-style.grid-wrapper .cell:before { content: attr(data-th) ": "; width: 5em; font-weight: bold; display: inline-block;}
+
+    .grid-style .cell,
+    .grid-style .date,
+    .grid-style .time,
+    .grid-style .cancel { padding: 0;}
+    .grid-style .wage,
+    .grid-style .call_fee,
+    .grid-style .score,
+    .grid-style .cancel { text-align: left;}
     
     /* 거래처 탬플릿 반응형 */
     .board-list.auto-center { padding: 30px 0 120px;}
@@ -591,8 +610,12 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .top-title { margin: 3rem 1.5rem 0;}
     .write-layout { margin: 1rem; }
 }
+@media screen and (max-width: 768px) {
+    .top-title { padding: 0; }
+    .write-layout .board-write { padding: 0; }
+}
 /* 콜관리 반응형 모바일 */
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 
@@ -612,4 +635,11 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage .submit_btn button { width: 95.5%; margin: 10px 0;}
     .call_top_percentage .datepick .calender, .call_top_percentage .datepick .section_search { margin: 0;}
     .circle { bottom: 15px; right: 15px; width: 60px; height: 60px;}
+
+    .form-row .callForm { padding: 0;}
+    .form-row .callForm .callForm-etc #detail { width: 72%;}
+    .form-row .callForm .icon-up, .form-row .callForm .icon-down { width: 20px; height: 20px;}
+    .form-row .callForm i { position: absolute; left: 3.8px; top: 3px; font-size: 1em;}
+    .write-layout { margin: 0;}
+    .top-title { margin: 0;}
 }
