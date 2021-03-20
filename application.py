@@ -1,9 +1,18 @@
-from flask import Flask, render_template, request
-import db as db
-# import call_fuction as call_function
+from flask import Flask, url_for, render_template, request, redirect, session, flash
+from flask_sqlalchemy import SQLAlchemy
+
+import call_function
+import company_function
+import database_function
+import database_class
 
 application = Flask(__name__)
-page_list = {'call': None, 'company': None, 'employee': None, 'manage':None}
+application.config['SQLALCHEMY_DATABASE_URI'] = \
+    'mysql+pymysql://admin:ingee5650!@pachling.czal2yo4w2nq.ap-northeast-2.rds.amazonaws.com/test'
+application.secret_key = "123"
+db = SQLAlchemy(application)
+page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
+login_error_message = "ID: admin, PW: bestgood"
 
 
 def select_page(page):
@@ -14,15 +23,13 @@ def select_page(page):
 @application.route('/')
 @application.route('/call')
 def call():
-    select_page('call')
-    calls = db.get_calls()
-    return render_template('call/call.html', calls=calls, page_list=page_list)
-
-@application.route('/callForm')
-def callForm():
-    select_page('callForm')
-    calls = db.get_calls()
-    return render_template('call/callForm.html', page_list=page_list)
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    else:
+        select_page('call')
+        calls = database_function.get_calls()
+        call_dict = call_function.calculate_price(calls)
+        return render_template('call/call.html', calls=calls, call_dict=call_dict, page_list=page_list)
 
 
 @application.route('/call', methods=['POST'])
@@ -32,47 +39,114 @@ def search_call():
         start = request.form['start']
         end = request.form['end']
         content = request.form['content']
-        calls = db.get_calls(start, end, content)
-        # if len(calls) > 0:
-        #     calls = call_function.search_mark(calls, content)
-        return render_template('call/call.html', calls=calls, start=start, end=end, content=content,
+        calls = database_function.get_calls(start, end, content)
+        call_dict = call_function.calculate_price(calls)
+        if len(calls) > 0:
+            if content:
+                calls = call_function.search_mark(calls, content)
+        return render_template('call/call.html',
+                               calls=calls, call_dict=call_dict, start=start, end=end, content=content,
                                page_list=page_list)
+
+
+@application.route('/call/write')
+def call_form():
+    return render_template('call/callForm.html', page_list=page_list)
 
 
 @application.route('/company')
 def company():
     select_page('company')
-    companies = db.get_companies()
+    companies = database_function.get_companies()
     return render_template('company/company.html', companies=companies, page_list=page_list)
 
-@application.route('/companyForm')
-def companyForm():
-    select_page('companyForm')
-    companies = db.get_companies()
+
+@application.route('/company', methods=['POST'])
+def search_company():
+    select_page('company')
+    if request.method == 'POST':
+        content = request.form['keyword']
+        companies = database_function.get_companies(content=content)
+        if len(companies) > 0:
+            if content:
+                companies = company_function.search_mark(companies, content)
+        return render_template('company/company.html', companies=companies, content=content, page_list=page_list)
+
+
+@application.route('/company/view/<company_id>')
+def view_company(company_id):
+    select_page('company')
+    my_company = database_function.get_company(company_id)
+    return render_template('company/view.html', company=my_company, page_list=page_list)
+
+
+@application.route('/company/write')
+def company_form():
     return render_template('company/companyForm.html', page_list=page_list)
 
 
 @application.route('/employee')
 def employee():
     select_page('employee')
-    # employees = db.get_employees()
-    return render_template('employee/employee.html', page_list=page_list)
+    employees = database_function.get_employees()
+    return render_template('employee/employee.html', employees=employees, page_list=page_list)
 
-@application.route('/employeeForm')
-def employeeForm():
+
+@application.route('/employee/write')
+def employee_form():
     select_page('employeeForm')
     return render_template('employee/employeeForm.html', page_list=page_list)
 
-@application.route('/employeeAvailable')
-def employeeAvailable():
+
+@application.route('/employee/available')
+def employee_available():
     select_page('employeeAvailable')
     return render_template('employee/employeeAvailable.html', page_list=page_list)
+
 
 @application.route('/manage')
 def manage():
     select_page('black')
-    companies = db.get_companies()
+    companies = database_function.get_companies()
     return render_template('manage/black.html', companies=companies, page_list=page_list)
+
+
+@application.route('/ceo/<ceo_id>')
+def show_ceo(ceo_id):
+    ceo = database_function.get_ceo(ceo_id)
+    return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
+
+
+@application.route('/login', methods=['GET', 'POST'])
+def login():
+    user = database_class.User
+    if request.method == 'GET':
+        return render_template('login/login.html', page_list=page_list)
+    elif request.method == 'POST':
+        user_name = request.form['username']
+        user_pw = request.form['password']
+        data = user.query.filter_by(userName=user_name, userPW=user_pw).first()
+        # 로그인 성공
+        if data is not None:
+            session['logged_in'] = True
+            session['user_id'] = data.userID
+            # 사장님 로그인
+            if data.companyID:
+                return redirect(url_for('show_ceo', ceo_id=session['user_id']))
+            # 관리자 로그인
+            else:
+                return redirect(url_for('call'))
+        # 로그인 실패
+        else:
+            session['logged_in'] = False
+            return render_template('login/login.html', test="LOGIN FAIL", data=data, user_name=user_name,
+                                   page_list=page_list)
+
+
+@application.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return redirect(url_for('login'))
 
 
 if __name__ == "__main__":

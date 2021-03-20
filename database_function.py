@@ -1,10 +1,9 @@
+from sqlalchemy import Column, Integer, String, ForeignKey
 import pymysql
 import secret
-import sys
 from datetime import date
 
 conn = pymysql.connect(host=secret.host, port=secret.port, user=secret.user, password=secret.password, db=secret.db)
-# cursor = conn.cursor()
 
 
 def get_calls(start=date.today(), end=date.today(), content=None, limit=1000):

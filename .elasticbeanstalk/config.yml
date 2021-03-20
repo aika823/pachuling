@@ -1,4 +1,6 @@
 branch-defaults:
+  back:
+    environment: flask-env
   default:
     environment: flask-env
     group_suffix: null

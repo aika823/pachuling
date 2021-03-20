@@ -1,11 +1,14 @@
 <div class="mobile_view">
     <div class="user-profile" id="<?php echo $this->companyID ?>">
-        <img src="/public/img/ceo.png" alt="Avatar" class="avatar">
+        <img src="/static/img/ceo.png" alt="Avatar" class="avatar">
         <h1><?php echo $this->companyData['companyName'] ?></h1>
     </div>
 
     <div class="box">
-        <div class="title" style="border-bottom: solid #80808078 2.5px;">가입유형 - <?php echo $this->model->joinType($this->companyID, 'kor') ?></div>
+        <div class="title" style="border-bottom: solid #80808078 2.5px;">
+            가입유형 -
+            <?php echo $this->model->joinType($this->companyID, 'kor') ?>
+        </div>
         <div class="content">
             <!--활성화된 가입 내역-->
             <ul type="square">

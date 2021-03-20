@@ -6,6 +6,59 @@
 <!--//  echo json_encode($sql);-->
 <!--//  echo sizeof($company_table);-->
 
+<!-- <table id="company_table" width="100%">
+    <colgroup>
+        <col width="7%">
+        <col width="auto">
+        <col width="12%">
+        <col width="12%">
+        <col width="10%">
+        <col width="15%">
+        <col width="10%">
+        <col width="7%">
+        <col width="7%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="order link com-th first al_l" id="refresh-companyID"> #</th>
+        <th class="order link com-th al_l" id="refresh-companyName"> 상호명</th>
+        <th class="order link com-th al_l" id="refresh-address"> 간단주소</th>
+        <th class="order link com-th al_l" id="refresh-businessType"> 업종</th>
+        <th class="order link com-th al_l">가입 유형</th>
+        <th class="link com-th" id="refresh-endDate">비고</th>
+        <th class="order link com-th al_r" id="refresh-grade"> 점수</th>
+        <th class="order com-th" id="refresh-bookmark"><span class="link fa fa-star"></span></th>
+        <th class="order com-th last" id="refresh-deleted"> X</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for company in companies %}
+        <tr class="tr-company" id="{{companyID}}">
+        <td class="al_l">{{company['companyID']}}</td>
+        <td class="al_l">
+            <a href="/company/view/{{company['companyID']}}">
+                {{company['companyName'] | safe}}
+            </a>
+        </td>
+        <td class="al_l">{{company['address'] | safe}}</td>
+        <td class="al_l">{{company['businessType'] | safe}}</td>
+        <td class="al_l">가입 유형</td>
+        <td class="al_l">비고</td>
+        <td class="al_r">{{company['grade']}}점</td>
+        <td class="al_c"><span class="fa fa-star selectable "></span></td>
+        <td class="al_c"></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table> -->
+<!--//  $order = $_POST['order'];-->
+<!--//  $direction = $_POST['direction'];-->
+<!--//  $sql = "SELECT * FROM  `company` ";-->
+<!--//  $sql .= ($_POST['order'] && $_POST['direction']) ? "ORDER BY  `{$_POST['order']}` {$_POST['direction']} " : null;-->
+<!--//  $company_table = $divis->model->getTable($sql);-->
+<!--//  echo json_encode($sql);-->
+<!--//  echo sizeof($company_table);-->
+
 <div class="grid-style companyTable v_pc">
     <div class="order link com-div round1 al_l" id="refresh-companyID"> #</div>
     <div class="order link com-div al_l" id="refresh-companyName"> 상호명</div>
