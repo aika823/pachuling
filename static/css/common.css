@@ -309,9 +309,9 @@ label { color:rgba(0, 0, 0, 0.5)}
 }
 
 /* 거래처, 구직자, 블랙리스트 관리 */
-.board-list.auto-center { display: flex; justify-content: center;}
+.board-list.auto-center { padding: 60px 0 120px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
 .board-list.auto-center #company_table,
-.board-list.auto-center #employee_table { width: 75%; margin: 1rem 0; box-shadow: 15px 15px 20px #e1e1e1, -15px 15px 20px #e1e1e1;}
+.board-list.auto-center #employee_table { box-shadow: 15px 15px 20px #e1e1e1, -15px 15px 20px #e1e1e1;}
 .board-list.auto-center #company_table .com-th,
 .board-list.auto-center #employee_table .com-th,
 .board-write.auto-center #blackListTable .com-th { background: #268DFF; color: #fff; padding: 10px; font-size: .5rem; transition: all .5s; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; }
@@ -329,7 +329,7 @@ label { color:rgba(0, 0, 0, 0.5)}
 
 #btnAddCompany { position: absolute; top: 100px; right: 250px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem .6rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; }
 #btnAddCompany:hover { background: #268DFF; color: #fff; box-shadow: 3px 3px 5px #c1c1c1;}
-#filter-wrapper { margin: 3rem 10rem 0; display: flex; flex-direction: column;}
+#filter-wrapper { display: flex; flex-direction: column;}
 #filterSub { margin: 1.5rem 0;}
 
 .board-list.auto-center #company_table th .fa-star:before { color: #fff;}
@@ -435,33 +435,13 @@ label { color:rgba(0, 0, 0, 0.5)}
     .graph { font-size: 11px;}
     .call_top_percentage .submit_btn button,
     .call_top_percentage .week_btn button {padding: .2rem .3rem;}
-    #filter-wrapper { margin: 3rem 8rem 0;}
+    /* #filter-wrapper { margin: 3rem 8rem 0;} */
     #btnAddCompany,
     .makeCall,
     .makeCall2  { right: 150px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
 }
 @media all and (max-width: 1350px) {
     .write-layout { margin: 100px 5rem;}
-}
-@media all and (max-width: 1168px) {
-    .write-layout { margin: 100px 2rem;}
-    .call_top_percentage { width: 85%; grid-template-columns: 50% 50%;}
-    .call_top_percentage .grid_layout { grid-template-columns: 70% 20%;}
-    .call_top_percentage .week_btn {padding-left: 45px;}
-    .call_top_percentage .week_btn button { font-size: .6rem;}
-    .call_top_percentage input[type="text"].date { width:33%;}
-    .call_top_percentage .datepick .section_search input.search_date { width: 6.25rem;}
-    .call_top_percentage .submit_btn button { padding: 10px; margin: 0 4px;}
-    .call_top_percentage .submit_btn .fix_checkbox span { display: block; text-align: center;}
-
-    .dropdown.logo { width: 50%; margin-left: 1rem;}
-
-    .inline.scroll_tbody.call,
-    .board-list.auto-center #company_table,
-    .board-list.auto-center #employee_table { width: 90%;}
-    .board-write.auto-center #blackListTable { width: 100%;}
-
-    #filter-wrapper { margin: 3rem 5rem 0;}
 }
 @media all and (max-width: 952px) {
     .makeCall,
@@ -482,20 +462,20 @@ label { color:rgba(0, 0, 0, 0.5)}
     .btn-call-cancel-modal.btn.btn-small.btn-danger { padding: 3px;}
     .call_top_percentage .datepick .calender h2, .call_top_percentage .datepick .section_search h2 {margin-right: -4px;}
 
-    #filterMain .btn { font-size: 0.4rem;}
     #filterSub #inputKeyword, 
     #filterSub #btnSearch { height: 1.6rem;}
-    #filterSub #inputKeyword { padding: 0; font-size: .3rem;}
 }
 
 /* grid-style */
 /* table -> div */
 .grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 10% 10% 10% 9%;}
+.grid-style.companyTable { display: grid; align-items: center; grid-template-columns: 7% 1fr 12% 12% 10% 15% 10% 7% 7%;}
 .grid-style .call.call-order,
-.grid-style.companyTable .order.link { background: #268DFF; color: #fff; padding: 15px 20px;}
-.grid-style .call.call-order.round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
-.grid-style .call.call-order.round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
+.grid-style.companyTable .com-div { background: #268DFF; color: #fff; padding: 15px 20px;}
+.grid-style .round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
+.grid-style .round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
 /* .grid-style .cell { padding: 20px;} */
+#filter-wrapper { width: 70%;}
 
 .circle { position: fixed; bottom: 50px; right: 50px; cursor: pointer; background: #268dff; color: #fff; width: 75px; height: 75px; border: none;border-radius: 100px ; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
 .circle .fas.fa-plus { font-size: 1.5rem;}
@@ -532,12 +512,36 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 .strikethrough_title::before { position: absolute; content: " \A"; display: block; top: 50%; left: 50%; height: 1px; width: 100%; transform: translate(-50%, -50%); background-color: #268DFF; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
 .strikethrough_title .title_text { font-size: 24px; font-weight: bold; background: #fff; color: #505152; padding: 0 1em; display: inline-block; position: relative;}
 
-/* 콜 관리 반응형 */
+@media all and (max-width: 1168px) {
+    .write-layout { margin: 100px 2rem;}
+    .call_top_percentage { width: 85%; grid-template-columns: 50% 50%;}
+    .call_top_percentage .grid_layout { grid-template-columns: 70% 20%;}
+    .call_top_percentage .week_btn {padding-left: 45px;}
+    .call_top_percentage .week_btn button { font-size: .6rem;}
+    .call_top_percentage input[type="text"].date { width:33%;}
+    .call_top_percentage .datepick .section_search input.search_date { width: 6.25rem;}
+    .call_top_percentage .submit_btn button { padding: 10px; margin: 0 4px;}
+    .call_top_percentage .submit_btn .fix_checkbox span { display: block; text-align: center;}
+
+    .dropdown.logo { width: 50%; margin-left: 1rem;}
+
+    .inline.scroll_tbody.call,
+    .board-list.auto-center #company_table,
+    /* .board-list.auto-center #employee_table { width: 90%;} */
+    .board-write.auto-center #blackListTable { width: 100%;}
+
+    #filter-wrapper { width: 95%; }
+}
+
 @media all and (max-width: 990px) {
+    .v_pc { display: none;}
+    .v_mobile { display: block;}
+
     #header #headerMain { justify-content: space-between; margin: 0 auto; width: 90%;}
     #header .nav_right.v_mobile { cursor: pointer;}
     #header .nav_right .fas.fa-bars {font-size: 1.3rem; color: #268DFF;}
-    .board-list.scroll_list { padding: 30px 0 120px;}
+    
+    /* 콜 관리 반응형 */
     .call_top_percentage { display: block; width: 95%;}
     .call_top_percentage .percent {display: none;}
     .call_top_percentage .datepick .section_search input.search_date { width: 60%; height: 36px;}
@@ -545,21 +549,14 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage input[type="text"].date { width: 40%; height: 36px;}
     .call_top_percentage .week_btn button { padding: .3rem; width: 3.45rem;}
     .call_top_percentage .submit_btn button { height: 40px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
-
+    
     .inline.scroll_tbody.call { width: 95%;}
     .inline.scroll_tbody.call .percent { text-align: center; margin-bottom: 26px;}
-    .grid-style.callTable {display: none;}
-    #call_table { box-shadow: none; display: grid; grid-template-columns: 48.5% 48.5%; column-gap: 3%;}
-    /* .grid-style .call.call-order {display: none;}
-    .grid-style.grid-wrapper .date { grid-area: date;}
-    .grid-style.grid-wrapper .time { grid-area: time;}
-    .grid-style.grid-wrapper .company { grid-area: company;}
-    .grid-style.grid-wrapper .job { grid-area: job;}
-    .grid-style.grid-wrapper .wage { grid-area: wage;}
-    .grid-style.grid-wrapper .call_fee { grid-area: call_fee;}
-    .grid-style.grid-wrapper .employee { grid-area: employee;}
-    .grid-style.grid-wrapper .etc { grid-area: etc;}
-    .grid-style.grid-wrapper .cancel { grid-area: cancel; text-align: right; padding-right: 1rem;} */
+    .grid-style.callTable,
+    .grid-style.companyTable {display: none;}
+    #call_table,
+    .board-list.auto-center #company_table, 
+    .board-list.auto-center #employee_table { box-shadow: none; display: grid; grid-template-columns: 48.5% 48.5%; column-gap: 3%;}
     .grid-style.grid-wrapper { 
         font-size: .7rem;
         position: relative;
@@ -569,16 +566,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
         flex-direction: column;
         align-items: flex-start;
         padding: 1rem 1rem 3rem;
-        /* grid-template-columns: 20% 20% 20% 20% 20%; */
-        /* grid-template-areas:
-            "  .     date    time    .    cancel   "
-            "  .   company    company    company       .    "
-            "  .     job    job     .      .    "
-            "  .     etc     etc    etc    etc   "
-            "  .    wage    wage    wage      ."
-            "  .     call_fee    call_fee     .      .    "
-            "  .     employee    employee     .      .    "; */
     }
+    .grid-style.grid-wrapper.companyTable { padding: 1rem 1rem .5rem;}
     .grid-style.grid-wrapper .date,
     .grid-style.grid-wrapper .time { font-size: .55rem;}
     .grid-style.grid-wrapper .time { margin-bottom: 15px;}
@@ -590,8 +579,13 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .grid-style.grid-wrapper .cell { margin-bottom: 8px;}
     .grid-style.grid-wrapper .cell:before { content: attr(data-th) ": "; width: 5em; font-weight: bold; display: inline-block;}
     
-    .v_pc { display: none;}
-    .v_mobile { display: block;}
+    /* 거래처 탬플릿 반응형 */
+    .board-list.auto-center { padding: 30px 0 120px;}
+    #filterMain .btn { font-size: 0.8rem; }
+    #filterSub #inputKeyword { width: 100%;}
+    #filterSub #inputKeyword, #filterSub #btnSearch { height: 36px; width: 100%; margin-top: 10px;}
+    #filterSub #inputKeyword { padding-left: 1rem;}
+    
 
     /* form 추가페이지 반응형 */
     .top-title { margin: 3rem 1.5rem 0;}
@@ -604,9 +598,9 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 
     .dropdown.logo { width: 75%;}
     
-    #call_table {
-        display: block;
-    }
+    #call_table,
+    .board-list.auto-center #company_table, 
+    .board-list.auto-center #employee_table { display: block; }
     .grid-style.grid-wrapper { margin-bottom: 17px; }
     .call_top_percentage .week_btn { padding-left: 0; }
     .call_top_percentage .datepick .calender,

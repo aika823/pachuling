@@ -31,6 +31,7 @@ input:focus { outline: none;}
 @media (min-width: 760px) and (max-width: 799px) { html { font-size: 22px; } }
 @media (min-width: 800px) and (max-width: 839px) { html { font-size: 23px; } }
 @media (min-width: 840px) and (max-width: 879px) { html { font-size: 24px; } }
+@media all and (max-width: 990px) { button[class*="btn"].v_pc { display: none;}}
 @media (min-width: 880px) { html { font-size: 25px; } }
 
 @media all and (max-width: 1540px){
