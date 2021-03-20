@@ -1,6 +1,6 @@
 <a class="makeCall v_pc" href="call/write">콜만들기</a>
 <h1>{{ detail }}</h1>
-<div class="grid-style">
+<div class="grid-style callTable">
     <div class="call call-order link al_l round1" id="refresh-workDate">근무날짜</div>
     <div class="call call-order link al_l" id="refresh-startTime">근무시간</div>
     <div class="call call-order link al_l" id="refresh-companyName">상호명</div>
@@ -14,24 +14,30 @@
 <div id="call_table">
     {% if(calls|length > 0) %}
         {% for call in calls %}
-        <div class="grid-style grid-wrapper">
-            <div data-th="근무날짜" class="cell date">{{call['workDate']}}</div>
-            <div data-th="근무시간" class="cell time">{{call['startTime']}} ~ {{call['endTime']}}</div>
+        <div class="grid-style grid-wrapper callTable">
+            <div class="date">{{call['workDate']}}</div>
+            <div class="time">{{call['startTime']}} ~ {{call['endTime']}}</div>
             <div data-th="상호명" class="cell company">{{call['companyName'] | safe}}</div>
             <div data-th="업종" class="cell job">{{call['workField'] | safe}}</div>
-            <div data-th="요청사항" class="cell etc">{{call['detail'] | safe}}</div>
+            <div data-th="요청사항" class="cell v_pc etc">{{call['detail'] | safe}}</div>
             <div data-th="일당" class="cell wage">{{call['price'] | safe}}</div>
             <div data-th="콜비" class="cell call_fee">{{call['salary'] | safe}}</div>
-            <div data-th="구직자" class="cell employee">{{call['employeeName'] | safe}}</div>
-            {% if(call['cancelled'] == 1) %}
-            <div>(취소됨)</div>
+            <div data-th="요청사항" class="cell v_mobile etc">{{call['detail'] | safe}}</div>
+            <div data-th="구직자" class="cell v_pc employee">{{call['employeeName'] | safe}}</div>
+            {% if(call['employeeName']) %}
+                <button class="v_mobile employee">{{call['employeeName'] | safe}}</button>
             {% else %}
-            <div class="cancel">
-                <button type="button" class="btn-call-cancel-modal btn btn-small" id="{{call['callID']}}">
-                    <!-- 취소 -->
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </div>
+                <button class="v_mobile employee no-assigned">배정하기</button>
+            {% endif %}
+            {% if(call['cancelled'] == 1) %}
+                <div>(취소됨)</div>
+            {% else %}
+                <div class="cancel">
+                    <button type="button" class="btn-call-cancel-modal btn btn-small" id="{{call['callID']}}">
+                        <!-- 취소 -->
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
             {% endif %}
         </div>
         {% endfor %}

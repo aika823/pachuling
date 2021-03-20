@@ -491,13 +491,17 @@ label { color:rgba(0, 0, 0, 0.5)}
 /* grid-style */
 /* table -> div */
 .grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 10% 10% 10% 9%;}
-.grid-style .call.call-order { background: #268DFF; color: #fff; padding: 15px 20px;}
+.grid-style .call.call-order,
+.grid-style.companyTable .order.link { background: #268DFF; color: #fff; padding: 15px 20px;}
 .grid-style .call.call-order.round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
 .grid-style .call.call-order.round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
-.grid-style .cell { padding: 20px;}
-.circle { position: fixed; bottom: 50px; right: 50px; cursor: pointer; background: #268dff; color: #fff; width: 50px; height: 50px; border: none;border-radius: 100px ; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
+/* .grid-style .cell { padding: 20px;} */
+
+.circle { position: fixed; bottom: 50px; right: 50px; cursor: pointer; background: #268dff; color: #fff; width: 75px; height: 75px; border: none;border-radius: 100px ; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
 .circle .fas.fa-plus { font-size: 1.5rem;}
+
 .v_mobile { display: none;}
+
 button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; font-size: 1rem;}
 
 /* 네비게이션 반응형 sidenav */
@@ -524,14 +528,9 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 #content { transition: margin-right .5s; padding: 16px; -webkit-transition: margin-right .5s; -moz-transition: margin-right .5s; -ms-transition: margin-right .5s; -o-transition: margin-right .5s; }
 
 /* 테이블 제목 */
-.strikethrough_title { margin-bottom: 4px; text-align: center; position: relative; font-size: 28px; line-height: 32px; margin: 27px 0 18px 0;}
-.strikethrough_title::before { position: absolute; content: ""; display: block; top: 50%; left: 50%; height: 1px; width: 100%; transform: translate(-50%, -50%); background-color: #268DFF; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
+.strikethrough_title { text-align: center; position: relative; font-size: 28px; line-height: 32px; margin: 27px 0 20px 0;}
+.strikethrough_title::before { position: absolute; content: " \A"; display: block; top: 50%; left: 50%; height: 1px; width: 100%; transform: translate(-50%, -50%); background-color: #268DFF; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
 .strikethrough_title .title_text { font-size: 24px; font-weight: bold; background: #fff; color: #505152; padding: 0 1em; display: inline-block; position: relative;}
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
 
 /* 콜 관리 반응형 */
 @media all and (max-width: 990px) {
@@ -548,33 +547,75 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage .submit_btn button { height: 40px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
 
     .inline.scroll_tbody.call { width: 95%;}
-    #call_table { box-shadow: none;}
-    .grid-style .call.call-order {display: none;}
+    .inline.scroll_tbody.call .percent { text-align: center; margin-bottom: 26px;}
+    .grid-style.callTable {display: none;}
+    #call_table { box-shadow: none; display: grid; grid-template-columns: 48.5% 48.5%; column-gap: 3%;}
+    /* .grid-style .call.call-order {display: none;}
     .grid-style.grid-wrapper .date { grid-area: date;}
     .grid-style.grid-wrapper .time { grid-area: time;}
     .grid-style.grid-wrapper .company { grid-area: company;}
     .grid-style.grid-wrapper .job { grid-area: job;}
-    .grid-style.grid-wrapper .wage { grid-area: wage; text-align: center;}
-    .grid-style.grid-wrapper .call_fee { grid-area: call_fee; text-align: center;}
-    .grid-style.grid-wrapper .employee { grid-area: employee; text-align: center;}
+    .grid-style.grid-wrapper .wage { grid-area: wage;}
+    .grid-style.grid-wrapper .call_fee { grid-area: call_fee;}
+    .grid-style.grid-wrapper .employee { grid-area: employee;}
     .grid-style.grid-wrapper .etc { grid-area: etc;}
-    .grid-style.grid-wrapper .cancel { grid-area: cancel; text-align: center;}
+    .grid-style.grid-wrapper .cancel { grid-area: cancel; text-align: right; padding-right: 1rem;} */
     .grid-style.grid-wrapper { 
         font-size: .7rem;
+        position: relative;
         border: 1px solid #dbdde2; 
         margin-bottom: 25px;
-        grid-template-columns: 20% 20% 20% 20% 20%;
-        grid-template-areas:
-            " date    date   time    time    cancel   "
-            " company   job    .    .   . "
-            " etc etc etc etc etc"
-            "  .   .   wage    call_fee   employee  ";
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1rem 3rem;
+        /* grid-template-columns: 20% 20% 20% 20% 20%; */
+        /* grid-template-areas:
+            "  .     date    time    .    cancel   "
+            "  .   company    company    company       .    "
+            "  .     job    job     .      .    "
+            "  .     etc     etc    etc    etc   "
+            "  .    wage    wage    wage      ."
+            "  .     call_fee    call_fee     .      .    "
+            "  .     employee    employee     .      .    "; */
     }
-    .grid-style.grid-wrapper .cell:before { content: attr(data-th) ""; font-weight: bold; width: 6.5em; display: inline-block;}
+    .grid-style.grid-wrapper .date,
+    .grid-style.grid-wrapper .time { font-size: .55rem;}
+    .grid-style.grid-wrapper .time { margin-bottom: 15px;}
+    .grid-style.grid-wrapper .cancel{ position: absolute; top: .5rem; right: .5rem;}
+    button.v_mobile.employee,
+    button.v_mobile.employee.no-assigned { position: absolute; bottom: 25px; width: 86%; border: none; padding: .6em; cursor: pointer; border-radius: 0.3em; -webkit-border-radius: 0.3em; -moz-border-radius: 0.3em; -ms-border-radius: 0.3em; -o-border-radius: 0.3em; }
+    button.v_mobile.employee { background: #b8b8b8; color: #fff; font-size: .9em;}
+    button.v_mobile.employee.no-assigned { background: #268DFF; color: #fff;}
+    .grid-style.grid-wrapper .cell { margin-bottom: 8px;}
+    .grid-style.grid-wrapper .cell:before { content: attr(data-th) ": "; width: 5em; font-weight: bold; display: inline-block;}
+    
     .v_pc { display: none;}
     .v_mobile { display: block;}
 
     /* form 추가페이지 반응형 */
     .top-title { margin: 3rem 1.5rem 0;}
     .write-layout { margin: 1rem; }
+}
+/* 콜관리 반응형 모바일 */
+@media screen and (max-width: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+
+    .dropdown.logo { width: 75%;}
+    
+    #call_table {
+        display: block;
+    }
+    .grid-style.grid-wrapper { margin-bottom: 17px; }
+    .call_top_percentage .week_btn { padding-left: 0; }
+    .call_top_percentage .datepick .calender,
+    .call_top_percentage .datepick .section_search { display: flex; flex-direction: column; align-items: flex-start;}
+    .call_top_percentage #range { width: 100%; }
+    .call_top_percentage .datepick .section_search input.search_date { width: 89.5%;}
+    .call_top_percentage .datepick .calender h2, .call_top_percentage .datepick .section_search h2 { margin: 8px 0; }
+    .call_top_percentage .submit_btn { width: 100%;}
+    .call_top_percentage .submit_btn button { width: 95.5%; margin: 10px 0;}
+    .call_top_percentage .datepick .calender, .call_top_percentage .datepick .section_search { margin: 0;}
+    .circle { bottom: 15px; right: 15px; width: 60px; height: 60px;}
 }
