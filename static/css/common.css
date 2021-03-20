@@ -528,14 +528,9 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 #content { transition: margin-right .5s; padding: 16px; -webkit-transition: margin-right .5s; -moz-transition: margin-right .5s; -ms-transition: margin-right .5s; -o-transition: margin-right .5s; }
 
 /* 테이블 제목 */
-.strikethrough_title { text-align: center; position: relative; font-size: 28px; line-height: 32px; margin: 27px 0 36px 0;}
+.strikethrough_title { text-align: center; position: relative; font-size: 28px; line-height: 32px; margin: 27px 0 20px 0;}
 .strikethrough_title::before { position: absolute; content: " \A"; display: block; top: 50%; left: 50%; height: 1px; width: 100%; transform: translate(-50%, -50%); background-color: #268DFF; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
 .strikethrough_title .title_text { font-size: 24px; font-weight: bold; background: #fff; color: #505152; padding: 0 1em; display: inline-block; position: relative;}
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
 
 /* 콜 관리 반응형 */
 @media all and (max-width: 990px) {
@@ -552,6 +547,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage .submit_btn button { height: 40px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
 
     .inline.scroll_tbody.call { width: 95%;}
+    .inline.scroll_tbody.call .percent { text-align: center; margin-bottom: 26px;}
     .grid-style.callTable {display: none;}
     #call_table { box-shadow: none; display: grid; grid-template-columns: 48.5% 48.5%; column-gap: 3%;}
     /* .grid-style .call.call-order {display: none;}
@@ -600,4 +596,26 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     /* form 추가페이지 반응형 */
     .top-title { margin: 3rem 1.5rem 0;}
     .write-layout { margin: 1rem; }
+}
+/* 콜관리 반응형 모바일 */
+@media screen and (max-width: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+
+    .dropdown.logo { width: 75%;}
+    
+    #call_table {
+        display: block;
+    }
+    .grid-style.grid-wrapper { margin-bottom: 17px; }
+    .call_top_percentage .week_btn { padding-left: 0; }
+    .call_top_percentage .datepick .calender,
+    .call_top_percentage .datepick .section_search { display: flex; flex-direction: column; align-items: flex-start;}
+    .call_top_percentage #range { width: 100%; }
+    .call_top_percentage .datepick .section_search input.search_date { width: 89.5%;}
+    .call_top_percentage .datepick .calender h2, .call_top_percentage .datepick .section_search h2 { margin: 8px 0; }
+    .call_top_percentage .submit_btn { width: 100%;}
+    .call_top_percentage .submit_btn button { width: 95.5%; margin: 10px 0;}
+    .call_top_percentage .datepick .calender, .call_top_percentage .datepick .section_search { margin: 0;}
+    .circle { bottom: 15px; right: 15px; width: 60px; height: 60px;}
 }
