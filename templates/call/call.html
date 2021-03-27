@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>{{test}}</h1>
+{% include 'modal.html' %}
+
+<div class="board-list scroll_list right auto-center">
+    {% include 'datepicker.html' %}
+    
+    <form id="filterForm" method="post" style="display: none;">
+        <input type="hidden" name="action" value="">
+        <input type="hidden" name="callID" value="">
+        <input type="hidden" name="order" value="">
+        <input type="hidden" name="direction" value="">
+        <input type="hidden" name="filter" value="">
+    </form>
+    <div class="inline scroll_tbody call">
+        <h2 class="strikethrough_title v_mobile">
+            <span class="title_text">
+                콜 목록
+            </span>
+        </h2>
+        <div class="percent v_mobile">
+            <div>
+                <strong class="assign-percentage"></strong><br>
+                <strong class="callStatus"></strong>
+            </div>
+            <div>
+                <strong class="paid-percentage"></strong><br>
+                <strong class="paid_count_status"></strong><br>
+                <strong class="paid_price_status"></strong>
+            </div>
+        </div>
+        {% include 'call/call_table.html'%}
+    </div>
+</div>
+{% endblock %}
+
+<script src="{{url_for('static', filename='js/call_test.js')}}"></script>
+<script>
+    $(document).ready(function () {
+
+        console.log("document ready test");
+        console.log("{{test}}");
+
+        set_date_picker();
+        click_duration();
+        switch_click();
+        calculate_assign();
+        calculate_price();
+    });
+
+    $('.callRow').on('click',function () {
+       $(this).closest('table').find('.callRow').removeClass('selected');
+       $(this).addClass('selected');
+    });
+
+
+</script>

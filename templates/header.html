@@ -1,0 +1,47 @@
+<div id="header">
+    <div class="header" id="headerMain">
+        <div class="dropdown logo">
+            <a href="{{url_for('call')}}"></a>
+            <button class="dropbtn" onClick="location.href='{{ url_for('call') }}'">
+                <img class="btn-img" src="{{url_for('static',filename='img/logo.png')}}">
+            </button>
+        </div>
+        <div class="nav_right v_pc">
+            <div class="dropdown nav_list">
+                <button class="dropbtn {{ page_list['call'] }} {{ page_list['callForm'] }}" onClick="location.href='{{ url_for('call') }}'">콜관리</button>
+            </div>
+            <div class="dropdown nav_list">
+                <button class="dropbtn {{ page_list['company'] }} {{ page_list['companyForm'] }}" onClick="location.href='{{ url_for('company') }}'">거래처관리</button>
+            </div>
+            <div class="dropdown nav_list">
+                <button class=" dropbtn {{ page_list['employee'] }} {{ page_list['employeeForm'] }}" onClick="location.href='{{ url_for('employee') }}'">구직자관리</button>
+            </div>
+            <div class="dropdown nav_list">
+                <button class="dropbtn {{ page_list['black'] }}" onClick="location.href='{{ url_for('manage') }}'">블랙리스트 관리</button>
+            </div>
+        </div>
+        <div class="nav_right v_mobile" onclick="openNav();">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</div>
+
+<div id="MobileSidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="dropbtn {{ page_list['call'] }} {{ page_list['callForm'] }}" onClick="location.href='{{ url_for('call') }}'">콜관리</a>
+    <a class="dropbtn {{ page_list['company'] }} {{ page_list['companyForm'] }}" onClick="location.href='{{ url_for('company') }}'">거래처관리</a>
+    <a class=" dropbtn {{ page_list['employee'] }} {{ page_list['employeeForm'] }}" onClick="location.href='{{ url_for('employee') }}'">구직자관리</a>
+    <a class="dropbtn {{ page_list['black'] }}" onClick="location.href='{{ url_for('manage') }}'">블랙리스트 관리</a>
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById("MobileSidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("MobileSidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+    }
+</script>

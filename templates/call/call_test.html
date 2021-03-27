@@ -1,0 +1,20 @@
+<h1>Hello world</h1>
+{% for call in calls %}
+<h2>{{call['address']}}</h2>
+<div class="grid-style grid-wrapper callTable">
+    <div class="date">{{call['workDate']}}</div>
+    <div class="time">{{call['startTime']}} ~ {{call['endTime']}}</div>
+    <div data-th="상호명" class="cell company">{{call['companyName'] | safe}}</div>
+    <div data-th="업종" class="cell job">{{call['workField'] | safe}}</div>
+    <div data-th="요청사항" class="cell v_pc etc">{{call['detail'] | safe}}</div>
+    <div data-th="일당" class="cell wage">{{call['price'] | safe}}</div>
+    <div data-th="콜비" class="cell call_fee">{{call['salary'] | safe}}</div>
+    <div data-th="요청사항" class="cell v_mobile etc">{{call['detail'] | safe}}</div>
+    <div data-th="구직자" class="cell v_pc employee">{{call['employeeName'] | safe}}</div>
+    {% if(call['employeeName']) %}
+    <button class="v_mobile employee">{{call['employeeName'] | safe}}</button>
+    {% else %}
+    <button class="v_mobile employee no-assigned">배정하기</button>
+    {% endif %}
+</div>
+{% endfor %}

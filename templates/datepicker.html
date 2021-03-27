@@ -1,0 +1,66 @@
+<div class="call_top_percentage">
+    <!-- 날짜 입력 -->
+    <div class="datepick">
+        <form method="post" action="/call" style="margin: 0;">
+            <div class="">
+                <div>
+                    <div class="week_btn">
+                        <button class="today_btn" type="button" onclick="setDateToday();">오늘</button>
+                        <button class="tomorrow_btn" type="button" onclick="setDateTomorrow();">내일</button>
+                        <button class="thisWeek_btn" type="button" onclick="setDateThisWeek();">이번주</button>
+                        <button class="thisMonth_btn" type="button" onclick="setDateThisMonth();">이번달</button>
+                        <button id="normal-btn" class="btn-ml fon" type="button" onclick="fixornot_normal();">일반
+                        </button>
+                        <button id="fix-btn" class="fon" type="button" onclick="fixornot_fix();">고정</button>
+                    </div>
+                    <div>
+                        <div class="calender">
+                            <h2>기간</h2>
+                            <div id="range">
+                                <input type="text" class="date" id="start" name="start" autocomplete="off" value="{{start}}">
+                                <span>-</span>
+                                <input type="text" class="date" id="end" name="end" autocomplete="off" value="{{end}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section_search">
+                        <h2>검색</h2>
+                        <input class="search_date" type="text" name="content" autocomplete="off" placeholder="검색" value="{{content}}">
+                        <div class="submit_btn">
+                            <button>조회하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- 배당 / 수금률 -->
+    <div class="percent">
+        <div>
+            <strong class="assign-percentage"></strong><br>
+            <strong class="callStatus"></strong>
+            <div class="graph">
+                <span class="bar assign"></span>
+            </div>
+        </div>
+        <div>
+            <strong class="paid-percentage"></strong><br>
+            <strong class="paid_count_status"></strong><br>
+            <strong class="paid_price_status"></strong>
+            <div class="graph">
+                <span class="bar paid"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("datepicker.html")
+    call_dict = {{call_dict|safe}}
+    console.log(call_dict)
+</script>
+<script type="text/javascript" call_dict="call_dict" src="/static/js/my_datepicker.js"></script>
+<script>
+
+</script>

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="top-title">
+    <h1 class="title-main">콜 만들기</h1>
+    <div class="callFormBtn">
+        <div>
+            <button class="btn btn-option selected" id="manualCallBtn">일반콜</button>
+            <button class="btn btn-option" id="fixCallBtn">고정</button>
+            <button class="btn btn-option" id="monthlyCallBtn">월급제</button>
+        </div>
+    </div>
+</div>
+
+<div class="write-layout">
+    <!-- <div class="title-table">
+        <h1 class="title-main">콜 만들기</h1>
+        <p>위에서부터 순서대로 작성해주세요.</p>
+    </div> -->
+    <div class="board-write">
+        {% include "call/callWrite.html" %}
+        <div id="modalProgressBar" class="layer">
+            <!--        <span class="content"><img src="/public/img/loading_bar.gif" alt=""></span>-->
+        </div>
+    </div>
+
+</div>
+
+
+<script src="/static/js/create_call.js"></script>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
