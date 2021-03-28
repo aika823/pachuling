@@ -150,32 +150,32 @@ def show_ceo(ceo_id):
     return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
 
 
-@application.route('/login', methods=['GET', 'POST'])
-def login():
-    user = database_class.User
-    if request.method == 'GET':
-        return render_template('login/login.html', page_list=page_list)
-    elif request.method == 'POST':
-        user_name = request.form['username']
-        user_pw = request.form['password']
-        data = user.query.filter_by(userName=user_name, userPW=user_pw).first()
-        if data is not None:  # 로그인 성공!
-            session['logged_in'] = True
-            session['user_id'] = data.userID
-            if data.companyID:  # 사장님 로그인
-                return redirect(url_for('show_ceo', ceo_id=session['user_id']))
-            else:  # 관리자 로그인
-                return redirect(url_for('call'))
-        else:  # 로그인 실패
-            session['logged_in'] = False
-            return render_template('login/login.html', test="LOGIN FAIL", data=data, user_name=user_name,
-                                   page_list=page_list)
-
-
-@application.route("/logout")
-def logout():
-    session['logged_in'] = False
-    return redirect(url_for('login'))
+# @application.route('/login', methods=['GET', 'POST'])
+# def login():
+#     user = database_class.User
+#     if request.method == 'GET':
+#         return render_template('login/login.html', page_list=page_list)
+#     elif request.method == 'POST':
+#         user_name = request.form['username']
+#         user_pw = request.form['password']
+#         data = user.query.filter_by(userName=user_name, userPW=user_pw).first()
+#         if data is not None:  # 로그인 성공!
+#             session['logged_in'] = True
+#             session['user_id'] = data.userID
+#             if data.companyID:  # 사장님 로그인
+#                 return redirect(url_for('show_ceo', ceo_id=session['user_id']))
+#             else:  # 관리자 로그인
+#                 return redirect(url_for('call'))
+#         else:  # 로그인 실패
+#             session['logged_in'] = False
+#             return render_template('login/login.html', test="LOGIN FAIL", data=data, user_name=user_name,
+#                                    page_list=page_list)
+#
+#
+# @application.route("/logout")
+# def logout():
+#     session['logged_in'] = False
+#     return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
