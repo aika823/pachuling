@@ -1,21 +1,27 @@
 from flask import Flask, url_for, render_template, request, redirect, session, flash
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 import database_function
 import call_function
 import company_function
-# 이 부분에서 배포 문제 발생
-# import database_class
 import secret
 
 application = app = Flask(__name__)
-# application.config['SQLALCHEMY_DATABASE_URI'] = \
-#     'mysql+pymysql://{user}:{password}@{host}/{db}'.format(user=secret.user, password=secret.password,
-#                                                            host=secret.host, db=secret.db)
+application.config['SQLALCHEMY_DATABASE_URI'] = \
+    'mysql+pymysql://{user}:{password}@{host}/{db}'.format(user=secret.user, password=secret.password,
+                                                           host=secret.host, db=secret.db)
 application.secret_key = "123"
-# db = SQLAlchemy(application)
+db = SQLAlchemy(application)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
 login_error_message = "ID: admin, PW: bestgood"
+
+
+class User(db.Model):
+    userID = Column(Integer, primary_key=True, nullable=False)
+    userName = Column(String(20), primary_key=False, nullable=False)
+    userPW = Column(String(20), primary_key=False, nullable=False)
+    companyID = Column(Integer, primary_key=False, nullable=False)
 
 
 def select_page(page):
@@ -24,6 +30,12 @@ def select_page(page):
 
 
 @application.route('/')
+def index():
+    select_page('call')
+    calls = ['adfa', 'asdfadsf']
+    return render_template('call/call.html', calls=calls, page_list=page_list)
+
+
 @application.route('/call')
 def call():
     calls = database_function.get_calls()
@@ -150,32 +162,44 @@ def show_ceo(ceo_id):
     return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
 
 
-# @application.route('/login', methods=['GET', 'POST'])
-# def login():
-#     user = database_class.User
-#     if request.method == 'GET':
-#         return render_template('login/login.html', page_list=page_list)
-#     elif request.method == 'POST':
-#         user_name = request.form['username']
-#         user_pw = request.form['password']
-#         data = user.query.filter_by(userName=user_name, userPW=user_pw).first()
-#         if data is not None:  # 로그인 성공!
-#             session['logged_in'] = True
-#             session['user_id'] = data.userID
-#             if data.companyID:  # 사장님 로그인
-#                 return redirect(url_for('show_ceo', ceo_id=session['user_id']))
-#             else:  # 관리자 로그인
-#                 return redirect(url_for('call'))
-#         else:  # 로그인 실패
-#             session['logged_in'] = False
-#             return render_template('login/login.html', test="LOGIN FAIL", data=data, user_name=user_name,
-#                                    page_list=page_list)
-#
-#
-# @application.route("/logout")
-# def logout():
-#     session['logged_in'] = False
-#     return redirect(url_for('login'))
+@application.route('/login')
+def login():
+    return render_template('login/login.html', page_list=page_list)
+
+
+@application.route('/login', methods=['GET', 'POST'])
+def login_check():
+    user = User
+    if request.method == 'GET':
+        return render_template('login/login.html', page_list=page_list)
+    elif request.method == 'POST':
+        user_name = request.form['username']
+        user_pw = request.form['password']
+        data = user.query.filter_by(userName=user_name, userPW=user_pw).first()
+        if data is not None:  # 로그인 성공!
+            print("login success")
+            session['logged_in'] = True
+            session['user_id'] = data.userID
+            session['company_id'] = data.companyID
+            # 사장님 로그인
+            if data.companyID:
+                return redirect(url_for('show_ceo', ceo_id=session['user_id']))
+            # 관리자 로그인
+            else:
+                return redirect(url_for('call'))
+        # 로그인 실패
+        else:
+            print("login fail")
+            session['logged_in'] = False
+            flash("로그인에 실패했습니다. 관리자에게 문의하세요")
+            return render_template('login/login.html', test="LOGIN FAIL", data=data, user_name=user_name,
+                                   page_list=page_list)
+
+
+@application.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return redirect(url_for('login'))
 
 
 if __name__ == "__main__":

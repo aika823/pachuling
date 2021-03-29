@@ -6,7 +6,7 @@ conn = pymysql.connect(host=secret.host, port=secret.port, user=secret.user, pas
 cursor = conn.cursor()
 
 
-def get_calls(start=date.today(), end=date.today(), content=None, limit=1000):
+def get_calls(start=date.today(), end=date.today(), content=None, limit=100):
     cur = conn.cursor(pymysql.cursors.DictCursor)
     sql = " SELECT " \
           " call.workDate, call.startTime, call.endTime, call.workField, " \
@@ -44,6 +44,7 @@ def get_companies(content=None):
                       " (company.businessType LIKE '%{}%') OR " \
                       " (company.address LIKE '%{}%') "
         sql += content_sql.format(content, content, content)
+    sql += " LIMIT 10 "#테스트용이고 나중에 지워야함
     cur.execute(sql)
     companies = cur.fetchall()
     return companies
