@@ -4,11 +4,8 @@
 <body>
 
 {% if session['logged_in'] %}
-<p>You're logged in already!</p>
-<a href="/logout">Logout</a> <br> <br>
-<form action="logout" method="GET">
-    <input type="submit" value="Logout">
-</form>
+<p>이미 로그인 되어있습니다. 로그아웃 할까요?</p>
+<a href="/logout">Logout</a>
 
 {%else%}
 <div class="mobile-content">
@@ -19,15 +16,12 @@
         <form action="/login" method="POST" class="login-form">
             <div class="login-grid">
                 <img src="/static/img/logo.png" class="login-icon">
-                <!--                <input type="hidden" name="action" value="login">-->
                 <div class="login-container">
                     <label class="login-label" for="user-name"><b>아이디</b></label>
-                    <!--                    <input type="text" placeholder="아이디를 입력하세요" name="userName" required>-->
                     <input type="text" name="username" placeholder="아이디를 입력하세요" required>
                 </div>
                 <div class="login-container">
                     <label class="login-label" for="userPW"><b>비밀번호</b></label>
-                    <!--                    <input type="password" placeholder="비밀번호를 입력하세요" name="userPW" required>-->
                     <input type="text" name="password" placeholder="비밀번호를 입력하세요">
                 </div>
                 <div class="login-container">
@@ -53,6 +47,7 @@
 {%if messages %}
 <script type="text/javascript">
       alert("{{messages[0]}}");
+
 </script>
 {%endif%}
 {%endwith%}
