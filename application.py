@@ -36,7 +36,8 @@ def call():
         return redirect(url_for('login'))
     else:
         select_page('call')
-        calls = database_function.get_calls()
+        user_id = session.get('user_id')
+        calls = database_function.get_calls(user_id=user_id)
         call_dict = call_function.calculate_price(calls)
         return render_template('call/call.html', calls=calls, call_dict=call_dict, page_list=page_list)
 
