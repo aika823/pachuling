@@ -17,6 +17,9 @@ page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
 login_error_message = "ID: admin, PW: bestgood"
 
 
+# user_id = session.get('user_id')
+
+
 class User(db.Model):
     userID = Column(Integer, primary_key=True, nullable=False)
     userName = Column(String(20), primary_key=False, nullable=False)
@@ -73,7 +76,8 @@ def company():
         return redirect(url_for('login'))
     else:
         select_page('company')
-    companies = database_function.get_companies()
+    user_id = session.get('user_id')
+    companies = database_function.get_companies(user_id)
     return render_template('company/company.html', companies=companies, page_list=page_list)
 
 
@@ -82,7 +86,8 @@ def search_company():
     select_page('company')
     if request.method == 'POST':
         content = request.form['keyword']
-        companies = database_function.get_companies(content=content)
+        user_id = session.get('user_id')
+        companies = database_function.get_companies(user_id=user_id, content=content)
         if len(companies) > 0:
             if content:
                 companies = company_function.search_mark(companies, content)
@@ -95,7 +100,8 @@ def view_company(company_id):
         return redirect(url_for('login'))
     else:
         select_page('company')
-    my_company = database_function.get_company(company_id)
+    user_id = session.get('user_id')
+    my_company = database_function.get_company(user_id=user_id, company_id=company_id)
     return render_template('company/view.html', company=my_company, page_list=page_list)
 
 
@@ -141,7 +147,8 @@ def manage():
         return redirect(url_for('login'))
     else:
         select_page('black')
-        companies = database_function.get_companies()
+        user_id = session.get('user_id')
+        companies = database_function.get_companies(user_id=user_id)
         return render_template('manage/black.html', companies=companies, page_list=page_list)
 
 

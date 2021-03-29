@@ -36,14 +36,14 @@ def get_calls(user_id, start=date.today(), end=date.today(), content=None, limit
     return calls
 
 
-def get_companies(content=None):
+def get_companies(user_id, content=None):
     cur = conn.cursor(pymysql.cursors.DictCursor)
-    sql = "select * from company "
+    sql = "select * from company where userID='{}' ".format(user_id)
     if content:
-        content_sql = " WHERE " \
-                      " (company.companyName LIKE '%{}%') OR " \
+        content_sql = " AND " \
+                      " ( (company.companyName LIKE '%{}%') OR " \
                       " (company.businessType LIKE '%{}%') OR " \
-                      " (company.address LIKE '%{}%') "
+                      " (company.address LIKE '%{}%') )"
         sql += content_sql.format(content, content, content)
     sql += " LIMIT 10 "#테스트용이고 나중에 지워야함
     cur.execute(sql)
@@ -51,9 +51,9 @@ def get_companies(content=None):
     return companies
 
 
-def get_company(company_id):
+def get_company(user_id, company_id):
     cur = conn.cursor(pymysql.cursors.DictCursor)
-    sql = "select * from company where companyID = " + str(company_id)
+    sql = "select * from company where userID='{}' AND companyID = {}".format(user_id, company_id)
     cur.execute(sql)
     company = cur.fetchall()
     return company
