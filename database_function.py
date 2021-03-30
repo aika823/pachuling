@@ -9,8 +9,8 @@ cursor = conn.cursor()
 def get_calls(user_id, start=date.today(), end=date.today(), content=None, limit=100):
     cur = conn.cursor(pymysql.cursors.DictCursor)
     sql = " SELECT " \
-          " `call`.workDate, `call`.startTime, `call`.endTime, `call`.workField, " \
-          " `call`.detail, `call`.salary, `call`.price, `call`.paid, `call`.userID, " \
+          " `call`.workDate, `call`.startTime, `call`.endTime, " \
+          " `call`.workField, `call`.detail, `call`.salary, `call`.price, `call`.paid, `call`.userID, " \
           " `company`.companyName, " \
           " `employee`.employeeName, " \
           " `workField`.workField " \
@@ -18,7 +18,7 @@ def get_calls(user_id, start=date.today(), end=date.today(), content=None, limit
           " LEFT JOIN `company` on `call`.companyID = `company`.companyID and `call`.userID = `company`.userID " \
           " LEFT JOIN `employee` on `call`.employeeID = `employee`.employeeID and `call`.userID = `employee`.userID " \
           " LEFT JOIN `workField` on `call`.workField = `workField`.workFieldID and `call`.userID = `workField`.userID "
-    conditions = [" call.userID = '{}' ".format(user_id)]
+    conditions = [" `call`.userID = '{}' ".format(user_id)]
     if start and end:
         conditions.append(" (`workDate` between '{}' and '{}') ".format(start, end))
     if content:
@@ -42,10 +42,11 @@ def get_companies(user_id, content=None):
     if content:
         content_sql = " AND " \
                       " ( (company.companyName LIKE '%{}%') OR " \
-                      " (company.businessType LIKE '%{}%') OR " \
+                      " (com    pany.businessType LIKE '%{}%') OR " \
                       " (company.address LIKE '%{}%') )"
         sql += content_sql.format(content, content, content)
-    sql += " LIMIT 10 "#테스트용이고 나중에 지워야함
+    # 테스트용이고 나중에 지워야함
+    sql += " LIMIT 10 "
     cur.execute(sql)
     companies = cur.fetchall()
     return companies
@@ -65,6 +66,14 @@ def get_employees():
     cur.execute(sql)
     employees = cur.fetchall()
     return employees
+
+
+def get_employee(user_id, employee_id):
+    cur = conn.cursor(pymysql.cursors.DictCursor)
+    sql = "select * from employee where `userID`='{}' AND `employeeID` = {}".format(user_id, employee_id)
+    cur.execute(sql)
+    employee = cur.fetchone()
+    return employee
 
 
 def get_ceo(ceo_id):
