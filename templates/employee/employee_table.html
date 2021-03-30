@@ -27,9 +27,9 @@
     </thead>
     <tbody>
     {% for employee in employees %}
-    <tr class="tr-employee" id="{{employeeID}}">
+    <tr class="tr-employee" id="{{employee['employeeID']}}">
         <td class="al_l">
-            <a href="employee/view/{{employeeID}}">
+            <a href="employee/view/{{employee['employeeID']}}">
                 {{employee['employeeName']}}
             </a>
         </td>
