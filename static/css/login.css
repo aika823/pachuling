@@ -62,12 +62,9 @@ html, body {
 }
 .mobile-content .login-wrapper input[type="text"],
 .mobile-content .login-wrapper input[type="password"] {
-    border-radius: 9px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    -ms-border-radius: 9px;
-    -o-border-radius: 9px;
     margin: 15px 0 18px;
+    padding: 23px 10px;
+    font-size: .8rem;
 }
 
 .mobile-content .login-wrapper .login-container {
@@ -92,4 +89,20 @@ html, body {
 
 .mobile-content .login-service-info {
     margin-top: .5rem;
+}
+
+@media all and (max-width: 1000px){
+    .mobile-content .login-wrapper {width: 45%;}
+}
+
+@media all and (max-width: 768px){
+    .mobile-content .login-wrapper {width: 60%;}
+}
+
+@media all and (max-width: 600px){
+    .mobile-content .login-wrapper {width: 80%;}
+    .mobile-content .login-wrapper input[type="text"],
+    .mobile-content .login-wrapper input[type="password"] { font-size: 1rem; }
+    .mobile-content .login-wrapper .login-icon { width: 80%; }
+    .mobile-content .login-wrapper .save-pw { font-size: 1rem; }
 }

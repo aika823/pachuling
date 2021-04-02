@@ -99,11 +99,11 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 /* 날짜 선택 */
 .call_top_percentage .grid_layout { display: grid; grid-template-columns: 1fr .7fr;}
 .call_top_percentage .grid_layout .calender { display: flex; align-items: center; justify-content: space-between; margin: 10px 4.5% 0 0;}
-.call_top_percentage input[type="text"].date { width: 25%; font-size: .6rem; height: 1.2rem; line-height: 1.2rem; padding-left: 1rem; border: 1px solid #e4e4e4;}
+.call_top_percentage input[type="text"].date { width: 25%; font-size: .85rem; height: 1.6rem; line-height: 1.6rem; padding-left: .6rem; border: 1px solid #e4e4e4;}
 .call_top_percentage .submit_btn { align-self: center;}
-.call_top_percentage .submit_btn button { background: #268DFF; height: 2.1rem; font-size: .7rem; color: #fff; padding: .3rem .7rem; border: none; margin-left: .2rem; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; }
+.call_top_percentage .submit_btn button { background: #268DFF; height: 1.6rem; font-size: .8rem; color: #fff; padding: .3rem .7rem; border: none; margin-left: .2rem;}
 .call_top_percentage .week_btn { display: flex;}
-.call_top_percentage .week_btn button { background: none; border: 1px solid rgba(0, 0, 0, 0.2); color: rgba(0, 0, 0, 0.5); padding: .3rem .7rem; font-size: .7rem;}
+.call_top_percentage .week_btn button { background: none; border: 1px solid rgba(0, 0, 0, 0.2); color: rgba(0, 0, 0, 0.5); padding: .3rem .7rem; font-size: .9rem;}
 .call_top_percentage .week_btn button.btn-ml {margin-left: .5rem;}
 .call_top_percentage .week_btn button.active { background: #FFF; font-weight: 600; color: #268DFF; border: 2px solid #268DFF; cursor: pointer;}
 .call_top_percentage .submit_btn button:hover { background: #3d98ff; cursor: pointer;}
@@ -116,15 +116,15 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .call_top_percentage .datepick .calender,
 .call_top_percentage .datepick .section_search { margin-top: 10px;}
 .call_top_percentage .datepick .calender h2,
-.call_top_percentage .datepick .section_search h2 { margin: 0 10px; font-size: .6rem; width: 50px;}
+.call_top_percentage .datepick .section_search h2 { margin: 0 10px; font-size: .7rem; width: 50px;}
 
 /* search */
 .call_top_percentage .datepick .section_search { display: flex; align-items: center;}
 .call_top_percentage .datepick .section_search img { width: 25px; height: 25px; margin: 10px 5px 0 0;}
-.call_top_percentage .datepick .section_search input.search_date { width: 50%; height: 1.2rem; line-height: 1.2rem; padding-left: 1rem; border: 1px solid #e4e4e4;}
+.call_top_percentage .datepick .section_search input.search_date { font-size: .85rem; width: 50%; height: 1.6rem; line-height: 1.6rem; padding-left: .6rem; border: 1px solid #e4e4e4;}
 
 /* 배정률 그래프 */
-.call_top_percentage .percent {display: grid; grid-template-columns: 1fr 1fr; align-items: end; font-size: .6rem;}
+.call_top_percentage .percent {display: grid; grid-template-columns: 1fr 1fr; align-items: end; font-size: .7rem;}
 .graph { position: relative; width: 90%; border: 1px solid #268DFF; padding: 1px; font-size:15px; font-family:tahoma; margin-top:10px; margin-bottom:3px; }
 .graph .bar { display: block; position: relative; background: #a5cfff; color: rgb(63, 63, 63); text-align: center; height: 2em; line-height: 2em; width:0%; transition:width 2s cubic-bezier(0, 0.42, 0.3, 0.88); -webkit-transition:width 2s cubic-bezier(0, 0.42, 0.3, 0.88); -moz-transition:width 2s cubic-bezier(0, 0.42, 0.3, 0.88); -ms-transition:width 2s cubic-bezier(0, 0.42, 0.3, 0.88); -o-transition:width 2s cubic-bezier(0, 0.42, 0.3, 0.88); }
 .graph .bar span { position: absolute; left: 1em;}
@@ -436,9 +436,13 @@ label { color:rgba(0, 0, 0, 0.5)}
 }
 
 @media all and (max-width: 1540px) {
-    .call_top_percentage .percent {font-size: .5rem;}
+    .call_top_percentage .percent {font-size: .6rem;}
+    .call_top_percentage .week_btn button { font-size: .7rem;}
+    .call_top_percentage input[type="text"].date { font-size: .6rem;}
+    .call_top_percentage .datepick .section_search input.search_date { font-size: .6rem;}
+    .call_top_percentage .percent { font-size: .7rem;}
     /* .call_top_percentage .datepick .section_search input.search_date { width: 285px;} */
-    .graph { font-size: 11px;}
+    .graph { font-size: 13px;}
     .call_top_percentage .submit_btn button,
     .call_top_percentage .week_btn button {padding: .2rem .3rem;}
     /* #filter-wrapper { margin: 3rem 8rem 0;} */
@@ -460,7 +464,8 @@ label { color:rgba(0, 0, 0, 0.5)}
 @media all and (max-width: 768px) {
     .graph .bar { height: 1em; line-height: 1em;}
     .call_top_percentage .week_btn button {padding: .2rem;}
-    .call_top_percentage .submit_btn button { font-size: .6rem;}
+    .call_top_percentage .datepick .section_search input.search_date,
+    .call_top_percentage .submit_btn button { font-size: .8rem;}
     .al_c .btn-call-check-modal { padding: 2px;}
     .btn-call-cancel-modal.btn.btn-small.btn-danger { padding: 3px;}
     .call_top_percentage .datepick .calender h2, .call_top_percentage .datepick .section_search h2 {margin-right: -4px;}
@@ -471,7 +476,7 @@ label { color:rgba(0, 0, 0, 0.5)}
 
 /* grid-style */
 /* table -> div */
-.grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 10% 10% 10% 9%; border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
+.grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 8% 8% 9% 7%; border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
 .grid-style.companyTable { display: grid; align-items: center; grid-template-columns: 7% 1fr 12% 12% 10% 15% 10% 7% 7%;}
 .grid-style.employeeTable { display: grid; align-items: center; grid-template-columns: 10% 10% 10% 14% 10% 1fr 10% 7% 7%;}
 .grid-style .call.call-order,
@@ -537,7 +542,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage .week_btn button { font-size: .6rem;}
     .call_top_percentage input[type="text"].date { width:33%;}
     .call_top_percentage .datepick .section_search input.search_date { width: 6.25rem;}
-    .call_top_percentage .submit_btn button { padding: 10px; margin: 0 4px;}
+    .call_top_percentage .submit_btn button { padding: 0 10px; margin: 0 4px;}
     .call_top_percentage .submit_btn .fix_checkbox span { display: block; text-align: center;}
 
     .dropdown.logo { width: 50%; margin-left: 1rem;}
@@ -566,9 +571,11 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage input[type="text"].date { width: 40%; height: 36px;}
     .call_top_percentage .week_btn button { padding: .3rem; width: 3.45rem;}
     .call_top_percentage .submit_btn button { height: 40px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+    .call_top_percentage .week_btn button { font-size: .8rem;}
     
     .inline.scroll_tbody.call { width: 95%;}
-    .inline.scroll_tbody.call .percent { text-align: center; margin-bottom: 26px;}
+    .inline.scroll_tbody.call .percent { text-align: center; margin-bottom: 26px; font-size: .7rem;}
     .grid-style.callTable,
     .grid-style.companyTable,
     .grid-style.employeeTable {display: none;}
@@ -576,7 +583,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .board-list.auto-center #company_table, 
     .board-list.auto-center #employee_table { box-shadow: none; display: grid; grid-template-columns: 48.5% 48.5%; column-gap: 3%;}
     .grid-style.grid-wrapper { 
-        font-size: .7rem;
+        font-size: .75rem;
         position: relative;
         border: 1px solid #dbdde2; 
         margin-bottom: 25px;
@@ -588,7 +595,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .grid-style.grid-wrapper.companyTable,
     .grid-style.grid-wrapper.employeeTable{ padding: 1rem 1rem .5rem;}
     .grid-style.grid-wrapper .date,
-    .grid-style.grid-wrapper .time { font-size: .55rem;}
+    .grid-style.grid-wrapper .time { font-size: .6rem;}
     .grid-style.grid-wrapper .time { margin-bottom: 15px;}
     .grid-style.grid-wrapper .cancel{ position: absolute; top: .5rem; right: .5rem;}
     button.v_mobile.employee,
@@ -623,6 +630,9 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 @media screen and (max-width: 768px) {
     .top-title { padding: 0; }
     .write-layout .board-write { padding: 0; }
+    .call_top_percentage .week_btn button { font-size: .85rem;}
+    .call_top_percentage input[type="text"].date { font-size: .8rem;}
+    .datepicker-view .days .datepicker-cell, .datepicker-view .dow { font-size: 1rem; padding: .4rem; }
 }
 /* 콜관리 반응형 모바일 */
 @media screen and (max-width: 600px) {
@@ -652,4 +662,17 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .form-row .callForm i { position: absolute; left: 3.8px; top: 3px; font-size: 1em;}
     .write-layout { margin: 0;}
     .top-title { margin: 0;}
+
+    .call_top_percentage input[type="text"].date,
+    .call_top_percentage .datepick .section_search input.search_date, .call_top_percentage .submit_btn button { font-size: 1.3rem;}
+    .inline.scroll_tbody.call .percent { font-size: 1rem;}
+    .grid-style.grid-wrapper .date, .grid-style.grid-wrapper .time { font-size: 1rem;}
+    .grid-style.grid-wrapper { font-size: 1.25rem;}
+    .grid-style.grid-wrapper { padding: 1rem 1rem 5rem;}
+    button.v_mobile.employee, button.v_mobile.employee.no-assigned { bottom: 20px;}
+    button.btn-call-cancel-modal.btn.btn-small { font-size: 1.5rem; }
+    .call_top_percentage .week_btn button { padding: .3rem .1rem;}
+    .call_top_percentage .week_btn button { font-size: 1rem;}
+
+    .paid_price_status {display: none;}
 }
