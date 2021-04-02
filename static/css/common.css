@@ -435,45 +435,6 @@ label { color:rgba(0, 0, 0, 0.5)}
     to {bottom: 0; opacity: 0;}
 }
 
-@media all and (max-width: 1540px) {
-    .call_top_percentage .percent {font-size: .6rem;}
-    .call_top_percentage .week_btn button { font-size: .7rem;}
-    .call_top_percentage input[type="text"].date { font-size: .6rem;}
-    .call_top_percentage .datepick .section_search input.search_date { font-size: .6rem;}
-    .call_top_percentage .percent { font-size: .7rem;}
-    /* .call_top_percentage .datepick .section_search input.search_date { width: 285px;} */
-    .graph { font-size: 13px;}
-    .call_top_percentage .submit_btn button,
-    .call_top_percentage .week_btn button {padding: .2rem .3rem;}
-    /* #filter-wrapper { margin: 3rem 8rem 0;} */
-    #btnAddCompany,
-    .makeCall,
-    .makeCall2  { right: 40px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
-}
-@media all and (max-width: 952px) {
-    .makeCall,
-    .makeCall2 { right: 50px; font-size: .7rem; padding: .4rem .6rem;}
-    #btnAddCompany { right: 50px; font-size: .7rem;}
-    .write-layout { margin: 100px 1rem;}
-    
-    #header .nav_right { padding-right: 0;}
-    .dropdown .dropbtn { padding: 4px 0.3rem;}
-
-    #filterSub button { width: 13%;}
-}
-@media all and (max-width: 768px) {
-    .graph .bar { height: 1em; line-height: 1em;}
-    .call_top_percentage .week_btn button {padding: .2rem;}
-    .call_top_percentage .datepick .section_search input.search_date,
-    .call_top_percentage .submit_btn button { font-size: .8rem;}
-    .al_c .btn-call-check-modal { padding: 2px;}
-    .btn-call-cancel-modal.btn.btn-small.btn-danger { padding: 3px;}
-    .call_top_percentage .datepick .calender h2, .call_top_percentage .datepick .section_search h2 {margin-right: -4px;}
-
-    #filterSub #inputKeyword, 
-    #filterSub #btnSearch { height: 1.6rem;}
-}
-
 /* grid-style */
 /* table -> div */
 .grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 8% 8% 9% 7%; border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
@@ -529,6 +490,25 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 .strikethrough_title { text-align: center; position: relative; font-size: 28px; line-height: 32px; margin: 27px 0 20px 0;}
 .strikethrough_title::before { position: absolute; content: " \A"; display: block; top: 50%; left: 50%; height: 1px; width: 100%; transform: translate(-50%, -50%); background-color: #268DFF; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
 .strikethrough_title .title_text { font-size: 24px; font-weight: bold; background: #fff; color: #505152; padding: 0 1em; display: inline-block; position: relative;}
+
+
+
+/* 반응형 */
+@media all and (max-width: 1540px) {
+    .call_top_percentage .percent {font-size: .6rem;}
+    .call_top_percentage .week_btn button { font-size: .7rem;}
+    .call_top_percentage input[type="text"].date { font-size: .6rem;}
+    .call_top_percentage .datepick .section_search input.search_date { font-size: .6rem;}
+    .call_top_percentage .percent { font-size: .7rem;}
+    /* .call_top_percentage .datepick .section_search input.search_date { width: 285px;} */
+    .graph { font-size: 13px;}
+    .call_top_percentage .submit_btn button,
+    .call_top_percentage .week_btn button {padding: .2rem .3rem;}
+    /* #filter-wrapper { margin: 3rem 8rem 0;} */
+    #btnAddCompany,
+    .makeCall,
+    .makeCall2  { right: 40px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
+}
 
 @media all and (max-width: 1260px) {
     .top-title { margin: 3rem 3rem 0;}
@@ -630,7 +610,31 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     #filterSub #inputKeyword,
     #filterSub #btnSearch { font-size: .8rem; height: 45px;}
 }
+
+@media all and (max-width: 952px) {
+    .makeCall,
+    .makeCall2 { right: 50px; font-size: .7rem; padding: .4rem .6rem;}
+    #btnAddCompany { right: 50px; font-size: .7rem;}
+    .write-layout { margin: 100px 1rem;}
+    
+    #header .nav_right { padding-right: 0;}
+    .dropdown .dropbtn { padding: 4px 0.3rem;}
+
+    #filterSub button { width: 13%;}
+}
+
 @media screen and (max-width: 768px) {
+    .graph .bar { height: 1em; line-height: 1em;}
+    .call_top_percentage .week_btn button {padding: .2rem;}
+    .call_top_percentage .datepick .section_search input.search_date,
+    .call_top_percentage .submit_btn button { font-size: .8rem;}
+    .al_c .btn-call-check-modal { padding: 2px;}
+    .btn-call-cancel-modal.btn.btn-small.btn-danger { padding: 3px;}
+    .call_top_percentage .datepick .calender h2, .call_top_percentage .datepick .section_search h2 {margin-right: -4px;}
+
+    #filterSub #inputKeyword, 
+    #filterSub #btnSearch { height: 1.6rem;}
+
     .top-title { padding: 0; }
     .write-layout .board-write { padding: 0; }
     .call_top_percentage .week_btn button { font-size: .85rem;}
