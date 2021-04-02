@@ -626,6 +626,9 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     /* form 추가페이지 반응형 */
     .top-title { margin: 3rem 1.5rem 0;}
     .write-layout { margin: 1rem; }
+
+    #filterSub #inputKeyword,
+    #filterSub #btnSearch { font-size: .8rem; height: 45px;}
 }
 @media screen and (max-width: 768px) {
     .top-title { padding: 0; }
@@ -633,6 +636,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage .week_btn button { font-size: .85rem;}
     .call_top_percentage input[type="text"].date { font-size: .8rem;}
     .datepicker-view .days .datepicker-cell, .datepicker-view .dow { font-size: 1rem; padding: .4rem; }
+    #filterSub #inputKeyword,
+    #filterSub #btnSearch { font-size: 1rem; height: 50px;}
 }
 /* 콜관리 반응형 모바일 */
 @media screen and (max-width: 600px) {
@@ -675,4 +680,6 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage .week_btn button { font-size: 1rem;}
 
     .paid_price_status {display: none;}
+
+    #filterSub #btnSearch { font-size: 1.2rem;}
 }
