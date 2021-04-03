@@ -41,20 +41,31 @@
 {% endfor %}
 </div>
 
-<button class="circle balloon v_mobile" onClick="location.href='employee/employeeForm'">
+<!-- <button class="circle balloon v_mobile" onClick="location.href='employee/employeeForm'"> -->
+<button class="circle balloon v_mobile">
     <i class="fas fa-plus"></i>
 </button>
 
 <div class="balloon_wrap">
-    <a class="new_employee" href="employee/write">신규 추가</a>
-    <a class="available_btn" href="employee/available">근무 가능일/불가능일</a>
+    <div class="add-new">
+        <a class="new_employee" href="employee/write">신규 추가</a>
+    </div>
+    <div class="add-available">
+        <a class="available_btn" href="employee/available">근무 가능일/불가능일</a>
+    </div>
 </div>
 
 <script>
-    $('.balloon').hover(function(){
-        $('.balloon_wrap').css('display', 'block');
-    }, function() {
-        $('.balloon_wrap').css('display', 'none');
+    $('.balloon').click(function(){
+        $('.balloon_wrap').css('display', 'flex', function(){
+            
+        });
     });
-
+    
+    $(document).mouseup(function (e){
+        var container = $('.balloon_wrap');
+        if( container.has(e.target).length === 0){
+            container.css('display','none');
+        }
+    });
 </script>
