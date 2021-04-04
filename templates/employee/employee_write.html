@@ -11,9 +11,8 @@
         <div class="form-style-1">
             <form id="formInsertEmployee" action="" method="post">
                 <fieldset>
-                    <input type="hidden" name="action" value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
-                    <input type="hidden" name="employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
-
+                    <input type="hidden" name="action" value="">
+                    <input type="hidden" name="employeeID" value="">
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
@@ -23,7 +22,7 @@
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" name="employeeName" required autofocus
-                                           value="<?php echo $this->employeeData['employeeName']; ?>" placeholder="성명">
+                                           value="{{employee.employeeName}}" placeholder="성명">
                                 </div>
                             </div>
                         </div>
@@ -526,6 +525,7 @@
             $('.day').prop('required', false);
         }
     });
+
 
 </script>
 

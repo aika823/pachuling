@@ -12,10 +12,10 @@
 </div>
 
 <div id="employee_table">
-{% for employee in employees %}
+    {% for employee in employees %}
     <div class="grid-style grid-wrapper employeeTable">
         <div class="cell" data-th="구직자">
-            <a href="employee/view/{{employeeID}}">
+            <a href="employee/view/{{employee['employeeID']}}">
                 {{employee['employeeName']}}
             </a>
         </div>
@@ -23,11 +23,11 @@
         <div data-th="연령" class="cell"><?php echo getAge($data['birthDate'])."세" ?></div>
         <div data-th="전화번호" class="cell">{{employee['employeePhoneNumber']}}</div>
         <div data-th="주간배정" class="cell">
-    <!--            <?php echo sizeof($this->model->getTable("SELECT * FROM `call` WHERE `employeeID` =-->
-    <!--            '{$data['employeeID']}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE(),1) " )); ?>회-->
+            <!--            <?php echo sizeof($this->model->getTable("SELECT * FROM `call` WHERE `employeeID` =-->
+            <!--            '{$data['employeeID']}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE(),1) " )); ?>회-->
         </div>
         <div data-th="비고" class="cell">
-    <!--            <?php echo $this->imminent_check('employee',$data);?>-->
+            <!--            <?php echo $this->imminent_check('employee',$data);?>-->
         </div>
         <div data-th="점수" class="cell">{{employee['grade']}}점</div>
         <div class="cell v_pc"><span class="fa fa-star selectable "></span></div>
@@ -38,7 +38,7 @@
             </button>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
 
 <button class="circle balloon v_mobile" onClick="location.href='employee/employeeForm'">
@@ -56,5 +56,6 @@
     }, function() {
         $('.balloon_wrap').css('display', 'none');
     });
+
 
 </script>
