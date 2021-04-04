@@ -1,19 +1,19 @@
 <!doctype html>
+
 <html>
   <head>
     {% include "head.html" %}
   </head>
 <body>
-    {% include "header.html" %}
+  {% include "header.html" %}
   <div id="content">
-      {% block content %}
-      {% endblock %}
-    </div>
-  <!-- <div id="footer">
-    {% block footer %}
-    &copy; Copyright 2021 by <a href="">you</a>.
+    {% block content %}
     {% endblock %}
-  </div> -->
+  </div>
+  
+  <div id="footer">
+    {% include "footer.html" %}
+  </div>
 
   <script src="{{url_for('static', filename='js/toggleForm.js')}}"></script>
   {% block script %}
