@@ -21,8 +21,7 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="text" name="employeeName" required autofocus
-                                           value="{{employee.employeeName}}" placeholder="성명">
+                                    <input type="text" name="employeeName" required autofocus placeholder="성명">
                                 </div>
                             </div>
                         </div>
@@ -36,9 +35,7 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="text" list="sexList" name="sex" required autofocus
-                                           value="<?php if (isset ($this->employeeData['sex'])) { echo $this->employeeData['sex']; } else echo "
-                                           여" ?>">
+                                    <input type="text" list="sexList" name="sex" required autofocus>
                                     <datalist id="sexList" class="input-field">
                                         <option value="여"></option>
                                         <option value="남"></option>
