@@ -38,8 +38,8 @@ input:focus { outline: none;}
     body { font-size: 0.6rem;}
 }
 
-@media all and (max-width: 1168px) {
+/* @media all and (max-width: 1168px) {
     a[class*="btn"], button[class*="btn"],
     .al_c .btn-call-check-modal,
     .btn-call-cancel-modal.btn.btn-small.btn-danger { font-size: .45rem;}
-}
+} */
