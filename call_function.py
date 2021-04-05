@@ -1,5 +1,5 @@
 def search_mark(calls, keyword):
-    matches = ['detail', 'companyName', 'employeeName', 'workField']
+    matches = ['detail', 'companyName', 'employeeName', 'workfield']
     if calls is not None:
         for call in calls:
             for match in matches:

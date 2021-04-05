@@ -1,6 +1,6 @@
 from flask import Flask, url_for, render_template, request, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, Date
 
 import database_function
 import call_function
@@ -43,6 +43,24 @@ class Address(db.Model):
     address = Column(String(50), primary_key=False, nullable=False)
     userID = Column(Integer, primary_key=False, nullable=False)
 
+
+class Blacklist(db.Model):
+    blackListID = Column(Integer, primary_key=True, nullable=False)
+    companyID = Column(Integer, primary_key=False, nullable=False)
+    employeeID = Column(Integer, primary_key=False, nullable=False)
+    detail = Column(String(100), primary_key=False, nullable=True)
+    ceoReg = Column(Boolean, primary_key=False, nullable=False)
+    createdTime = Column(TIMESTAMP, primary_key=False, nullable=False)
+    userID = Column(Integer, primary_key=False, nullable=False)
+
+
+class EmployeeAvailableDate(db.Model):
+    availableDateID = Column(Integer, primary_key=True, nullable=False)
+    employeeID = Column(Integer, primary_key=False, nullable=False)
+    availableDate = Column(Date, primary_key=False, nullable=True)
+    notAvailableDate = Column(Date, primary_key=False, nullable=True)
+    detail = Column(String(500), primary_key=False, nullable=True)
+    userID = Column(Integer, primary_key=False, nullable=False)
 
 def select_page(page):
     for p in page_list: page_list[p] = None
@@ -201,6 +219,8 @@ def view_employee(employee_id):
         user_id = session.get('user_id')
         work_field = Workfield.query.filter_by(userID=user_id)
         address = Address.query.filter_by(userID=user_id)
+        black_list = Blacklist.query.filter_by(userID=user_id, employeeID=employee_id)
+        available_date_list = EmployeeAvailableDate.query.filter_by(userID=user_id, employeeID=employee_id)
         my_employee = database_function.get_employee(user_id=user_id, employee_id=employee_id)
         print(my_employee)
         return render_template('employee/employee_view.html',
@@ -208,6 +228,8 @@ def view_employee(employee_id):
                                action='update',
                                work_field_list=work_field,
                                address_list=address,
+                               black_list=black_list,
+                               available_date_list = available_date_list,
                                page_list=page_list)
 
 

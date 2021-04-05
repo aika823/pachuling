@@ -90,3 +90,16 @@ def get_users():
     cur.execute(sql)
     users = cur.fetchall()
     return users
+
+
+# def get_black_list(user_id, company_id, employee_id):
+#     cur = conn.cursor(pymysql.cursors.DictCursor)
+#     if company_id:
+#         sql = "select * from blackList where `userID` = {} AND `companyID` = {} ".format(user_id, company_id)
+#     elif employee_id:
+#         sql = "select * from blackList where `userID` = {} AND `employeeID` = {} ".format(user_id, employee_id)
+#     else:
+#         sql = "select * from blackList where `userID` = "+str(user_id)
+#     cur.execute(sql)
+#     black_list = cur.fetchall
+#     return black_list

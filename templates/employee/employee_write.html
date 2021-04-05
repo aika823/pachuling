@@ -9,19 +9,19 @@
     <div class="board-write auto-center">
         <div class="form-style-1">
             <form id="formInsertEmployee" action="" method="post">
-                <input type="hidden" name="action" value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
-                <input type="hidden" name="employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
-
-                <div class="form-row">
-                    <div class="callForm">
-                        <div class="row-in-row">
-                            <h2 class="form-title">
-                                성명
-                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
-                            <div class="row-content">
-                                <input type="text" name="employeeName" required autofocus
-                                        value="<?php echo $this->employeeData['employeeName']; ?>" placeholder="성명">
+                    <input type="hidden" name="action" value="">
+                    <input type="hidden" name="employeeID" value="">
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    성명
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="employeeName" required autofocus
+                                           value="{{employee.employeeName}}" placeholder="성명">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -524,6 +524,7 @@
             $('.day').prop('required', false);
         }
     });
+
 
 </script>
 
