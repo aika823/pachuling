@@ -29,6 +29,8 @@
                                            value="{{employee['employeeName']}}" placeholder="성명">
                                 </div>
                             </div>
+                            <!--중복 확인-->
+                            <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
                         </div>
                     </div>
 
@@ -69,7 +71,6 @@
                         </div>
                     </div>
 
-                    <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
 
                     <!--업종-->
                     <div class="form-row">
@@ -514,6 +515,7 @@
             $('.day').prop('required', false);
         }
     });
+
 
 
 

@@ -11,7 +11,6 @@
 .header button{height: 100% !important;vertical-align: top;}
 #header{position: sticky; top: 0px; display: block; width:100%; height: auto; background: #fff; z-index: 10; box-shadow: 2px 8px 20px rgb(218, 218, 218);}
 #header .dropdown.logo { display: inline-block; height: inherit; line-height: inherit; margin: 0; padding: 0;}
-#header .nav_right {padding-right: 4em;}
 #header .dropdown.nav_list { display: inline-block; padding: 0;}
 #header #headerMain{height: 80px; display: flex; justify-content: space-around; align-items: center; width: 100%;}
 #header #filterMain{height: 48px; padding: 20px;}
@@ -37,7 +36,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .link:hover{color:var(--main-color);}
 .link2:hover{color: #0d84da; text-decoration: none;}
 .btn-group .btn {width: 160px; font-size: 18px; background: none; border: 1px solid rgba(0, 0, 0, 0.2); color: rgba(0, 0, 0, 0.5);}
-.btn-group .btn:hover { background: none; border: 2px solid #268DFF; color: #268DFF; font-weight: 600;}
+.btn-group .btn:hover { background: none; border: 1px solid #268DFF; color: #268DFF; font-weight: 600;}
 .btn-group .btn.search { height: 2.1rem; padding: .4rem .6rem; background: #268DFF; color: #fff; font-weight: 600;}
 .btn-group .btn.search:hover { background: #3d98ff;}
 .filterBtn {height: 45px;}
@@ -75,17 +74,17 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .form-row .callForm { padding: 0 1rem; border-radius: 4px ; border: 1px solid #dbdde2; box-shadow: 0 2px 3px 0 rgb(0 0 0 / 5%); -webkit-border-radius: 4px ; -moz-border-radius: 4px ; -ms-border-radius: 4px ; -o-border-radius: 4px ; }
 .form-row .callForm .row-in-row { padding: 1rem 0;}
 .form-row .callForm .form-title { margin: 2px 30px 10px;}
-.form-row .callForm .form-subtitle { margin: 1rem 30px 10px;}
+.form-row .callForm .form-subtitle { margin: 1rem 30px 10px 0;}
 .form-row .callForm input[type="text"],
 .form-row .callForm .callForm-term .workDate,
 .form-row .callForm .callForm-time .workTime,
 .form-row .callForm .callForm-etc #detail,
 #salaryInfo,
-.form-row .callForm #workField { margin: 2px 30px 0;}
+/* .form-row .callForm #workField { margin: 2px 30px 0;} */
 .form-row .callForm input[type="text"] { width: 60%; padding: 7px 17px;}
-.form-row .callForm .callForm-term .workDate { width: 30%; padding: 7px 17px;}
-.form-row .callForm .callForm-time .workTime { width: 100%;}
-.form-row .callForm .callForm-etc #detail { width: 95%; border: 1px solid #e2e7ef;}
+.form-row .callForm .callForm-term .workDate { width: 30%; margin-top: 10px;}
+.form-row .callForm .callForm-time .workTime { width: 100%; padding: 7px 0;}
+.form-row .callForm .callForm-etc #detail { width: 95%; border: 1px solid #e2e7ef; height: 150px;}
 .form-row .callForm .icon-up,
 .form-row .callForm .icon-down {width: 30px; height: 30px; float: right; background-color: #fff; border: 1px solid #dbdde2; border-radius: 2px; position: relative;}
 .form-row .callForm i {position: absolute; left: 6px; top: 5px; letter-spacing: -.05em; font-size: 18px; cursor: pointer;}
@@ -144,7 +143,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .close-wrapper{ text-align: right; }
 
 /*form*/
-.form-default {display: flex;}
+/* .form-default {display: flex;} */
 .form-default #formBlack { margin: 0 auto;}
 .form-default input.input-field, .form-default .select-field
 {width: 40%; box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;border: 1px solid #C2C2C2;box-shadow: 1px 1px 4px #EBEBEB;-moz-box-shadow: 1px 1px 4px #EBEBEB;-webkit-box-shadow: 1px 1px 4px #EBEBEB;border-radius: 3px;-webkit-border-radius: 3px;-moz-border-radius: 3px;padding: 7px;outline: none;}
@@ -193,7 +192,7 @@ a.btn{padding:10px;}
 .table > .tr > .td.td-12{width: 100%;}
 
 
-.table > .tr > .td >label { max-width: 97px; display: block; vertical-align: middle; text-align: left;font-weight: bold;font-size: 16px;word-break: keep-all; padding: 0 10px; }
+.table > .tr > .td >label { max-width: 97px; display: block; text-align: left;font-weight: bold;font-size: 16px;word-break: keep-all; padding: 0 10px; }
 .table > .tr > .td input, .table > .tr > .td select, .table > .tr > .td textarea
 {
     width: 260px; height: 100%;line-height: 1.3;padding: 10px;border: solid 1px #e4e4e4;font-family: inherit;display: inline-block;vertical-align: middle;
@@ -278,7 +277,7 @@ tr.assign-employee.recommend th{background: var(--main-color); color: white;}
 .modal-content button[class*="btn"] { font-size: .8rem; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; }
 
 input[type="checkbox"]{width: 13px; cursor: pointer; margin-left: 0; margin-right: 0; margin-bottom: 0;}
-input[type="date"]{font-size: .7rem;}
+.form-row .row-content input[type="date"]{ width: 97%; padding: 10px 0 10px 10px; font-size: .8rem; border: 1px solid #e4e4e4; color: #868686;}
 label { color:rgba(0, 0, 0, 0.5)}
 .ellipsis{overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 
@@ -341,9 +340,11 @@ label { color:rgba(0, 0, 0, 0.5)}
 #modalBlack .td select { width: 90%;}
 
 /* 블랙리스트 관리 */
-.btn-group { display: inline-block;}
-.btn-group.al_r { display: block; margin-top: 3rem;}
-.btn-group.al_r button { padding: 10px;}
+.btn-group { display: flex;}
+.btn-group.al_r { display: flex; justify-content: space-between; margin: 1rem 0 4rem;}
+.btn-group.al_r button {  padding: 10px;}
+.btn-group.al_r .btn-submit {background: #268DFF; color: white;}
+.btn-group.al_r .btn-submit:hover { background: #3f99ff; color: white; font-weight: 500;}
 .btn-group .search-input { width: 280px; border: 1px solid #dbdbdb; vertical-align: middle; padding: .4rem .6rem;}
 .btn-group.group2 { display: inline;}
 
@@ -371,7 +372,7 @@ label { color:rgba(0, 0, 0, 0.5)}
 .npd { margin-bottom: .5rem;}
 .callForm-time label { display: block;}
 .callForm-time .time { height: 2rem; font-size: .7rem;}
-.btn-wrap { margin: 2px 30px 0;}
+.row-content { margin: 2px 30px 0;}
 .between { justify-content: space-between;}
 .callForm-flex .three { width: 25%;}
 .callForm-flex .callForm-tel { width: 30%;}
@@ -379,6 +380,8 @@ label { color:rgba(0, 0, 0, 0.5)}
 .callForm-flex .simple_address { width: 50%;}
 .callForm-flex .detail_address {width: 100%;}
 .callForm-flex .score { width: 15%;}
+
+.textarea-detail { width: 98%;}
 
 .form-style-1 { width: 100%;}
 #formInsertCompany { width: 100%;}
@@ -410,10 +413,10 @@ label { color:rgba(0, 0, 0, 0.5)}
 #refresh-imminent { overflow: hidden;}
 
 /* 구직자 - 반응형 추가 버튼 말풍선 */
-.balloon_wrap { display: none; position: fixed; bottom: 150px; right: 50px; cursor: pointer; border: 1px solid #268DFF; padding: 10px; background: #bcdbff;}
-.balloon_wrap:after { border-top: 10px solid #bcdbff; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 0px solid transparent; content:""; position:absolute; bottom: -11px; right: 25px; }
+.balloon_wrap { display: none; flex-direction: column; align-items: flex-end; position: fixed; bottom: 125px; right: 50px; cursor: pointer; padding: 10px 0;}
+/* .balloon_wrap:after { border-top: 10px solid #bcdbff; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 0px solid transparent; content:""; position:absolute; bottom: -11px; right: 25px; } */
 .balloon_wrap .new_employee,
-.balloon_wrap .available_btn { display: block; font-size: 1rem; color: #268DFF; border: 1px solid #bcdbff; margin-bottom: .3rem; background: #fff;}
+.balloon_wrap .available_btn { display: block; font-size: 1rem; color: #268DFF; border: 1px solid #268DFF; margin: .3rem 0; background: #fff; padding: 10px; text-align: right; border-radius: 10px; }
 
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
@@ -507,7 +510,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     /* #filter-wrapper { margin: 3rem 8rem 0;} */
     #btnAddCompany,
     .makeCall,
-    .makeCall2  { right: 40px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
+    .makeCall2,
+    .makeCall2.employee_btn { right: 40px; font-size: .7rem; padding: .4rem .5rem; cursor: pointer;}
 }
 
 @media all and (max-width: 1260px) {
@@ -602,6 +606,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     #filterSub #inputKeyword, #filterSub #btnSearch { height: 36px; width: 100%; margin-top: 10px;}
     #filterSub #inputKeyword { padding-left: 1rem;}
     
+    #btnAddCompany.employee_btn,
+    .makeCall2.employee_btn{display: none;}
 
     /* form 추가페이지 반응형 */
     .top-title { margin: 3rem 1.5rem 0;}
@@ -615,7 +621,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .makeCall,
     .makeCall2 { right: 50px; font-size: .7rem; padding: .4rem .6rem;}
     #btnAddCompany { right: 50px; font-size: .7rem;}
-    .write-layout { margin: 100px 1rem;}
+    .write-layout { margin: 0 1rem;}
     
     #header .nav_right { padding-right: 0;}
     .dropdown .dropbtn { padding: 4px 0.3rem;}
@@ -642,6 +648,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .datepicker-view .days .datepicker-cell, .datepicker-view .dow { font-size: 1rem; padding: .4rem; }
     #filterSub #inputKeyword,
     #filterSub #btnSearch { font-size: 1rem; height: 50px;}
+
+    #btnSendCancel, #btnSendCall { font-size: 1.2rem;}
 }
 /* 콜관리 반응형 모바일 */
 @media screen and (max-width: 600px) {
@@ -665,8 +673,16 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .call_top_percentage .datepick .calender, .call_top_percentage .datepick .section_search { margin: 0;}
     .circle { bottom: 15px; right: 15px; width: 60px; height: 60px;}
 
+    .title-main {font-size: 1.5rem;}
+    .btn.btn-option { font-size: 1rem;}
     .form-row .callForm { padding: 0;}
-    .form-row .callForm .callForm-etc #detail { width: 72%;}
+    .form-row .callForm .form-title,
+    .form-row .callForm .form-subtitle { font-size: 1.2rem; }
+    .form-row .row-content td { font-size: 1rem;}
+    .form-row .callForm .callForm-term .workDate { width: 80%; font-size: 1rem;}
+    .form-row .callForm input[type="text"],
+    .form-row .callForm input[type="number"] { width: 95%; padding: 7px 0 7px 10px; font-size: 1rem;}
+    .form-row .callForm .callForm-etc #detail { width: 100%; padding: 0; font-size: 1.2rem; height: 100px;}
     .form-row .callForm .icon-up, .form-row .callForm .icon-down { width: 20px; height: 20px;}
     .form-row .callForm i { position: absolute; left: 3.8px; top: 3px; font-size: 1em;}
     .write-layout { margin: 0;}
@@ -682,6 +698,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     button.btn-call-cancel-modal.btn.btn-small { font-size: 1.5rem; }
     .call_top_percentage .week_btn button { padding: .3rem .1rem;}
     .call_top_percentage .week_btn button { font-size: 1rem;}
+
+    .balloon_wrap {bottom: 75px; right: 15px;}
 
     .paid_price_status {display: none;}
 

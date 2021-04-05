@@ -1,6 +1,9 @@
+from datetime import timedelta
 from flask import Flask, url_for, render_template, request, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, Date
+from functools import wraps
+import os
 
 import database_function
 import call_function
@@ -15,6 +18,7 @@ application.secret_key = "123"
 db = SQLAlchemy(application)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
 login_error_message = "ID: admin, PW: bestgood"
+app.permanent_session_lifetime = timedelta(hours=24)
 
 
 class User(db.Model):
@@ -62,28 +66,40 @@ class EmployeeAvailableDate(db.Model):
     detail = Column(String(500), primary_key=False, nullable=True)
     userID = Column(Integer, primary_key=False, nullable=False)
 
+
 def select_page(page):
     for p in page_list: page_list[p] = None
     page_list[page] = 'selected'
 
 
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if session.get('logged_in'):
+            return f(*args, **kwargs)
+        else:
+            flash('로그인 먼저 해')
+            return redirect(url_for('login'))
+
+    return wrap
+
+
 @application.route('/')
 @application.route('/call')
+@login_required
 def call():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('call')
-        user_id = session.get('user_id')
-        calls = database_function.get_calls(user_id=user_id)
-        call_dict = call_function.calculate_price(calls)
-        return render_template('call/call.html',
-                               calls=calls,
-                               call_dict=call_dict,
-                               page_list=page_list)
+    select_page('call')
+    user_id = session.get('user_id')
+    calls = database_function.get_calls(user_id=user_id)
+    call_dict = call_function.calculate_price(calls)
+    return render_template('call/call.html',
+                           calls=calls,
+                           call_dict=call_dict,
+                           page_list=page_list)
 
 
 @application.route('/call', methods=['POST'])
+@login_required
 def search_call():
     select_page('call')
     if request.method == 'POST':
@@ -106,20 +122,14 @@ def search_call():
 
 
 @application.route('/call/write')
+@login_required
 def call_form():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        return render_template('call/callForm.html',
-                               page_list=page_list)
+    return render_template('call/callForm.html', page_list=page_list)
 
 
 @application.route('/company')
 def company():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('company')
+    select_page('company')
     user_id = session.get('user_id')
     companies = database_function.get_companies(user_id)
     return render_template('company/company.html',
@@ -128,6 +138,7 @@ def company():
 
 
 @application.route('/company', methods=['POST'])
+@login_required
 def search_company():
     select_page('company')
     if request.method == 'POST':
@@ -144,127 +155,96 @@ def search_company():
 
 
 @application.route('/company/view/<company_id>')
+@login_required
 def view_company(company_id):
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('company')
+    select_page('company')
     user_id = session.get('user_id')
     my_company = database_function.get_company(user_id=user_id, company_id=company_id)
-    return render_template('company/view.html',
-                           company=my_company,
-                           page_list=page_list)
+    return render_template('company/view.html', company=my_company, page_list=page_list)
 
 
 @application.route('/company/write')
 def company_form():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        return render_template('company/companyForm.html',
-                               company=None,
-                               page_list=page_list)
+    return render_template('company/companyForm.html', company=None, page_list=page_list)
 
 
 @application.route('/company/write', methods=['POST'])
+@login_required
 def insert_company():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
+    ceo_id = "ceo_id"
+    user_id = session.get('user_id')
+    company_name = request.form['companyName']
+    business_type = request.form['businessType']
+    new_company = Company(user_id, company_name, business_type)
+    # 기존 업체 정보 수정
+    if request.form['companyID']:
+        db.session.add(new_company)
+        return render_template('company/companyForm.html',
+                               page_list=page_list)
+    # 신규 업체 추가
     else:
-        ceo_id = "ceo_id"
-        user_id = session.get('user_id')
-        company_name = request.form['companyName']
-        business_type = request.form['businessType']
-        new_company = Company(user_id, company_name, business_type)
-        # 기존 업체 정보 수정
-        if request.form['companyID']:
-            db.session.add(new_company)
-            return render_template('company/companyForm.html',
-                                   page_list=page_list)
-        # 신규 업체 추가
-        else:
-            db.session.add(new_company)
-            return render_template('company/companyForm.html',
-                                   page_list=page_list)
+        db.session.add(new_company)
+        return render_template('company/companyForm.html',
+                               page_list=page_list)
 
 
 @application.route('/employee')
+@login_required
 def employee():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('employee')
+    select_page('employee')
     employees = database_function.get_employees()
-    return render_template('employee/employee.html',
-                           employees=employees,
-                           page_list=page_list)
+    return render_template('employee/employee.html', employees=employees, page_list=page_list)
 
 
 @application.route('/employee/write')
+@login_required
 def employee_form():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('employee')
-        return render_template('employee/employee_write.html',
-                               page_list=page_list)
+    select_page('employee')
+    return render_template('employee/employee_write.html', page_list=page_list)
 
 
 @application.route('/employee/view/<employee_id>')
+@login_required
 def view_employee(employee_id):
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('employee')
-        user_id = session.get('user_id')
-        work_field = Workfield.query.filter_by(userID=user_id)
-        address = Address.query.filter_by(userID=user_id)
-        black_list = Blacklist.query.filter_by(userID=user_id, employeeID=employee_id)
-        available_date_list = EmployeeAvailableDate.query.filter_by(userID=user_id, employeeID=employee_id)
-        my_employee = database_function.get_employee(user_id=user_id, employee_id=employee_id)
-        print(my_employee)
-        return render_template('employee/employee_view.html',
-                               employee=my_employee,
-                               action='update',
-                               work_field_list=work_field,
-                               address_list=address,
-                               black_list=black_list,
-                               available_date_list = available_date_list,
-                               page_list=page_list)
+    select_page('employee')
+    user_id = session.get('user_id')
+    work_field = Workfield.query.filter_by(userID=user_id)
+    address = Address.query.filter_by(userID=user_id)
+    black_list = Blacklist.query.filter_by(userID=user_id, employeeID=employee_id)
+    available_date_list = EmployeeAvailableDate.query.filter_by(userID=user_id, employeeID=employee_id)
+    my_employee = database_function.get_employee(user_id=user_id, employee_id=employee_id)
+    print(my_employee)
+    return render_template('employee/employee_view.html',
+                           employee=my_employee,
+                           action='update',
+                           work_field_list=work_field,
+                           address_list=address,
+                           black_list=black_list,
+                           available_date_list=available_date_list,
+                           page_list=page_list)
 
 
 @application.route('/employee/available')
+@login_required
 def employee_available():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('employeeAvailable')
-    return render_template('employee/employeeAvailable.html',
-                           page_list=page_list)
+    select_page('employeeAvailable')
+    return render_template('employee/employeeAvailable.html', page_list=page_list)
 
 
 @application.route('/manage')
+@login_required
 def manage():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        select_page('black')
-        user_id = session.get('user_id')
-        companies = database_function.get_companies(user_id=user_id)
-        return render_template('manage/black.html',
-                               companies=companies,
-                               page_list=page_list)
+    select_page('black')
+    user_id = session.get('user_id')
+    companies = database_function.get_companies(user_id=user_id)
+    return render_template('manage/black.html', companies=companies, page_list=page_list)
 
 
 @application.route('/ceo/<ceo_id>')
+@login_required
 def show_ceo(ceo_id):
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    else:
-        ceo = database_function.get_ceo(ceo_id)
-    return render_template('ceo/ceo.html',
-                           ceo=ceo,
-                           page_list=page_list)
+    ceo = database_function.get_ceo(ceo_id)
+    return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
 
 
 @application.route('/login')
@@ -307,6 +287,7 @@ def login_check():
 
 
 @application.route("/logout")
+@login_required
 def logout():
     session['logged_in'] = False
     session['user_id'] = None
