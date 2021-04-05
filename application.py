@@ -1,26 +1,32 @@
 from datetime import timedelta
 from flask import Flask, url_for, render_template, request, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, Date
+from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, Date, ForeignKey
+from sqlalchemy.orm import sessionmaker
 from functools import wraps
-import os
 
 import database_function
 import call_function
 import company_function
 import secret
 
+# Default Settings
 application = app = Flask(__name__)
-application.config['SQLALCHEMY_DATABASE_URI'] = \
-    'mysql+pymysql://{user}:{password}@{host}/{db}'.format(user=secret.user, password=secret.password,
-                                                           host=secret.host, db=secret.db)
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{host}/{db}'.format(
+    user=secret.user,
+    password=secret.password,
+    host=secret.host,
+    db=secret.db)
 application.secret_key = "123"
 db = SQLAlchemy(application)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
 login_error_message = "ID: admin, PW: bestgood"
 app.permanent_session_lifetime = timedelta(hours=24)
 
+Session = sessionmaker()
 
+
+# Database Classes
 class User(db.Model):
     userID = Column(Integer, primary_key=True, nullable=False)
     userName = Column(String(20), primary_key=False, nullable=False)
@@ -34,6 +40,12 @@ class Company(db.Model):
     ceoID = Column(Integer, primary_key=False, nullable=False)
     businessType = Column(Integer, primary_key=False, nullable=False)
     companyName = Column(Integer, primary_key=False, nullable=False)
+
+
+class Employee(db.Model):
+    employeeID = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    employeeName = Column(String(20))
+    sex = Column(String(10))
 
 
 class Workfield(db.Model):
@@ -50,8 +62,8 @@ class Address(db.Model):
 
 class Blacklist(db.Model):
     blackListID = Column(Integer, primary_key=True, nullable=False)
-    companyID = Column(Integer, primary_key=False, nullable=False)
-    employeeID = Column(Integer, primary_key=False, nullable=False)
+    companyID = Column(Integer, ForeignKey(Company.companyID))
+    employeeID = Column(Integer, ForeignKey(Employee.employeeID))
     detail = Column(String(100), primary_key=False, nullable=True)
     ceoReg = Column(Boolean, primary_key=False, nullable=False)
     createdTime = Column(TIMESTAMP, primary_key=False, nullable=False)
@@ -210,10 +222,18 @@ def view_employee(employee_id):
     user_id = session.get('user_id')
     work_field = Workfield.query.filter_by(userID=user_id)
     address = Address.query.filter_by(userID=user_id)
-    black_list = Blacklist.query.filter_by(userID=user_id, employeeID=employee_id)
+
+    # black_list = session.query(Blacklist, Company).outerjoin(Company)
+
+    black_list = Blacklist.query\
+        .outerjoin(Company) \
+        .with_entities(Company.companyName)\
+        .filter_by(userID=user_id) \
+        # .filter(Blacklist.employeeID == employee_id)
+    print(black_list)
     available_date_list = EmployeeAvailableDate.query.filter_by(userID=user_id, employeeID=employee_id)
     my_employee = database_function.get_employee(user_id=user_id, employee_id=employee_id)
-    print(my_employee)
+
     return render_template('employee/employee_view.html',
                            employee=my_employee,
                            action='update',

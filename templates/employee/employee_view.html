@@ -12,7 +12,7 @@
         <div class="form-style-1">
             <form id="formInsertEmployee" action="" method="post">
                 <fieldset>
-
+                    <!--POST 전송 시 작업, 파라미터-->
                     <input type="hidden" name="action" value="{{action}}">
                     <input type="hidden" name="employeeID" value="{{employee['employeeID']}}">
 
@@ -22,7 +22,9 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     성명
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up">
+                                        <i class="fas fa-chevron-up"></i>
+                                    </button>
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" name="employeeName" required autofocus
@@ -70,7 +72,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <!--업종-->
                     <div class="form-row">
@@ -147,7 +148,6 @@
                                         <option value="{{address.address}}"></option>
                                         {% endfor %}
                                     </datalist>
-
                                     <h2 class="form-subtitle">
                                         상세주소
                                     </h2>
@@ -259,6 +259,7 @@
                                         {% for black in black_list %}
                                         <tr>
                                             <td>
+                                                {{black['companyName']}}
                                                 {{black['companyID']}}
                                             </td>
                                             <td>
@@ -334,7 +335,6 @@
                                 </h2>
                                 <div class="row-content">
                                     <input type="date" id="startDate" name="startDate" required>
-
                                     <h2 class="form-subtitle">
                                         가입만기일
                                     </h2>
@@ -391,6 +391,7 @@
                         </div>
                     </div>
 
+                    <!--제출 버튼-->
                     <div class="btn-area">
                         <a class="btn btn-default" href=''>취소</a>
                         <button class="btn btn-{{'insert' if employee else 'submit'}}"
@@ -515,6 +516,9 @@
             $('.day').prop('required', false);
         }
     });
+
+
+
 
 
 
