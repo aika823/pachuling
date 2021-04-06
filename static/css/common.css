@@ -350,7 +350,9 @@ label { color:rgba(0, 0, 0, 0.5)}
 .btn-group.al_r .btn-submit {background: #268DFF; color: white;}
 .btn-group.al_r .btn-submit:hover { background: #3f99ff; color: white; font-weight: 500;}
 .btn-group .search-input { width: 280px; border: 1px solid #dbdbdb; vertical-align: middle; padding: .4rem .6rem;}
-.btn-group.group2 { display: inline;}
+.btn-group.group2 { display: flex;}
+.btn-group.group2 form { padding: 0 5px;}
+.pagination { display: flex; justify-content: center;}
 
 /* 추가하기 페이지 레이아웃 */
 .write-layout { margin: 0 8rem 1rem; background: #fff; padding: 0 0 43px 0;}
@@ -447,9 +449,11 @@ label { color:rgba(0, 0, 0, 0.5)}
 .grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 8% 8% 9% 7%; border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
 .grid-style.companyTable { display: grid; align-items: center; grid-template-columns: 7% 1fr 12% 12% 10% 15% 10% 7% 7%;}
 .grid-style.employeeTable { display: grid; align-items: center; grid-template-columns: 10% 10% 10% 14% 10% 1fr 10% 7% 7%;}
+.grid-style.blackTable { display: grid; align-items: center; grid-template-columns: 15% 15% 15% 1fr 10%;}
 .grid-style .call.call-order,
 .grid-style.companyTable .com-div,
-.grid-style.employeeTable .com-th { background: #268DFF; color: #fff; padding: 15px 20px;}
+.grid-style.employeeTable .com-th,
+.grid-style.blackTable .com-div { background: #268DFF; color: #fff; padding: 15px 20px;}
 .grid-style .round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
 .grid-style .round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
 .grid-style .cell,
