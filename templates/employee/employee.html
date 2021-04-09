@@ -6,29 +6,31 @@
 
 <div class="board-list auto-center">
     <form id="formRefresh" action="" method="post">
-        <input type="hidden" name="action"      value="refresh">
-        <input type="hidden" name="filter"      value="<?php echo $_POST['filter']?>">
-        <input type="hidden" name="keyword"     value="<?php echo $_POST['keyword']?>">
-        <input type="hidden" name="order"       value="<?php echo $_POST['order']?>">
-        <input type="hidden" name="direction"   value="<?php echo $_POST['direction']?>">
+        <input type="hidden" name="action" value="refresh">
+        <input type="hidden" name="filter" value="<?php echo $_POST['filter']?>">
+        <input type="hidden" name="keyword" value="<?php echo $_POST['keyword']?>">
+        <input type="hidden" name="order" value="<?php echo $_POST['order']?>">
+        <input type="hidden" name="direction" value="<?php echo $_POST['direction']?>">
     </form>
 
     <div id="filter-wrapper">
         <div id="filterMain">
             <button type="button" class="filter btn btn-default <?php echo $select['all'] ?>" id="filter-all">
-                전체 : 
+                전체 :
             </button>
-            <button type="button" class="filter btn btn-default <?php echo $select['activated'] ?>" id="filter-activated">
-                활성화 : 
+            <button type="button" class="filter btn btn-default <?php echo $select['activated'] ?>"
+                    id="filter-activated">
+                활성화 :
             </button>
             <button type="button" class="filter btn btn-default <?php echo $select['imminent'] ?>" id="filter-imminent">
-                만기임박 : 
+                만기임박 :
             </button>
-            <button type="button" class="filter btn btn-default <?php echo $select['deactivated'] ?>" id="filter-deactivated">
-                만기 : 
+            <button type="button" class="filter btn btn-default <?php echo $select['deactivated'] ?>"
+                    id="filter-deactivated">
+                만기 :
             </button>
             <button type="button" class="filter btn btn-default <?php echo $select['deleted'] ?>" id="filter-deleted">
-                삭제 : 
+                삭제 :
             </button>
         </div>
 

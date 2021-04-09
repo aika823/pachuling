@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="top-title">
-    <h1 class="title-main">구직자정보</h1>
+    <h1 class="title-main">{{employee.employeeName}}</h1>
 </div>
 
 <h1></h1>
@@ -29,6 +29,8 @@
                                            value="{{employee['employeeName']}}" placeholder="성명">
                                 </div>
                             </div>
+                            <!--중복 확인-->
+                            <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
                         </div>
                     </div>
 
@@ -41,7 +43,8 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="text" list="sexList" name="sex" required autofocus value="{{employee['sex']}}">
+                                    <input type="text" list="sexList" name="sex" required autofocus
+                                           value="{{employee['sex']}}">
                                     <datalist id="sexList" class="input-field">
                                         <option value="여"></option>
                                         <option value="남"></option>
@@ -60,13 +63,14 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="date" name="birthDate" size="20" required autofocus style="font-size: 15px; line-height: 0.8; padding: 5px 10px;" value="{{employee['birthDate']}}">
+                                    <input type="date" name="birthDate" size="20" required autofocus
+                                           style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
+                                           value="{{employee['birthDate']}}">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
 
                     <!--업종-->
                     <div class="form-row">
@@ -77,11 +81,14 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="text" list="workFieldList" name="workField1" size="20" required value="{{employee['workField1']}}" placeholder="업종1">
+                                    <input type="text" list="workFieldList" name="workField1" size="20" required
+                                           value="{{employee['workField1']}}" placeholder="업종1">
                                     <h2 class="form-subtitle">업종2</h2>
-                                    <input type="text" list="workFieldList" name="workField1" size="20" required value="{{employee['workField2']}}" placeholder="업종2">
+                                    <input type="text" list="workFieldList" name="workField1" size="20" required
+                                           value="{{employee['workField2']}}" placeholder="업종2">
                                     <h2 class="form-subtitle">업종3</h2>
-                                    <input type="text" list="workFieldList" name="workField1" size="20" required value="{{employee['workField3']}}" placeholder="업종3">
+                                    <input type="text" list="workFieldList" name="workField1" size="20" required
+                                           value="{{employee['workField3']}}" placeholder="업종3">
                                     <datalist id="workFieldList" class="input-field">
                                         {% for work_field in work_field_list %}}
                                         <option value="{{work_field.workField}}"></option>
@@ -101,7 +108,8 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="text" name="employeePhoneNumber" size="20" required value="{{employee['employeePhoneNumber']}}" placeholder="010-XXXX-XXXX">
+                                    <input type="text" name="employeePhoneNumber" size="20" required
+                                           value="{{employee['employeePhoneNumber']}}" placeholder="010-XXXX-XXXX">
                                 </div>
                             </div>
                         </div>
@@ -116,7 +124,8 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="text" list="addressList" name="workPlace" value="{{workPlace}}" placeholder="청담">
+                                    <input type="text" list="addressList" name="workPlace" value="{{workPlace}}"
+                                           placeholder="청담">
                                 </div>
                             </div>
                         </div>
@@ -160,7 +169,7 @@
                                 </h2>
                                 <div class="row-content">
                                     <input type="text" list="languageList" name="language" size="2"
-                                           value="<?php if (isset($this->employeeData['language'])) echo $this->employeeData['language']; else echo " 상"; ?>">
+                                           value="{{employee['language']}}">
                                     <datalist id="languageList" class="input-field">
                                         <option value="상"></option>
                                         <option value="중"></option>
@@ -180,9 +189,7 @@
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
-                                    <input type="text" name="grade" size="20"
-                                           value="<?php if (isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "
-                                           100"; ?>">
+                                    <input type="text" name="grade" size="20" value="{{employee['grade']}}">
                                 </div>
                             </div>
                         </div>
@@ -197,9 +204,9 @@
                                         비고
                                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                     </h2>
-                                    <textarea class="textarea-detail" name="detail" id="detail"
-                                              required><?php echo $this->
-                                        get_detail($this->employeeData,'employee');?></textarea>
+                                    <textarea class="textarea-detail" name="detail" id="employee_detail" required>
+                                        {{employee['detail']}}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
@@ -208,12 +215,11 @@
                     <!--근무가능요일-->
                     <div class="callForm-flex em">
                         <div>
-                            <?php require_once 'employeeAvailableDayTable.php' ?>
                         </div>
                     </div>
 
                     <!--삭제비고-->
-                    <?php if ($this->employeeData['actCondition'] == "삭제됨") : ?>
+                    {% if employee['deleted'] %}
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
@@ -222,16 +228,17 @@
                                         삭제비고
                                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                     </h2>
-                                    <textarea name="deleteDetail" id="detail"><?php echo $this->
-                                        employeeData['deleteDetail']; ?></textarea>
+                                    <textarea name="deleteDetail" id="detail">
+                                        {{ employee['deleteDetail'] }}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php endif; ?>
+                    {% endif %}
 
                     <!--블랙리스트-->
-                    <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
+                    {% if black_list %}
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
@@ -249,32 +256,29 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($this->blackList as $data) { ?>
+                                        {% for black in black_list %}
                                         <tr>
                                             <td>
-                                                <?php echo $this->companyName($data['companyID']) ?>
+                                                {{black['companyID']}}
                                             </td>
                                             <td>
-                                                <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
+                                                {{ '오지마세요' if black['ceoReg'] else '안가요' }}
                                             </td>
-                                            <td class="<?php echo $data['detail'] ? 'al_l' : 'al_c'?>">
-                                                <?php echo $data['detail'] ? $data['detail'] : '-'; ?>
+                                            <td class="{{ 'al_l' if black['detail'] else 'al_c' }}">
+                                                {{ black['detail'] if black['detail'] else '-' }}
                                             </td>
                                         </tr>
-                                        <?php } ?>
-                                        <tr>
-
-                                        </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
 
                     <!--근무희망일-->
-                    <?php endif; ?>
-                    <?php if (($this->param->action == 'view') && (sizeof($availableDateArray) > 0)): ?>
+                    {% if available_date_list %}
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
@@ -292,33 +296,30 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($availableDateArray as $value) { ?>
+                                        {% for available_date in available_date_list %}
                                         <tr>
                                             <td>
-                                                <?php echo $value['availableDate'] > 0 ? $value['availableDate'] :
-                                                $value['notAvailableDate'] ?>
+                                                {{ available_date['availableDate'] }}
+                                                {{ available_date['notAvailableDate'] }}
                                             </td>
                                             <td>
-                                                <?php echo $value['availableDate'] > 0 ? "일 주세요" : "못가요"; ?>
+                                                {{ '일 주세요' if available_date['availableDate'] else '못가요' }}
                                             </td>
-                                            <td class="<?php echo $value['detail'] ? 'al_l' : 'al_c'?>">
-                                                <?php echo $value['detail'] ? $value['detail'] : '-'; ?>
+                                            <td class="{{ 'al_l' if available_date['detail'] else 'al_c' }} ">
+                                                {{ available_date['detail'] if available_date['detail'] else '-' }}
                                             </td>
                                         </tr>
-                                        <?php } ?>
-                                        <tr>
-
-                                        </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <?php endif; ?>
                     </div>
+                    {% endif %}
+
 
                     <!--가입정보-->
-                    <?php if (!isset($this->param->idx)) : ?>
                     <div class="middle-title">
                         <h1 class="title-main">가입 정보</h1>
                     </div>
@@ -348,12 +349,10 @@
                         <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('today')"
                                 style="width: 100px; margin: 23px 0;">오늘부터
                         </button>
-                        <?php if ($this->param->action != 'write'): ?>
                         <button type="button" class="btn btn-option"
                                 onclick="auto_insert_employee_join('extend')"
                                 style="width: 100px;">가입연장
                         </button>
-                        <?php endif; ?>
                     </div>
 
                     <!--가입금액-->
@@ -392,11 +391,11 @@
                         </div>
                     </div>
 
-                    <?php endif; ?>
                     <div class="btn-area">
-                        <a class="btn btn-default" href='<?php echo $this->param->get_page ?>'>취소</a>
-                        <button class="btn btn-<?php echo ($this->param->action == 'write') ? 'insert' : 'submit' ?>"
-                                type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?>
+                        <a class="btn btn-default" href=''>취소</a>
+                        <button class="btn btn-{{'insert' if employee else 'submit'}}"
+                                type="submit">
+                            {{'수정' if employee else '추가'}}
                         </button>
                     </div>
                 </fieldset>
@@ -516,6 +515,17 @@
             $('.day').prop('required', false);
         }
     });
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,22 +9,38 @@
     <div class="board-write auto-center">
         <div class="form-style-1">
             <form id="formInsertEmployee" action="" method="post">
-                <input type="hidden" name="action" value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
-                <input type="hidden" name="employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
-
-                <div class="form-row">
-                    <div class="callForm">
-                        <div class="row-in-row">
-                            <h2 class="form-title">
-                                성명
-                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
-                            <div class="row-content">
-                                <input type="text" name="employeeName" required autofocus
-                                        value="<?php echo $this->employeeData['employeeName']; ?>" placeholder="성명">
+                    <input type="hidden" name="action" value="">
+                    <input type="hidden" name="employeeID" value="">
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    성명
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="employeeName" required autofocus placeholder="성명">
+                                </div>
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
+
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    성별
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="sexList" name="sex" required autofocus>
+                                    <datalist id="sexList" class="input-field">
+                                        <option value="여"></option>
+                                        <option value="남"></option>
+                                    </datalist>
+                                </div>
+=======
                 </div>
 
                 <div class="form-row">
@@ -42,6 +58,7 @@
                                     <option value="여"></option>
                                     <option value="남"></option>
                                 </datalist>
+>>>>>>> 20c21758dfd1d4a14fa1c7758f1d7c9eddabe0f2
                             </div>
                         </div>
                     </div>
@@ -524,6 +541,7 @@
             $('.day').prop('required', false);
         }
     });
+
 
 </script>
 

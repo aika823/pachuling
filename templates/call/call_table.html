@@ -18,7 +18,7 @@
             <div class="date">{{call['workDate']}}</div>
             <div class="time">{{call['startTime']}} ~ {{call['endTime']}}</div>
             <div data-th="상호명" class="cell company">{{call['companyName'] | safe}}</div>
-            <div data-th="업종" class="cell job">{{call['workField'] | safe}}</div>
+            <div data-th="업종" class="cell job">{{call['workfield'] | safe}}</div>
             <div data-th="요청사항" class="cell v_pc etc">{{call['detail'] | safe}}</div>
             <div data-th="일당" class="cell wage">{{call['price'] | safe}}</div>
             <div data-th="콜비" class="cell call_fee btn-join-cancel-modal">{{call['salary'] | safe}}</div>
