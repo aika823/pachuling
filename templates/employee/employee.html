@@ -3,43 +3,51 @@
 {% block content %}
 
 {% include 'modal.html' %}
-<form id="formRefresh" action="" method="post">
-    <input type="hidden" name="action"      value="refresh">
-    <input type="hidden" name="filter"      value="<?php echo $_POST['filter']?>">
-    <input type="hidden" name="keyword"     value="<?php echo $_POST['keyword']?>">
-    <input type="hidden" name="order"       value="<?php echo $_POST['order']?>">
-    <input type="hidden" name="direction"   value="<?php echo $_POST['direction']?>">
-</form>
-
-<div id="filter-wrapper">
-  <div id="filterMain">
-      <button type="button" class="filter btn btn-default <?php echo $select['all'] ?>" id="filter-all">
-          전체 : 
-      </button>
-      <button type="button" class="filter btn btn-default <?php echo $select['activated'] ?>" id="filter-activated">
-          활성화 : 
-      </button>
-      <button type="button" class="filter btn btn-default <?php echo $select['imminent'] ?>" id="filter-imminent">
-          만기임박 : 
-      </button>
-      <button type="button" class="filter btn btn-default <?php echo $select['deactivated'] ?>" id="filter-deactivated">
-          만기 : 
-      </button>
-      <button type="button" class="filter btn btn-default <?php echo $select['deleted'] ?>" id="filter-deleted">
-          삭제 : 
-      </button>
-  </div>
-
-  <form id="filterSub" method="post">
-      <input type="text" id="inputKeyword" name="keyword" placeholder="검색할 내용을 입력하세요" value="">
-      <button class="btn btn-submit" type="submit" id="btnSearch">검색</button>
-      <button type="button" id="btnAddCompany" class="btn btn-insert" onClick="location.href='employee/write'">신규 추가</button>
-      <a class="makeCall2" href="employee/available">근무 가능일/불가능일</a>
-  </form>
-</div>
 
 <div class="board-list auto-center">
-  {% include "employee/employee_table.html" %}
+    <form id="formRefresh" action="" method="post">
+        <input type="hidden" name="action"      value="refresh">
+        <input type="hidden" name="filter"      value="<?php echo $_POST['filter']?>">
+        <input type="hidden" name="keyword"     value="<?php echo $_POST['keyword']?>">
+        <input type="hidden" name="order"       value="<?php echo $_POST['order']?>">
+        <input type="hidden" name="direction"   value="<?php echo $_POST['direction']?>">
+    </form>
+
+    <div id="filter-wrapper">
+        <div id="filterMain">
+            <button type="button" class="filter btn btn-default <?php echo $select['all'] ?>" id="filter-all">
+                전체 : 
+            </button>
+            <button type="button" class="filter btn btn-default <?php echo $select['activated'] ?>" id="filter-activated">
+                활성화 : 
+            </button>
+            <button type="button" class="filter btn btn-default <?php echo $select['imminent'] ?>" id="filter-imminent">
+                만기임박 : 
+            </button>
+            <button type="button" class="filter btn btn-default <?php echo $select['deactivated'] ?>" id="filter-deactivated">
+                만기 : 
+            </button>
+            <button type="button" class="filter btn btn-default <?php echo $select['deleted'] ?>" id="filter-deleted">
+                삭제 : 
+            </button>
+        </div>
+
+        <form id="filterSub" method="post">
+            <input type="text" id="inputKeyword" name="keyword" placeholder="검색할 내용을 입력하세요" value="">
+            <button class="btn btn-submit" type="submit" id="btnSearch">검색</button>
+            <button type="button" id="btnAddCompany" class="btn btn-insert employee_btn" onClick="location.href='employee/write'">신규 추가</button>
+            <a class="makeCall2 employee_btn" href="employee/available">근무 가능일/불가능일</a>
+        </form>
+    </div>
+
+    <div class="inline scroll_tbody call">
+        <h2 class="strikethrough_title v_mobile">
+            <span class="title_text">
+                구직자 목록
+            </span>
+        </h2>
+        {% include "employee/employee_table.html" %}
+    </div>
 </div>
 
 {% endblock %}

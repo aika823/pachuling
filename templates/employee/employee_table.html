@@ -1,56 +1,71 @@
-<table id="employee_table" width="100%">
-    <colgroup>
-        <!-- <col width="5%"> -->
-        <col width="15%">
-        <col width="10%">
-        <col width="10%">
-        <col width="15%">
-        <col width="8%">
-        <col width="auto">
-        <col width="5%">
-        <col width="5%">
-        <col width="5%">
-    </colgroup>
-    <thead>
-    <tr>
-        <!-- <th class="order link"  id="refresh-employeeID"> #</th> -->
-        <th class="order link com-th al_l first" id="refresh-employeeName"> 성명</th>
-        <th class="order link com-th al_l" id="refresh-address"> 간단주소</th>
-        <th class="order link com-th al_l" id="refresh-birthDate"> 연령</th>
-        <th class="order link com-th al_l" id="refresh-employeePhoneNumber"> 전화번호</th>
-        <th class="com-th">주간배정</th>
-        <th class="order link com-th al_l" id="refresh-imminent"> 비고</th>
-        <th class="order link com-th" id="refresh-grade"> 점수</th>
-        <th class="order com-th" id="refresh-bookmark"><span class="link fa fa-star"></span></th>
-        <th class="order com-th last" id="refresh-deleted"> X</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for employee in employees %}
-    <tr class="tr-employee" id="{{employeeID}}">
-        <td class="al_l">
+<div class="grid-style employeeTable v_pc">
+    <!-- <th class="order link"  id="refresh-employeeID"> #</th> -->
+    <div class="order link com-th al_l round1" id="refresh-employeeName"> 성명</div>
+    <div class="order link com-th al_l" id="refresh-address"> 간단주소</div>
+    <div class="order link com-th al_l" id="refresh-birthDate"> 연령</div>
+    <div class="order link com-th al_l" id="refresh-employeePhoneNumber"> 전화번호</div>
+    <div class="com-th">주간배정</div>
+    <div class="order link com-th al_l" id="refresh-imminent"> 비고</div>
+    <div class="order link com-th" id="refresh-grade"> 점수</div>
+    <div class="order com-th" id="refresh-bookmark"><span class="link fa fa-star"></span></div>
+    <div class="order com-th round2" id="refresh-deleted"> X</div>
+</div>
+
+<div id="employee_table">
+{% for employee in employees %}
+    <div class="grid-style grid-wrapper employeeTable">
+        <div class="cell" data-th="구직자">
             <a href="employee/view/{{employeeID}}">
                 {{employee['employeeName']}}
             </a>
-        </td>
-        <td class="al_l">{{employee['address']}}</td>
-        <td class="al_l"><?php echo getAge($data['birthDate'])."세" ?></td>
-        <td class="al_l">{{employee['employeePhoneNumber']}}</td>
-        <td class="al_c">
-<!--            <?php echo sizeof($this->model->getTable("SELECT * FROM `call` WHERE `employeeID` =-->
-<!--            '{$data['employeeID']}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE(),1) " )); ?>회-->
-        </td>
-        <td class="al_l">
-<!--            <?php echo $this->imminent_check('employee',$data);?>-->
-        </td>
-        <td class="al_c">{{employee['grade']}}점</td>
-        <td>
-            <span class="fa fa-star selectable <?php echo ($data['bookmark'] == 1) ? 'checked' : 'unchecked' ?>"
-                  id="<?php echo $data['employeeID'] ?>">
-            </span>
-        </td>
-        <td class="al_c"></td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </div>
+        <div data-th="간단주소" class="cell">{{employee['address']}}</div>
+        <div data-th="연령" class="cell"><?php echo getAge($data['birthDate'])."세" ?></div>
+        <div data-th="전화번호" class="cell">{{employee['employeePhoneNumber']}}</div>
+        <div data-th="주간배정" class="cell">
+    <!--            <?php echo sizeof($this->model->getTable("SELECT * FROM `call` WHERE `employeeID` =-->
+    <!--            '{$data['employeeID']}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE(),1) " )); ?>회-->
+        </div>
+        <div data-th="비고" class="cell">
+    <!--            <?php echo $this->imminent_check('employee',$data);?>-->
+        </div>
+        <div data-th="점수" class="cell">{{employee['grade']}}점</div>
+        <div class="cell v_pc"><span class="fa fa-star selectable "></span></div>
+        <div class="cancel">
+            <button type="button" class="btn-call-cancel-modal btn btn-small" id="">
+                <!-- 취소 -->
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<!-- <button class="circle balloon v_mobile" onClick="location.href='employee/employeeForm'"> -->
+<button class="circle balloon v_mobile">
+    <i class="fas fa-plus"></i>
+</button>
+
+<div class="balloon_wrap">
+    <div class="add-new">
+        <a class="new_employee" href="employee/write">신규 추가</a>
+    </div>
+    <div class="add-available">
+        <a class="available_btn" href="employee/available">근무 가능일/불가능일</a>
+    </div>
+</div>
+
+<script>
+    $('.balloon').click(function(){
+        $('.balloon_wrap').css('display', 'flex', function(){
+            
+        });
+    });
+    
+    $(document).mouseup(function (e){
+        var container = $('.balloon_wrap');
+        if( container.has(e.target).length === 0){
+            container.css('display','none');
+        }
+    });
+</script>

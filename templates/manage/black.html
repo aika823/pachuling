@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="board-write auto-center">
+<div class="board-list auto-center">
     <button class="makeCall" id="btnAddBlacklist">블랙리스트 추가</button>
     <!--블랙리스트 추가 폼-->
     <div id="modalBlack" class="modal">
@@ -87,91 +87,81 @@
         </div>
         <!--블랙리스트 검색 폼-->
         <div class="btn-group">
-            <form action="" method="post" style="width: 100%;">
+            <form action="" method="post" id="filterSub" style="width: 100%;">
                 <input type="text" name="search" class="search-input"
                 placeholder="검색어를 입력하세요">
                 <input type="submit" class="btn btn-submit search" value="검색">
             </form>
         </div>
     </div>
-    <!--블랙리스트 테이블-->
-    <table id="blackListTable" width="100%">
-        <colgroup>
-        <!-- <col width="5%"> -->
-        <col width="10%">
-        <col width="20%">
-            <col width="10%">
-            <col width="auto">
-            <col width="5%">
-        </colgroup>
-        <thead>
-        <tr>
+    <div class="inline scroll_tbody call">
+        <h2 class="strikethrough_title v_mobile">
+            <span class="title_text">
+                블랙리스트 목록
+            </span>
+        </h2>
+        <!--블랙리스트 테이블-->
+        <div class="grid-style blackTable">
             <!-- <th class="order link" id="refresh-blackListID">#</th> -->
-            <th class="order link com-th al_l first" id="refresh-employeeName">성명</th>
-            <th class="order link com-th al_l" id="refresh-companyName">상호명</th>
-            <th class="order link com-th" id="refresh-ceoReg">구분</th>
-            <th class="order link com-th" id="refresh-detail">비고</th>
-            <th class="com-th last">삭제</th>
-        </tr>
-        </thead>
-        <tbody>
+            <div class="order link com-div al_l first round1" id="refresh-employeeName">성명</div>
+            <div class="order link com-div al_l" id="refresh-companyName">상호명</div>
+            <div class="order link com-div" id="refresh-ceoReg">구분</div>
+            <div class="order link com-div" id="refresh-detail">비고</div>
+            <div class="com-div round2">삭제</div>
+        </div>
         <?php foreach ($black as $key => $data): ?>
-            <tr>
-                <!-- <td class="al_c"><?php echo $data['blackListID'] ?></td> -->
-                <td class="al_l link"
-                    onClick='location.href="<?php echo _URL . "employee/view/{$data['employeeID']}" ?>"'>
-                  <?php echo $data['employeeName'] ?>
-                </td>
-                <td class="al_l link"
-                    onClick='location.href="<?php echo _URL . "company/view/{$data['companyID']}" ?>"'>
-                  <?php echo $data['companyName'] ?>
-                </td>
-                <td class="al_c"><?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요' ?></td>
-                <td class="al_l"><?php echo ($data['detail']) ? $data['detail'] : '-' ?></td>
-                <td class="al_c">
-                    <button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID'] ?>">
-                        삭제
-                    </button>
-                </td>
-            </tr>
-        <?php endforeach ?>
-        </tbody>
-    </table>
-    <!--페이지네이션-->
-    <div class="al_c" style="margin-top: 10px;">
-      <?php if ($page > 1) : ?>
-          <form action="" method="post">
-              <input type="hidden" name="page" value=1>
-              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
-              <input class="btn btn-option" type="submit" value="처음으로">
-          </form>
-          <form action="" method="post">
-              <input type="hidden" name="page" value=<?php echo $page - 1 ?>>
-              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
-              <input class="btn btn-option" type="submit" value="<">
-          </form>
-      <?php endif; ?>
-      
-      <?php for ($i = $start_loop; $i <= $end_loop; $i++): ?>
-          <form action="" method="post">
-              <input type="hidden" name="page" value="<?php echo $i ?>">
-              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
-              <input class="btn btn-option <?php echo $selected_page[$i] ?>" type="submit" value="<?php echo $i ?>">
-          </form>
-      <?php endfor; ?>
-      
-      <?php if (($page < $total_pages)): ?>
-          <form action="" method="post">
-              <input type="hidden" name="page" value="<?php echo $page + 1 ?>">
-              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
-              <input class="btn btn-option" type="submit" value=">">
-          </form>
-          <form action="" method="post">
-              <input type="hidden" name="page" value="<?php echo $total_pages ?>">
-              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
-              <input class="btn btn-option" type="submit" value="마지막으로">
-          </form>
-      <?php endif; ?>
+        <div id="blackListTable">
+                <div class="grid-style grid-wrapper blackTable">
+                    <!-- <td class="al_c"><?php echo $data['blackListID'] ?></td> -->
+                    <div class="al_l link" onClick='location.href="<?php echo _URL . "employee/view/{$data['employeeID']}" ?>"'><?php echo $data['employeeName'] ?></div>
+                    <div class="al_l link" onClick='location.href="<?php echo _URL . "company/view/{$data['companyID']}" ?>"'><?php echo $data['companyName'] ?></div>
+                    <div class="al_c"><?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요' ?></div>
+                    <div class="al_l"><?php echo ($data['detail']) ? $data['detail'] : '-' ?></div>
+                    <div class="al_c">
+                        <button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID'] ?>">
+                            삭제
+                        </button>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    
+        <!--페이지네이션-->
+        <div class="al_c pagination" style="margin-top: 10px;">
+        <?php if ($page > 1) : ?>
+            <form action="" method="post">
+                <input type="hidden" name="page" value=1>
+                <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
+                <input class="btn btn-option" type="submit" value="처음으로">
+            </form>
+            <form action="" method="post">
+                <input type="hidden" name="page" value=<?php echo $page - 1 ?>>
+                <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
+                <input class="btn btn-option" type="submit" value="<">
+            </form>
+        <?php endif; ?>
+        
+        <?php for ($i = $start_loop; $i <= $end_loop; $i++): ?>
+            <form action="" method="post">
+                <input type="hidden" name="page" value="<?php echo $i ?>">
+                <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
+                <input class="btn btn-option <?php echo $selected_page[$i] ?>" type="submit" value="<?php echo $i ?>">
+            </form>
+        <?php endfor; ?>
+        
+        <?php if (($page < $total_pages)): ?>
+            <form action="" method="post">
+                <input type="hidden" name="page" value="<?php echo $page + 1 ?>">
+                <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
+                <input class="btn btn-option" type="submit" value=">">
+            </form>
+            <form action="" method="post">
+                <input type="hidden" name="page" value="<?php echo $total_pages ?>">
+                <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
+                <input class="btn btn-option" type="submit" value="마지막으로">
+            </form>
+        <?php endif; ?>
+        </div>
     </div>
 </div>
 <script>

@@ -23,19 +23,22 @@
         </h2>
         <div class="percent v_mobile">
             <div>
-                <strong class="assign-percentage"></strong><br>
-                <strong class="callStatus"></strong>
+                <span class="assign-percentage"></span>
+                <span class="callStatus"></span>
             </div>
             <div>
-                <strong class="paid-percentage"></strong><br>
-                <strong class="paid_count_status"></strong><br>
-                <strong class="paid_price_status"></strong>
+                <span class="paid-percentage"></span>
+                <span class="paid_count_status"></span>
+                <span class="paid_price_status"></span>
             </div>
         </div>
         {% include 'call/call_table.html'%}
     </div>
 </div>
 {% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/common.js')}}"></script>
 
 <script src="{{url_for('static', filename='js/call_test.js')}}"></script>
 <script>
@@ -58,3 +61,4 @@
 
 
 </script>
+{% endblock %}
