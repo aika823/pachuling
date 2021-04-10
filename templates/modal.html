@@ -5,17 +5,19 @@
     }
 
     .wrap .search {
-        position: relative
+        position: relative;
+        display: flex;
+        width: 100%;
     }
 
     .wrap .search .searchTerm {
         display: inline;
         float: left;
-        width: 400px;
         height: 44px;
-        padding: 0;
+        padding-left: 0 0 0 10px;
         border: 3px solid #66b8fe;
         border-right: none;
+        font-size: 1rem;
     }
 
     .wrap .search .searchTerm:focus {
@@ -79,15 +81,15 @@
             <input type="hidden" name="callID" id="callCancelID" >
             <textarea name="detail"
                       id="detail" <?php if ($this->param->page_type == 'ceo') echo "size='200'" ?> > </textarea>
-            <button id="btnCallCancel" type="button"
-                    class="btn <?php if ($this->param->page_type == 'ceo') echo "btn-mobile" ?> btn-insert">콜 취소
-            </button>
+            <!-- <button id="btnCallCancel" type="button"
+                    class="btn <?php if ($this->param->page_type == 'ceo') echo "btn-mobile" ?> btn-insert">콜 취소 -->
+            <button id="btnCallCancel" type="button" class="btn call_cancel">콜 취소</button>
         </form>
     </div>
 </div>
 <!-- Assign Cancel Modal -->
 <div id="modalAssignCancel" class="modal">
-    <div class="modal-content">
+    <div class="modal-content assignCancel">
         <div class="modal-box al_r">
             <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
@@ -114,7 +116,7 @@
         </form>
     </div>
 </div>
-<div id="snackbar">으뜸파출-메세지가 입력되지 않았습니다.</div>
+<div id="snackbar">파출링-메세지가 입력되지 않았습니다.</div>
 
 <script>
     $(document).ready(function () {

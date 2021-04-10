@@ -21,13 +21,13 @@
             <div data-th="업종" class="cell job">{{call['workfield'] | safe}}</div>
             <div data-th="요청사항" class="cell v_pc etc">{{call['detail'] | safe}}</div>
             <div data-th="일당" class="cell wage">{{call['price'] | safe}}</div>
-            <div data-th="콜비" class="cell call_fee">{{call['salary'] | safe}}</div>
+            <div data-th="콜비" class="cell call_fee btn-join-cancel-modal">{{call['salary'] | safe}}</div>
             <div data-th="요청사항" class="cell v_mobile etc">{{call['detail'] | safe}}</div>
-            <div data-th="구직자" class="cell v_pc employee">{{call['employeeName'] | safe}}</div>
+            <div data-th="구직자" class="cell v_pc employee assignCancelBtn">{{call['employeeName'] | safe}}</div>
             {% if(call['employeeName']) %}
-                <button class="v_mobile employee">{{call['employeeName'] | safe}}</button>
+                <button class="v_mobile employee assignCancelBtn">{{call['employeeName'] | safe}}</button>
             {% else %}
-                <button class="v_mobile employee no-assigned">배정하기</button>
+                <button class="v_mobile employee no-assigned assignCancelBtn">배정하기</button>
             {% endif %}
             {% if(call['cancelled'] == 1) %}
                 <div>(취소됨)</div>

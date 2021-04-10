@@ -37,6 +37,9 @@
 </div>
 {% endblock %}
 
+{% block script %}
+<script src="{{url_for('static', filename='js/common.js')}}"></script>
+
 <script src="{{url_for('static', filename='js/call_test.js')}}"></script>
 <script>
     $(document).ready(function () {
@@ -58,3 +61,4 @@
 
 
 </script>
+{% endblock %}

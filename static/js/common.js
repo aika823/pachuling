@@ -1,10 +1,10 @@
 console.log('common js test');
-console.log(domain);
+// console.log(domain);
 console.log(window.location.href);
 
-let pageType    = window.location.href.replace(domain+'/', '').split('/')[0];
-let pageAction  = window.location.href.replace(domain+'/', '').split('/')[1];
-let pageID      = window.location.href.replace(domain+'/', '').split('/')[2];
+// let pageType    = window.location.href.replace(domain+'/', '').split('/')[0];
+// let pageAction  = window.location.href.replace(domain+'/', '').split('/')[1];
+// let pageID      = window.location.href.replace(domain+'/', '').split('/')[2];
 
 //메인 페이지 정렬, 필터링
 $('.filter').on('click', function () {
@@ -162,7 +162,7 @@ $('#btnGetMoney').on('click',function () {
 });
 
 // 모달 내에서 작동하는 함수
-$(document).on('click','.btn-call-cancel-modal', function () {
+$(document).on('click','.btn-call-cancel-modal', function (event) {
     event.stopPropagation();
     $('#modalCallCancel').css('display', 'flex');
     $('input[name=callID]').val(this.id);
@@ -262,7 +262,7 @@ $(document).on('click','.btn-money',function () {
     $('#inputGetMoneyTable').val(table);
     $('#inputGetMoneyValue').val(value);
 });
-$(document).on('click', '.assignCancelBtn', function () {
+$(document).on('click', '.assignCancelBtn', function (event) {
     let employeeID = $(this).closest('td').attr('id');
     event.stopPropagation();
     $('#modalAssignCancel').css('display', 'flex');

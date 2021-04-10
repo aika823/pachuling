@@ -62,6 +62,9 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .ui-state-active {background: var(--main-color) !important; color: #fff !important; }
 .ui-datepicker-calendar { border-top: solid 0}
 
+/* footer */
+#footer { display: flex; flex-direction: column; height: 200px; padding: 1rem; justify-content: center; text-align: center;}
+
 /* 콜 만들기 */
 .makeCall,
 .makeCall2 { z-index: 9; position: absolute; top: 100px; right: 250px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; cursor: pointer; background: #fff;}
@@ -137,7 +140,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 
 /* modal */
 .modal-wrapper{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 99999;}
-.modal{ background: white; padding: 24px 16px; border-radius: 4px; width: 320px; }
+.modal{ background: white; border-radius: 4px; width: 320px; }
 .modal p{ font-size: 16px; } 
 .modal-title{ font-size: 24px; font-weight: bold; }
 .close-wrapper{ text-align: right; }
@@ -166,6 +169,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .btn-money      {padding: 4px 7px; border-radius: 3px; background: #268DFF; color: #fff; border: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; }
 .btn-money:hover{ border-radius: 5px; color: #f2f3f2;border: none;}
 a.btn{padding:10px;}
+.call_cancel { background: #268DFF; padding: 8px 20px; font-size: 1rem;}
 
 /* callTable */
 #call_table {border-top: none; box-shadow: 15px 15px 20px #e1e1e1, -15px 15px 20px #e1e1e1;}
@@ -262,7 +266,7 @@ tr.assign-employee.recommend th{background: var(--main-color); color: white;}
 .modal-content *{vertical-align: top; font-size: 16px;}
 .modal-content textarea{width: 100%; height: 310px; padding: 0; resize: none; margin: 1rem 0;}
 .modal-content #inputGetMoneyReceiver { height: 50px; font-size: 1.2rem;}
-.modal-content .flex-assign-cancel { display: flex; justify-content: space-evenly;}
+.modal-content .flex-assign-cancel { display: flex; flex-direction: column; justify-content: space-evenly;}
 .modal-content .flex-assign-cancel form { margin: 0;}
 #modalAssignCancel .btn { font-size: 1.5rem; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; }
 /* .modal-content button{width: 18%;} */
@@ -346,7 +350,9 @@ label { color:rgba(0, 0, 0, 0.5)}
 .btn-group.al_r .btn-submit {background: #268DFF; color: white;}
 .btn-group.al_r .btn-submit:hover { background: #3f99ff; color: white; font-weight: 500;}
 .btn-group .search-input { width: 280px; border: 1px solid #dbdbdb; vertical-align: middle; padding: .4rem .6rem;}
-.btn-group.group2 { display: inline;}
+.btn-group.group2 { display: flex;}
+.btn-group.group2 form { padding: 0 5px;}
+.pagination { display: flex; justify-content: center;}
 
 /* 추가하기 페이지 레이아웃 */
 .write-layout { margin: 0 8rem 1rem; background: #fff; padding: 0 0 43px 0;}
@@ -443,9 +449,11 @@ label { color:rgba(0, 0, 0, 0.5)}
 .grid-style { display: grid; align-items: center; grid-template-columns: 12% 12% 15% 8% 1fr 8% 8% 9% 7%; border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
 .grid-style.companyTable { display: grid; align-items: center; grid-template-columns: 7% 1fr 12% 12% 10% 15% 10% 7% 7%;}
 .grid-style.employeeTable { display: grid; align-items: center; grid-template-columns: 10% 10% 10% 14% 10% 1fr 10% 7% 7%;}
+.grid-style.blackTable { display: grid; align-items: center; grid-template-columns: 15% 15% 15% 1fr 10%;}
 .grid-style .call.call-order,
 .grid-style.companyTable .com-div,
-.grid-style.employeeTable .com-th { background: #268DFF; color: #fff; padding: 15px 20px;}
+.grid-style.employeeTable .com-th,
+.grid-style.blackTable .com-div { background: #268DFF; color: #fff; padding: 15px 20px;}
 .grid-style .round1 { border-radius: 14px 0 0 0; -webkit-border-radius: 14px 0 0 0; -moz-border-radius: 14px 0 0 0; -ms-border-radius: 14px 0 0 0; -o-border-radius: 14px 0 0 0; }
 .grid-style .round2 { border-radius: 0 14px 0 0; -webkit-border-radius: 0 14px 0 0; -moz-border-radius: 0 14px 0 0; -ms-border-radius: 0 14px 0 0; -o-border-radius: 0 14px 0 0; }
 .grid-style .cell,
@@ -458,6 +466,15 @@ label { color:rgba(0, 0, 0, 0.5)}
 .grid-style .employee,
 .grid-style .cancel { text-align: center;}
 #filter-wrapper { width: 80%;}
+.grid-style .cell.assignCancelBtn { cursor: pointer;}
+.grid-style .cell.assignCancelBtn:hover { color: #666;}
+.grid-style .cell.btn-join-cancel-modal { cursor: pointer;}
+.grid-style .cell.btn-join-cancel-modal:hover { color: #666;}
+.grid-style .cancel .btn-call-cancel-modal:hover { color: red;}
+.modal-content.assignCancel { background: rgba(256, 256, 256, 0); border: none;}
+.modal-content.assignCancel .btn-insert { background: #fff; width: 100%; border: 1px solid #268dff; color: #000; margin: 1rem 0;}
+.modal-content.assignCancel .btn-insert:hover { background: #268dff; color: #fff;}
+.modal-content.assignCancel .btn-close-modal { color: #fff;}
 
 .circle { position: fixed; bottom: 50px; right: 50px; cursor: pointer; background: #268dff; color: #fff; width: 75px; height: 75px; border: none;border-radius: 100px ; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
 .circle .fas.fa-plus { font-size: 1.5rem;}
@@ -615,6 +632,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
 
     #filterSub #inputKeyword,
     #filterSub #btnSearch { font-size: .8rem; height: 45px;}
+
+    .modal-content.assignCancel { width: 60%;}
 }
 
 @media all and (max-width: 952px) {
@@ -650,6 +669,8 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     #filterSub #btnSearch { font-size: 1rem; height: 50px;}
 
     #btnSendCancel, #btnSendCall { font-size: 1.2rem;}
+
+    .modal-content.assignCancel { width: 100%;}
 }
 /* 콜관리 반응형 모바일 */
 @media screen and (max-width: 600px) {
