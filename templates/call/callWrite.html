@@ -20,6 +20,8 @@
             <div class="row-in-row">
                 <h2 class="form-title">
                     상호명
+                    <span class="form-section-required"></span>
+                    <a class="help" href="">도움말</a>
                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                 </h2>
                 <div class="row-content">
@@ -32,7 +34,10 @@
                             </option>
                             <?php endforeach ?> -->
                     </datalist>
-                    <h2 class="form-subtitle">구직자 성명</h2>
+                    <h2 class="form-subtitle">
+                        구직자 성명
+                        <a class="help" href="">도움말</a>
+                    </h2>
                     <input type="text" list="employeeList" name="employeeName" class="employee" id="employeeName"
                         placeholder="배정할 구직자을 입력하세요 (생략가능)">
                     <datalist id="employeeList" class="input-field">
@@ -57,6 +62,8 @@
             <div class="row-in-row">
                 <h2 class="form-title">
                     근무요일
+                    <span class="form-section-required"></span>
+                    <a class="help" href="">도움말</a>
                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                 </h2>
                 <div class="row-content">
@@ -90,6 +97,8 @@
             <div class="row-in-row">
                 <h2 class="form-title">
                     근무기간
+                    <span class="form-section-required"></span>
+                    <a class="help" href="">도움말</a>
                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                 </h2>
                 <div class="row-content">
@@ -128,6 +137,8 @@
                 <div class="callForm-time" id="">
                     <h2 class="form-title">
                         근무시간
+                        <span class="form-section-required"></span>
+                        <a class="help" href="">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                     </h2>
                     <div class="row-content">
@@ -174,6 +185,8 @@
                 <div class="">
                     <h2 class="form-title">
                         임금
+                        <span class="form-section-required"></span>
+                        <a class="help" href="">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                     </h2>
                     <div class="row-content">
@@ -191,6 +204,8 @@
                 <div class="callForm-jobs">
                     <h2 class="form-title">
                         업종
+                        <span class="form-section-required"></span>
+                        <a class="help" href="">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                     </h2>
                     <div class="row-content">
@@ -234,6 +249,8 @@
                 <div class="callForm-etc">
                     <h2 class="form-title">
                         기타 요청 사항
+                        <span class="form-section-required"></span>
+                        <a class="help" href="">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                     </h2>
                     <div class="row-content">
@@ -246,7 +263,7 @@
     <!--콜 보내기 버튼-->
     <div class="btn-area">
         <!-- <h1 class="callPrice"></h1> -->
-        <button id="btnSendCancel" class="btn btn-insert callBtn" type="button">취소</button>
+        <button id="btnSendCancel" class="btn btn-insert callBtn" type="button" onClick="location.href='{{ url_for('call') }}'">취소</button>
         <button id="btnSendCall" class="btn btn-insert callBtn" type="button">콜 신청하기</button>
         <!-- <?php if ($this->param->page_type != 'ceo'): ?> -->
             <input type="submit" id="submitFixedCallBtn" class="btn btn-insert callBtn fixBtn" type="button" style="display: none" value="고정 콜 만들기">
