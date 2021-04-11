@@ -36,20 +36,20 @@ def get_calls(user_id, start=date.today(), end=date.today(), content=None, limit
     return calls
 
 
-def get_companies(user_id, content=None):
-    cur = conn.cursor(pymysql.cursors.DictCursor)
-    sql = "select * from company where userID='{}' ".format(user_id)
-    if content:
-        content_sql = " AND " \
-                      " ( (company.companyName LIKE '%{}%') OR " \
-                      " (com    pany.businessType LIKE '%{}%') OR " \
-                      " (company.address LIKE '%{}%') )"
-        sql += content_sql.format(content, content, content)
-    # 테스트용이고 나중에 지워야함
-    sql += " LIMIT 10 "
-    cur.execute(sql)
-    companies = cur.fetchall()
-    return companies
+# def get_companies(user_id, content=None):
+#     cur = conn.cursor(pymysql.cursors.DictCursor)
+#     sql = "select * from company where userID='{}' ".format(user_id)
+#     if content:
+#         content_sql = " AND " \
+#                       " ( (company.companyName LIKE '%{}%') OR " \
+#                       " (company.businessType LIKE '%{}%') OR " \
+#                       " (company.address LIKE '%{}%') )"
+#         sql += content_sql.format(content, content, content)
+#     # 테스트용이고 나중에 지워야함
+#     sql += " LIMIT 10 "
+#     cur.execute(sql)
+#     companies = cur.fetchall()
+#     return companies
 
 
 def get_company(user_id, company_id):
@@ -90,16 +90,3 @@ def get_users():
     cur.execute(sql)
     users = cur.fetchall()
     return users
-
-
-# def get_black_list(user_id, company_id, employee_id):
-#     cur = conn.cursor(pymysql.cursors.DictCursor)
-#     if company_id:
-#         sql = "select * from blackList where `userID` = {} AND `companyID` = {} ".format(user_id, company_id)
-#     elif employee_id:
-#         sql = "select * from blackList where `userID` = {} AND `employeeID` = {} ".format(user_id, employee_id)
-#     else:
-#         sql = "select * from blackList where `userID` = "+str(user_id)
-#     cur.execute(sql)
-#     black_list = cur.fetchall
-#     return black_list

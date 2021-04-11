@@ -21,9 +21,9 @@
 {% for company in companies %}
     <div class="grid-style grid-wrapper companyTable">
         <div class="cell v_pc">{{company['companyID']}} <a href="view/{{companyID}}" {{companyID}}></a></div>
-        <div data-th="상호명" class="cell">{{company['companyName']}}</div>
-        <div data-th="간단주소" class="cell">{{company['address']}}</div>
-        <div data-th="업종" class="cell">{{company['businessType']}}</div>
+        <div data-th="상호명" class="cell">{{company['companyName'] | safe}}</div>
+        <div data-th="간단주소" class="cell">{{company['address'] | safe}}</div>
+        <div data-th="업종" class="cell">{{company['businessType'] | safe}}</div>
         <div data-th="가입유형" class="cell">가입 유형</div>
         <div data-th="비고" class="cell">-</div>
         <div data-th="점수" class="cell score">{{company['grade']}}점</div>

@@ -7,14 +7,14 @@
 <div class="board-list auto-center">
     <div id="filter-wrapper">
         <div id="filterMain">
-            <button type="button" class="filter btn btn-default <?php echo $select['all'] ?>" id="filter-all">전체 :</button>
-            <button type="button" class="filter btn btn-default <?php echo $select['activated'] ?>" id="filter-activated">활성화 :</button>
-            <button type="button" class="filter btn btn-default <?php echo $select['imminent'] ?>" id="filter-imminent">만기임박 :</button>
-            <button type="button" class="filter btn btn-default <?php echo $select['deactivated'] ?>" id="filter-deactivated">만기 :</button>
-            <button type="button" class="filter btn btn-default <?php echo $select['deleted'] ?>" id="filter-deleted">삭제 :</button>
+            <button type="button" class="filter btn btn-default " id="filter-all">전체 : {{size}}</button>
+            <button type="button" class="filter btn btn-default " id="filter-activated">활성화 :</button>
+            <button type="button" class="filter btn btn-default " id="filter-imminent">만기임박 :</button>
+            <button type="button" class="filter btn btn-default " id="filter-deactivated">만기 :</button>
+            <button type="button" class="filter btn btn-default " id="filter-deleted">삭제 :</button>
         </div>
         <form id="filterSub" method="post">
-            <input type="text" id="inputKeyword" name="keyword" placeholder="검색할 내용을 입력하세요" value="">
+            <input type="text" id="inputKeyword" name="keyword" placeholder="검색할 내용을 입력하세요" value="{{keyword}}">
             <button class="btn btn-submit" type="submit" id="btnSearch">검색</button>
             <button type="button" id="btnAddCompany" class="btn btn-insert v_pc"
                     onClick="location.href='company/write'">신규 추가
@@ -24,9 +24,7 @@
 
     <div class="inline scroll_tbody call">
         <h2 class="strikethrough_title v_mobile">
-            <span class="title_text">
-                거래처 목록
-            </span>
+            <span class="title_text">거래처 목록</span>
         </h2>
         {% include 'company/company_table.html' %}
     </div>

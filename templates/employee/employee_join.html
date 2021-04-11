@@ -1,0 +1,93 @@
+<div class="write-layout">
+    <div class="board-write auto-center">
+        <div class="form-style-1">
+            <form id="formInsertEmployee" action="" method="post">
+                <fieldset>
+
+                    <!--POST 전송 시 작업, 파라미터-->
+                    <input type="hidden" name="action" value="{{action}}">
+                    <input type="hidden" name="employeeID" value="{{employee['employeeID']}}">
+
+                    <!--가입정보-->
+                    <div class="middle-title">
+                        <h1 class="title-main">가입 정보</h1>
+                    </div>
+
+                    <!--가입내역-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    가입시작일
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="date" id="startDate" name="startDate" required>
+                                    <h2 class="form-subtitle">
+                                        가입만기일
+                                    </h2>
+                                    <input type="date" id="endDate" name="endDate" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--가입내용-->
+                    <div class="">
+                        <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('today')"
+                                style="width: 100px; margin: 23px 0;">오늘부터
+                        </button>
+                        <button type="button" class="btn btn-option"
+                                onclick="auto_insert_employee_join('extend')"
+                                style="width: 100px;">가입연장
+                        </button>
+                    </div>
+
+                    <!--가입금액-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    가입금액
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="number" id="price" name="price" required placeholder="30000">
+                                    <h2 class="form-title">
+                                        수금
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
+                                    <input type="checkbox" id="paid" name="paid" value="1" style="margin-left: 16px;">
+                                    <input type="text" id="paid" name="receiver" value="지명희" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--가입비고-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <div class="callForm-etc">
+                                    <h2 class="form-title">
+                                        가입비고
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
+                                    <textarea name="joinDetail">내용: </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-area">
+                        <a class="btn btn-default" href=''>뒤로</a>
+                        <button class="btn btn-{{'insert' if employee else 'submit'}}"
+                                type="submit">
+                            {{'수정' if employee else '추가'}}
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
