@@ -1,5 +1,4 @@
 <div class="grid-style employeeTable v_pc">
-    <!-- <th class="order link"  id="refresh-employeeID"> #</th> -->
     <div class="order link com-th al_l round1" id="refresh-employeeName"> 성명</div>
     <div class="order link com-th al_l" id="refresh-address"> 간단주소</div>
     <div class="order link com-th al_l" id="refresh-birthDate"> 연령</div>
@@ -22,18 +21,12 @@
         <div data-th="간단주소" class="cell">{{employee['address']}}</div>
         <div data-th="연령" class="cell"><?php echo getAge($data['birthDate'])."세" ?></div>
         <div data-th="전화번호" class="cell">{{employee['employeePhoneNumber']}}</div>
-        <div data-th="주간배정" class="cell">
-            <!--            <?php echo sizeof($this->model->getTable("SELECT * FROM `call` WHERE `employeeID` =-->
-            <!--            '{$data['employeeID']}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE(),1) " )); ?>회-->
-        </div>
-        <div data-th="비고" class="cell">
-            <!--            <?php echo $this->imminent_check('employee',$data);?>-->
-        </div>
+        <div data-th="주간배정" class="cell"></div>
+        <div data-th="비고" class="cell">{{employee['detail']}}</div>
         <div data-th="점수" class="cell">{{employee['grade']}}점</div>
         <div class="cell v_pc"><span class="fa fa-star selectable "></span></div>
         <div class="cancel">
             <button type="button" class="btn-call-cancel-modal btn btn-small" id="">
-                <!-- 취소 -->
                 <i class="fas fa-trash-alt"></i>
             </button>
         </div>

@@ -3,8 +3,6 @@
 {% block content %}
 <div class="top-title">
     <h1 class="title-main">구직자정보</h1>
-    <span class="form-section-required"></span>
-    <p class="required-mark">필수항목</p>
 </div>
 
 <div class="write-layout">
@@ -18,8 +16,6 @@
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     성명
-                                    <span class="form-section-required"></span>
-                                    <a class="help" href="">도움말</a>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
@@ -28,13 +24,13 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
+
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
                                 <h2 class="form-title">
                                     성별
-                                    <span class="form-section-required"></span>
-                                    <a class="help" href="">도움말</a>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
@@ -44,6 +40,25 @@
                                         <option value="남"></option>
                                     </datalist>
                                 </div>
+=======
+                </div>
+
+                <div class="form-row">
+                    <div class="callForm">
+                        <div class="row-in-row">
+                            <h2 class="form-title">
+                                성별
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                            </h2>
+                            <div class="row-content">
+                                <input type="text" list="sexList" name="sex" required autofocus
+                                        value="<?php if (isset ($this->employeeData['sex'])) { echo $this->employeeData['sex']; } else echo "
+                                        여" ?>">
+                                <datalist id="sexList" class="input-field">
+                                    <option value="여"></option>
+                                    <option value="남"></option>
+                                </datalist>
+>>>>>>> 20c21758dfd1d4a14fa1c7758f1d7c9eddabe0f2
                             </div>
                         </div>
                     </div>
@@ -54,8 +69,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 생년월일
-                                <span class="form-section-required"></span>
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -74,8 +87,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 업종
-                                <span class="form-section-required"></span>
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -116,8 +127,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 전화번호
-                                <span class="form-section-required"></span>
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -134,7 +143,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 희망근무지
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -155,8 +163,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 간단주소
-                                <span class="form-section-required"></span>
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -170,8 +176,6 @@
 
                                 <h2 class="form-subtitle">
                                     상세주소
-                                    <span class="form-section-required"></span>
-                                    <a class="help" href="">도움말</a>
                                 </h2>
                                 <input type="text" name="detailAddress" size="20"
                                         value="<?php echo $this->employeeData['detailAddress']; ?>"
@@ -186,7 +190,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 한국어
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -208,7 +211,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 점수
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -226,7 +228,6 @@
                             <div class="callForm-etc">
                                 <h2 class="form-title">
                                     비고
-                                    <a class="help" href="">도움말</a>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                                 </h2>
                                 <div class="row-content">
@@ -267,7 +268,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 블랙
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
@@ -310,7 +310,6 @@
                         <div class="row-in-row">
                             <h2 class="form-title">
                                 일 주세요 / 일 못가
-                                <a class="help" href="">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">

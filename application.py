@@ -1,26 +1,31 @@
 from datetime import timedelta
 from flask import Flask, url_for, render_template, request, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, Date
+from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, Date, ForeignKey
+from sqlalchemy.orm import sessionmaker
 from functools import wraps
-import os
+from sqlalchemy import create_engine
 
-import database_function
-import call_function
-import company_function
+import function_database
+import function_call
+import function_company
 import secret
 
+# Default Settings
 application = app = Flask(__name__)
-application.config['SQLALCHEMY_DATABASE_URI'] = \
-    'mysql+pymysql://{user}:{password}@{host}/{db}'.format(user=secret.user, password=secret.password,
-                                                           host=secret.host, db=secret.db)
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{host}/{db}' \
+    .format(user=secret.user, password=secret.password, host=secret.host, db=secret.db)
 application.secret_key = "123"
 db = SQLAlchemy(application)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
 login_error_message = "ID: admin, PW: bestgood"
 app.permanent_session_lifetime = timedelta(hours=24)
+Session = sessionmaker()
+engine = create_engine('sqlite:///:memory:', echo=True)
+Session.configure(bind=engine)
 
 
+# Database Classes
 class User(db.Model):
     userID = Column(Integer, primary_key=True, nullable=False)
     userName = Column(String(20), primary_key=False, nullable=False)
@@ -29,11 +34,20 @@ class User(db.Model):
 
 
 class Company(db.Model):
-    userID = Column(Integer, primary_key=True, nullable=False)
-    companyID = Column(Integer, primary_key=False, nullable=False)
+    userID = Column(Integer, primary_key=False, nullable=False)
+    companyID = Column(Integer, primary_key=True, nullable=False)
     ceoID = Column(Integer, primary_key=False, nullable=False)
     businessType = Column(Integer, primary_key=False, nullable=False)
     companyName = Column(Integer, primary_key=False, nullable=False)
+    deleted = Column(Integer, nullable=False)
+    activated = Column(Integer, nullable=False)
+    address = Column(String(20), nullable=False)
+
+
+class Employee(db.Model):
+    employeeID = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    employeeName = Column(String(20))
+    sex = Column(String(10))
 
 
 class Workfield(db.Model):
@@ -50,8 +64,8 @@ class Address(db.Model):
 
 class Blacklist(db.Model):
     blackListID = Column(Integer, primary_key=True, nullable=False)
-    companyID = Column(Integer, primary_key=False, nullable=False)
-    employeeID = Column(Integer, primary_key=False, nullable=False)
+    companyID = Column(Integer, ForeignKey(Company.companyID))
+    employeeID = Column(Integer, ForeignKey(Employee.employeeID))
     detail = Column(String(100), primary_key=False, nullable=True)
     ceoReg = Column(Boolean, primary_key=False, nullable=False)
     createdTime = Column(TIMESTAMP, primary_key=False, nullable=False)
@@ -78,7 +92,7 @@ def login_required(f):
         if session.get('logged_in'):
             return f(*args, **kwargs)
         else:
-            flash('로그인 먼저 해')
+            flash('로그인 먼저!')
             return redirect(url_for('login'))
 
     return wrap
@@ -90,12 +104,9 @@ def login_required(f):
 def call():
     select_page('call')
     user_id = session.get('user_id')
-    calls = database_function.get_calls(user_id=user_id)
-    call_dict = call_function.calculate_price(calls)
-    return render_template('call/call.html',
-                           calls=calls,
-                           call_dict=call_dict,
-                           page_list=page_list)
+    calls = function_database.get_calls(user_id=user_id)
+    call_dict = function_call.calculate_price(calls)
+    return render_template('call/call.html', calls=calls, call_dict=call_dict, page_list=page_list)
 
 
 @application.route('/call', methods=['POST'])
@@ -107,11 +118,11 @@ def search_call():
         start = request.form['start']
         end = request.form['end']
         content = request.form['content']
-        calls = database_function.get_calls(user_id=user_id, start=start, end=end, content=content)
-        call_dict = call_function.calculate_price(calls)
+        calls = function_database.get_calls(user_id=user_id, start=start, end=end, content=content)
+        call_dict = function_call.calculate_price(calls)
         if len(calls) > 0:
             if content:
-                calls = call_function.search_mark(calls, content)
+                calls = function_call.search_mark(calls, content)
         return render_template('call/call.html',
                                calls=calls,
                                call_dict=call_dict,
@@ -131,27 +142,28 @@ def call_form():
 def company():
     select_page('company')
     user_id = session.get('user_id')
-    companies = database_function.get_companies(user_id)
-    return render_template('company/company.html',
-                           companies=companies,
-                           page_list=page_list)
+    companies = Company.query.filter_by(userID=user_id, deleted=0, activated=1).all()
+    size = len(companies)
+    return render_template('company/company.html', companies=companies, page_list=page_list, size=size)
 
 
 @application.route('/company', methods=['POST'])
 @login_required
 def search_company():
     select_page('company')
+    user_id = session.get('user_id')
     if request.method == 'POST':
-        content = request.form['keyword']
-        user_id = session.get('user_id')
-        companies = database_function.get_companies(user_id=user_id, content=content)
-        if len(companies) > 0:
-            if content:
-                companies = company_function.search_mark(companies, content)
-        return render_template('company/company.html',
-                               companies=companies,
-                               content=content,
-                               page_list=page_list)
+        keyword = request.form['keyword']
+        search = "%{}%".format(keyword)
+        companies = Company.query \
+            .filter_by(userID=user_id) \
+            .filter(Company.companyName.like(search) | Company.address.like(search) | Company.businessType.like(search)) \
+            .all()
+        companies = function_company.search_mark(companies, keyword)
+        print(type(companies))
+        size = len(companies)
+        return render_template('company/company.html', companies=companies, content=keyword, page_list=page_list,
+                               size=size)
 
 
 @application.route('/company/view/<company_id>')
@@ -159,7 +171,7 @@ def search_company():
 def view_company(company_id):
     select_page('company')
     user_id = session.get('user_id')
-    my_company = database_function.get_company(user_id=user_id, company_id=company_id)
+    my_company = function_database.get_company(user_id=user_id, company_id=company_id)
     return render_template('company/view.html', company=my_company, page_list=page_list)
 
 
@@ -179,20 +191,18 @@ def insert_company():
     # 기존 업체 정보 수정
     if request.form['companyID']:
         db.session.add(new_company)
-        return render_template('company/companyForm.html',
-                               page_list=page_list)
+        return render_template('company/companyForm.html', page_list=page_list)
     # 신규 업체 추가
     else:
         db.session.add(new_company)
-        return render_template('company/companyForm.html',
-                               page_list=page_list)
+        return render_template('company/companyForm.html', page_list=page_list)
 
 
 @application.route('/employee')
 @login_required
 def employee():
     select_page('employee')
-    employees = database_function.get_employees()
+    employees = function_database.get_employees()
     return render_template('employee/employee.html', employees=employees, page_list=page_list)
 
 
@@ -209,16 +219,19 @@ def view_employee(employee_id):
     select_page('employee')
     user_id = session.get('user_id')
     work_field = Workfield.query.filter_by(userID=user_id)
-    address = Address.query.filter_by(userID=user_id)
-    black_list = Blacklist.query.filter_by(userID=user_id, employeeID=employee_id)
+    print(work_field)
+    address_list = Address.query.filter_by(userID=user_id)
+    black_list = Blacklist.query.join(Company, Blacklist.companyID == Company.companyID) \
+        .add_columns(Company.companyName) \
+        .filter(Blacklist.userID == user_id) \
+        .filter(Blacklist.employeeID == employee_id)
     available_date_list = EmployeeAvailableDate.query.filter_by(userID=user_id, employeeID=employee_id)
-    my_employee = database_function.get_employee(user_id=user_id, employee_id=employee_id)
-    print(my_employee)
+    my_employee = function_database.get_employee(user_id=user_id, employee_id=employee_id)
     return render_template('employee/employee_view.html',
                            employee=my_employee,
                            action='update',
                            work_field_list=work_field,
-                           address_list=address,
+                           address_list=address_list,
                            black_list=black_list,
                            available_date_list=available_date_list,
                            page_list=page_list)
@@ -236,14 +249,14 @@ def employee_available():
 def manage():
     select_page('black')
     user_id = session.get('user_id')
-    companies = database_function.get_companies(user_id=user_id)
+    companies = function_database.get_companies(user_id=user_id)
     return render_template('manage/black.html', companies=companies, page_list=page_list)
 
 
 @application.route('/ceo/<ceo_id>')
 @login_required
 def show_ceo(ceo_id):
-    ceo = database_function.get_ceo(ceo_id)
+    ceo = function_database.get_ceo(ceo_id)
     return render_template('ceo/ceo.html', ceo=ceo, page_list=page_list)
 
 
@@ -279,10 +292,7 @@ def login_check():
             print("login fail")
             session['logged_in'] = False
             flash("로그인에 실패했습니다. ID:으뜸파출 / PW:123")
-            return render_template('login/login.html',
-                                   test="LOGIN FAIL",
-                                   data=data,
-                                   user_name=user_name,
+            return render_template('login/login.html', test="LOGIN FAIL", data=data, user_name=user_name,
                                    page_list=page_list)
 
 

@@ -1,0 +1,322 @@
+<div class="write-layout">
+    <div class="board-write auto-center">
+        <div class="form-style-1">
+            <form id="formInsertEmployee" action="" method="post">
+                <fieldset>
+                    <!--POST 전송 시 작업, 파라미터-->
+                    <input type="hidden" name="action" value="{{action}}">
+                    <input type="hidden" name="employeeID" value="{{employee['employeeID']}}">
+
+                    <!--성명-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    성명
+                                    <button type="button" class="icon-up">
+                                        <i class="fas fa-chevron-up"></i>
+                                    </button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="employeeName" required autofocus
+                                           value="{{employee['employeeName']}}" placeholder="성명">
+                                </div>
+                            </div>
+                            <!--중복 확인-->
+                            <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
+                        </div>
+                    </div>
+
+                    <!--성별-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    성별
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="sexList" name="sex" required autofocus
+                                           value="{{employee['sex']}}">
+                                    <datalist id="sexList" class="input-field">
+                                        <option value="여"></option>
+                                        <option value="남"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--생년월일-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    생년월일
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="date" name="birthDate" size="20" required autofocus
+                                           style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
+                                           value="{{employee['birthDate']}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--업종-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    업종
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="workFieldList" name="workField1" size="20" required
+                                           value="{{employee['workField1']}}" placeholder="업종1">
+                                    <h2 class="form-subtitle">업종2</h2>
+                                    <input type="text" list="workFieldList" name="workField1" size="20" required
+                                           value="{{employee['workField2']}}" placeholder="업종2">
+                                    <h2 class="form-subtitle">업종3</h2>
+                                    <input type="text" list="workFieldList" name="workField1" size="20" required
+                                           value="{{employee['workField3']}}" placeholder="업종3">
+                                    <datalist id="workFieldList" class="input-field">
+                                        {% for work_field in work_field_list %}}
+                                        <option value="{{work_field.workField}}"></option>
+                                        {% endfor %}
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--전화번호-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    전화번호
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="employeePhoneNumber" size="20" required
+                                           value="{{employee['employeePhoneNumber']}}" placeholder="010-XXXX-XXXX">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--희망근무지-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    희망근무지
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="addressList" name="workPlace" value="{{workPlace}}"
+                                           placeholder="청담">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--주소-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">간단주소
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="addressList" name="address" required
+                                           value="{{employee['address']}}" placeholder="청담">
+                                    <datalist id="addressList">
+                                        {% for address in address_list %}
+                                        <option value="{{address.address}}"></option>
+                                        {% endfor %}
+                                    </datalist>
+                                    <h2 class="form-subtitle">상세주소</h2>
+                                    <input type="text" name="detailAddress" size="20"
+                                           value="{{employee['detailAddress']}}"
+                                           placeholder="서울특별시 중구 00동 00로 ...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--언어-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    한국어
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" list="languageList" name="language" size="2"
+                                           value="{{employee['language']}}">
+                                    <datalist id="languageList" class="input-field">
+                                        <option value="상"></option>
+                                        <option value="중"></option>
+                                        <option value="하"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--점수-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    점수
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <input type="text" name="grade" size="20" value="{{employee['grade']}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--비고-->
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <div class="callForm-etc">
+                                    <h2 class="form-title">
+                                        비고
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
+                                    <textarea class="textarea-detail" name="detail" id="employee_detail" required>
+                                        {{employee['detail']}}
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--근무가능요일-->
+                    <div class="callForm-flex em">
+                        <div>
+                        </div>
+                    </div>
+
+                    <!--삭제비고-->
+                    {% if employee['deleted'] %}
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <div class="callForm-etc">
+                                    <h2 class="form-title">
+                                        삭제비고
+                                        <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    </h2>
+                                    <textarea name="deleteDetail" id="detail">
+                                        {{ employee['deleteDetail'] }}
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!--블랙리스트-->
+                    {% if black_list %}
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    블랙
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th width="150">상호</th>
+                                            <th width="150">종류</th>
+                                            <th>사유</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for black in black_list %}
+                                        <tr>
+                                            <td>
+                                                {{black['companyName']}}
+                                                {{black['companyID']}}
+                                            </td>
+                                            <td>
+                                                {{ '오지마세요' if black['ceoReg'] else '안가요' }}
+                                            </td>
+                                            <td class="{{ 'al_l' if black['detail'] else 'al_c' }}">
+                                                {{ black['detail'] if black['detail'] else '-' }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!--근무희망일-->
+                    {% if available_date_list %}
+                    <div class="form-row">
+                        <div class="callForm">
+                            <div class="row-in-row">
+                                <h2 class="form-title">
+                                    일 주세요 / 일 못가
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </h2>
+                                <div class="row-content">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th width="150">날짜</th>
+                                            <th width="150">종류</th>
+                                            <th width="150">사유</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for available_date in available_date_list %}
+                                        <tr>
+                                            <td>
+                                                {{ available_date['availableDate'] }}
+                                                {{ available_date['notAvailableDate'] }}
+                                            </td>
+                                            <td>
+                                                {{ '일 주세요' if available_date['availableDate'] else '못가요' }}
+                                            </td>
+                                            <td class="{{ 'al_l' if available_date['detail'] else 'al_c' }} ">
+                                                {{ available_date['detail'] if available_date['detail'] else '-' }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!--제출 버튼-->
+                    <div class="btn-area">
+                        <a class="btn btn-default" href=''>뒤로</a>
+                        <button class="btn btn-{{'insert' if employee else 'submit'}}"
+                                type="submit">
+                            {{'수정' if employee else '추가'}}
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
