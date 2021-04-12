@@ -9,38 +9,22 @@
     <div class="board-write auto-center">
         <div class="form-style-1">
             <form id="formInsertEmployee" action="" method="post">
-                    <input type="hidden" name="action" value="">
-                    <input type="hidden" name="employeeID" value="">
-                    <div class="form-row">
-                        <div class="callForm">
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    성명
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                                </h2>
-                                <div class="row-content">
-                                    <input type="text" name="employeeName" required autofocus placeholder="성명">
-                                </div>
+                <input type="hidden" name="action" value="">
+                <input type="hidden" name="employeeID" value="">
+
+
+                <div class="form-row">
+                    <div class="callForm">
+                        <div class="row-in-row">
+                            <h2 class="form-title">
+                                성명
+                                <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                            </h2>
+                            <div class="row-content">
+                                <input type="text" name="employeeName" required autofocus placeholder="성명">
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-
-                    <div class="form-row">
-                        <div class="callForm">
-                            <div class="row-in-row">
-                                <h2 class="form-title">
-                                    성별
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                                </h2>
-                                <div class="row-content">
-                                    <input type="text" list="sexList" name="sex" required autofocus>
-                                    <datalist id="sexList" class="input-field">
-                                        <option value="여"></option>
-                                        <option value="남"></option>
-                                    </datalist>
-                                </div>
-=======
                 </div>
 
                 <div class="form-row">
@@ -51,14 +35,11 @@
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
                             </h2>
                             <div class="row-content">
-                                <input type="text" list="sexList" name="sex" required autofocus
-                                        value="<?php if (isset ($this->employeeData['sex'])) { echo $this->employeeData['sex']; } else echo "
-                                        여" ?>">
+                                <input type="text" list="sexList" name="sex" required autofocus>
                                 <datalist id="sexList" class="input-field">
                                     <option value="여"></option>
                                     <option value="남"></option>
                                 </datalist>
->>>>>>> 20c21758dfd1d4a14fa1c7758f1d7c9eddabe0f2
                             </div>
                         </div>
                     </div>
@@ -73,8 +54,8 @@
                             </h2>
                             <div class="row-content">
                                 <input type="date" name="birthDate" size="20" required autofocus
-                                        style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
-                                        value="<?php echo $this->employeeData['birthDate']; ?>">
+                                       style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
+                                       value="<?php echo $this->employeeData['birthDate']; ?>">
                             </div>
                         </div>
                     </div>
@@ -91,7 +72,8 @@
                             </h2>
                             <div class="row-content">
                                 <input type="text" list="workFieldList" name="workField1" size="20" required
-                                        value="<?php echo $this->employeeData['workField1']; ?>" placeholder="업종">
+                                       value="<?php echo $this->employeeData['workField1']; ?>"
+                                       placeholder="업종">
                                 <datalist id="workFieldList" class="input-field">
                                     <?php foreach ($workField_List as $data): ?>
                                     <option value="<?php echo $data['workField']?>"></option>
@@ -101,7 +83,8 @@
                                     업종2
                                 </h2>
                                 <input type="text" list="workFieldList" name="workField2" size="20"
-                                        value="<?php echo $this->employeeData['workField2']; ?>" placeholder="업종">
+                                       value="<?php echo $this->employeeData['workField2']; ?>"
+                                       placeholder="업종">
                                 <datalist id="workFieldList" class="input-field">
                                     <?php foreach ($workField_List as $data): ?>
                                     <option value="<?php echo $data['workField'] ?>"></option>
@@ -111,7 +94,8 @@
                                     업종3
                                 </h2>
                                 <input type="text" list="workFieldList" name="workField3" size="20"
-                                        value="<?php echo $this->employeeData['workField3']; ?>" placeholder="업종">
+                                       value="<?php echo $this->employeeData['workField3']; ?>"
+                                       placeholder="업종">
                                 <datalist id="workFieldList" class="input-field">
                                     <?php foreach ($workField_List as $data): ?>
                                     <option value="<?php echo $data['workField'] ?>"></option>
@@ -131,8 +115,8 @@
                             </h2>
                             <div class="row-content">
                                 <input type="text" name="employeePhoneNumber" size="20" required
-                                        value="<?php echo $this->employeeData['employeePhoneNumber']; ?>"
-                                        placeholder="010-XXXX-XXXX">
+                                       value="<?php echo $this->employeeData['employeePhoneNumber']; ?>"
+                                       placeholder="010-XXXX-XXXX">
                             </div>
                         </div>
                     </div>
@@ -147,7 +131,7 @@
                             </h2>
                             <div class="row-content">
                                 <input type="text" list="addressList" name="workPlace"
-                                        value="<?php echo $this->employeeData['workPlace']; ?>" placeholder="청담">
+                                       value="<?php echo $this->employeeData['workPlace']; ?>" placeholder="청담">
                                 <datalist id="addressList">
                                     <?php foreach ($this->address_List as $data): ?>
                                     <option value="<?php echo $data['address']?>"></option>
@@ -167,7 +151,7 @@
                             </h2>
                             <div class="row-content">
                                 <input type="text" list="addressList" name="address" required
-                                        value="<?php echo $this->employeeData['address']; ?>" placeholder="청담">
+                                       value="<?php echo $this->employeeData['address']; ?>" placeholder="청담">
                                 <datalist id="addressList">
                                     <?php foreach ($this->address_List as $data): ?>
                                     <option value="<?php echo $data['address']?>"></option>
@@ -178,8 +162,8 @@
                                     상세주소
                                 </h2>
                                 <input type="text" name="detailAddress" size="20"
-                                        value="<?php echo $this->employeeData['detailAddress']; ?>"
-                                        placeholder="서울특별시 중구 00동 00로 ...">
+                                       value="<?php echo $this->employeeData['detailAddress']; ?>"
+                                       placeholder="서울특별시 중구 00동 00로 ...">
                             </div>
                         </div>
                     </div>
@@ -194,8 +178,8 @@
                             </h2>
                             <div class="row-content">
                                 <input type="text" list="languageList" name="language" size="2"
-                                        value="<?php if (isset($this->employeeData['language'])) echo $this->employeeData['language']; else echo "
-                                        상"; ?>">
+                                       value="<?php if (isset($this->employeeData['language'])) echo $this->employeeData['language']; else echo "
+                                       상"; ?>">
                                 <datalist id="languageList" class="input-field">
                                     <option value="상"></option>
                                     <option value="중"></option>
@@ -215,8 +199,8 @@
                             </h2>
                             <div class="row-content">
                                 <input type="text" name="grade" size="20"
-                                        value="<?php if (isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "
-                                        100"; ?>">
+                                       value="<?php if (isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "
+                                       100"; ?>">
                             </div>
                         </div>
                     </div>
@@ -228,10 +212,13 @@
                             <div class="callForm-etc">
                                 <h2 class="form-title">
                                     비고
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
+                                    </button>
                                 </h2>
                                 <div class="row-content">
-                                    <textarea class="textarea-detail" name="detail" id="detail" required><?php echo $this-> get_detail($this->employeeData,'employee');?></textarea>
+                                            <textarea class="textarea-detail" name="detail" id="detail"
+                                                      required><?php echo $this->
+                                                get_detail($this->employeeData,'employee');?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -251,10 +238,12 @@
                             <div class="callForm-etc">
                                 <h2 class="form-title">
                                     삭제비고
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
+                                    </button>
                                 </h2>
                                 <div class="row-content">
-                                    <textarea name="deleteDetail" id="detail"><?php echo $this-> employeeData['deleteDetail']; ?></textarea>
+                                            <textarea name="deleteDetail" id="detail"><?php echo $this->
+                                                employeeData['deleteDetail']; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -395,9 +384,11 @@
                                 <input type="number" id="price" name="price" required placeholder="30000">
                                 <h2 class="form-title">
                                     수금
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
+                                    </button>
                                 </h2>
-                                <input type="checkbox" id="paid" name="paid" value="1" style="margin-left: 16px;">
+                                <input type="checkbox" id="paid" name="paid" value="1"
+                                       style="margin-left: 16px;">
                                 <input type="text" id="paid" name="receiver" value="지명희" required>
                             </div>
                         </div>
@@ -410,7 +401,8 @@
                             <div class="callForm-etc">
                                 <h2 class="form-title">
                                     가입비고
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
+                                    </button>
                                 </h2>
                                 <textarea name="joinDetail">내용: </textarea>
                             </div>
@@ -541,6 +533,9 @@
             $('.day').prop('required', false);
         }
     });
+
+
+
 
 
 </script>
