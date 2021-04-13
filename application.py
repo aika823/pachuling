@@ -253,6 +253,13 @@ def manage():
     return render_template('manage/black.html', companies=companies, page_list=page_list)
 
 
+@application.route('/calendar')
+def calendar_form():
+    select_page('calendar')
+    user_id = session.get('user_id')
+    return render_template('calendar/calendar.html', page_list=page_list)
+
+
 @application.route('/ceo/<ceo_id>')
 @login_required
 def show_ceo(ceo_id):
@@ -264,7 +271,6 @@ def show_ceo(ceo_id):
 def login():
     return render_template('login/login.html',
                            page_list=page_list)
-
 
 @application.route('/login', methods=['GET', 'POST'])
 def login_check():

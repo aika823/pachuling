@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/lib/main.css') }}">
+    <style>
+    #calendar {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    </style>
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/lib/main.js') }}"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+      
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+              left: 'prevYear,prev,next,nextYear today',
+              center: 'title',
+              right: 'dayGridMonth,dayGridWeek,dayGridDay'
+            },
+            initialDate: '2021-04-13',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            dayMaxEvents: true, // allow "more" link when too many events
+
+            // json 형식으로 데이터 입력 가능
+            // groupid 적으면 목록형태로 작성되고, 안쓰고 타이틀이랑 기간만 쓰면 긴 바로 표시됨
+            // start, end 는 시작, 종료(초단위까지 입력 가능)
+            // 날짜 하나에 3개 이상 입력되면 +1(2, 3, .. ) more 로 표시되고, 클릭하면 나머지 리스트들 보여줌
+            // 지금 주석 바로 위에 dayMaxEvents: true 코드를 false 로 바꾸거나 주석처리하면, 숨김 기능 없이 리스트 전부 보여줌
+
+            events: [
+              {
+                title: 'All Day Event',
+                start: '2021-04-13'
+              },
+              {
+                title: 'Long Event',
+                start: '2021-04-07',
+                end: '2021-04-10'
+              },
+              {
+                groupId: 1,
+                title: '근무표만든날',
+                start: '2021-04-13T20:00:00',
+                end: '2021-04-13T22:30:00'
+              },
+              {
+                groupId: 2,
+                title: '오케이오케이',
+                start: '2021-04-13T11:00:00',
+                end: '2021-04-13T12:30:00'
+              },
+              {
+                groupId: 999,
+                title: 'Repeating Event',
+                start: '2021-04-09T16:00:00'
+              },
+              {
+                groupId: 999,
+                title: 'Repeating Event',
+                start: '2021-04-16T16:00:00'
+              },
+              {
+                title: 'Conference',
+                start: '2021-04-11',
+                end: '2021-04-13'
+              },
+              {
+                title: 'Meeting',
+                start: '2021-04-12T10:30:00',
+                end: '2021-04-12T12:30:00'
+              },
+              {
+                title: 'Lunch',
+                start: '2021-04-12T12:00:00'
+              },
+              {
+                title: 'Meeting',
+                start: '2021-04-12T14:30:00'
+              },
+              {
+                title: 'Happy Hour',
+                start: '2021-04-12T17:30:00'
+              },
+              {
+                title: 'Dinner',
+                start: '2021-04-12T20:00:00'
+              },
+              {
+                title: 'Birthday Party',
+                start: '2021-04-13T07:00:00'
+              },
+              {
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2021-04-28'
+              }
+            ]
+          });
+      
+          calendar.render();
+        });
+      
+      </script>
+{% endblock %}
+
+{% block content %}
+    <div id='calendar'></div>
+{% endblock %}
