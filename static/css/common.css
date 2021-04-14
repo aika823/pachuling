@@ -71,6 +71,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .makeCall2 { top: 153px;}
 .makeCall:hover,
 .makeCall2:hover { background: #268DFF; color: #fff; box-shadow: 3px 3px 5px #c1c1c1;}
+.timetable { z-index: 9; position: absolute; top: 100px; left: 50px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius:; -moz-border-radius:; -ms-border-radius:; -o-border-radius:; -webkit-transition:; -moz-transition:; -ms-transition:; -o-transition:; cursor: pointer; background: #fff; }
 /* #callForm { margin: 0 auto;} */
 .top-title { margin: 3rem 8rem 0; padding: 0 2rem;}
 .top-title .title-main { display: inline-block;}
