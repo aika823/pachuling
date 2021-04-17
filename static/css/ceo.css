@@ -1,0 +1,16 @@
+.ceo-companyname { 
+    font-size: 1rem;
+}
+.ceo-title {
+    font-size: 1rem;
+    font-weight: 600;
+    padding-bottom: 7px;
+}
+.ceo ul,
+.ceo li {
+    font-size: 1rem;
+}
+.ceo-content {
+    font-size: 1rem;
+    padding-top: 10px;
+}
