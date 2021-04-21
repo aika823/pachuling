@@ -23,9 +23,9 @@
               right: 'dayGridMonth,dayGridWeek,dayGridDay'
             },
             initialDate: '2021-04-13',
-            navLinks: true, // can click day/week names to navigate views
+            // navLinks: true, // can click day/week names to navigate views
             editable: true,
-            dayMaxEvents: true, // allow "more" link when too many events
+            dayMaxEvents: false,
 
             // json 형식으로 데이터 입력 가능
             // groupid 적으면 목록형태로 작성되고, 안쓰고 타이틀이랑 기간만 쓰면 긴 바로 표시됨
@@ -51,13 +51,13 @@
               },
               {
                 groupId: 2,
-                title: '오케이오케이',
+                title: '김미선 주방보조 6000원',
                 start: '2021-04-13T11:00:00',
                 end: '2021-04-13T12:30:00'
               },
               {
                 groupId: 999,
-                title: 'Repeating Event',
+                title: '김지수 설거지 5000원',
                 start: '2021-04-09T16:00:00'
               },
               {
@@ -71,28 +71,28 @@
                 end: '2021-04-13'
               },
               {
-                title: 'Meeting',
+                title: '김미선 주방보조 6000원',
                 start: '2021-04-12T10:30:00',
                 end: '2021-04-12T12:30:00'
               },
               {
-                title: 'Lunch',
+                title: '이숙자 주방보조 6000원',
                 start: '2021-04-12T12:00:00'
               },
               {
-                title: 'Meeting',
+                title: '박용해 주방보조 6000원',
                 start: '2021-04-12T14:30:00'
               },
               {
-                title: 'Happy Hour',
+                title: '김주인 주방보조 6000원',
                 start: '2021-04-12T17:30:00'
               },
               {
-                title: 'Dinner',
+                title: '송한수 주방보조 6000원',
                 start: '2021-04-12T20:00:00'
               },
               {
-                title: 'Birthday Party',
+                title: '김미선 주방보조 6000원',
                 start: '2021-04-13T07:00:00'
               },
               {
@@ -100,7 +100,20 @@
                 url: 'http://google.com/',
                 start: '2021-04-28'
               }
-            ]
+            ],
+            eventClick:function(event) {
+                if(event.title) {
+                    alert(event.start, event.end + "\n" + event.title, "wicked", "width=700,height=600");
+                    window.open(event.url);
+                    return false;
+                }
+            },
+            buttonText: {
+              today : "오늘",
+              month : "월별",
+              week : "주별",
+              day : "일별",
+              },
           });
       
           calendar.render();
