@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+{% include "help.html" %}
 <div class="top-title">
     <h1 class="title-main">구직자정보</h1>
 </div>
@@ -16,10 +17,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                성명
+                            <div class="form-title">
+                                <h2>성명</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" name="employeeName" required autofocus placeholder="성명">
                             </div>
@@ -30,10 +33,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                성별
+                            <div class="form-title">
+                                <h2>성별</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" list="sexList" name="sex" required autofocus>
                                 <datalist id="sexList" class="input-field">
@@ -48,10 +53,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                생년월일
+                            <div class="form-title">
+                                <h2>생년월일</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="date" name="birthDate" size="20" required autofocus
                                        style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
@@ -66,10 +73,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                업종
+                            <div class="form-title">
+                                <h2>업종</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" list="workFieldList" name="workField1" size="20" required
                                        value="<?php echo $this->employeeData['workField1']; ?>"
@@ -79,9 +88,9 @@
                                     <option value="<?php echo $data['workField']?>"></option>
                                     <?php endforeach ?>
                                 </datalist>
-                                <h2 class="form-subtitle">
-                                    업종2
-                                </h2>
+                                <div class="form-subtitle">
+                                    <h2>업종2</h2>
+                                </div>
                                 <input type="text" list="workFieldList" name="workField2" size="20"
                                        value="<?php echo $this->employeeData['workField2']; ?>"
                                        placeholder="업종">
@@ -90,9 +99,9 @@
                                     <option value="<?php echo $data['workField'] ?>"></option>
                                     <?php endforeach ?>
                                 </datalist>
-                                <h2 class="form-subtitle">
-                                    업종3
-                                </h2>
+                                <div class="form-subtitle">
+                                    <h2>업종3</h2>
+                                </div>
                                 <input type="text" list="workFieldList" name="workField3" size="20"
                                        value="<?php echo $this->employeeData['workField3']; ?>"
                                        placeholder="업종">
@@ -109,10 +118,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                전화번호
+                            <div class="form-title">
+                                <h2>전화번호</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" name="employeePhoneNumber" size="20" required
                                        value="<?php echo $this->employeeData['employeePhoneNumber']; ?>"
@@ -125,10 +136,11 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                희망근무지
+                            <div class="form-title">
+                                <h2>희망근무지</h2>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" list="addressList" name="workPlace"
                                        value="<?php echo $this->employeeData['workPlace']; ?>" placeholder="청담">
@@ -145,10 +157,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                간단주소
+                            <div class="form-title">
+                                <h2>간단주소</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" list="addressList" name="address" required
                                        value="<?php echo $this->employeeData['address']; ?>" placeholder="청담">
@@ -158,9 +172,10 @@
                                     <?php endforeach ?>
                                 </datalist>
 
-                                <h2 class="form-subtitle">
+                                <div class="form-subtitle">
                                     상세주소
-                                </h2>
+                                    <span class="form-section-required"></span>
+                                </div>
                                 <input type="text" name="detailAddress" size="20"
                                        value="<?php echo $this->employeeData['detailAddress']; ?>"
                                        placeholder="서울특별시 중구 00동 00로 ...">
@@ -172,10 +187,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                한국어
+                            <div class="form-title">
+                                <h2>한국어</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" list="languageList" name="language" size="2"
                                        value="<?php if (isset($this->employeeData['language'])) echo $this->employeeData['language']; else echo "
@@ -193,10 +210,11 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                점수
+                            <div class="form-title">
+                                <h2>점수</h2>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" name="grade" size="20"
                                        value="<?php if (isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "
@@ -210,11 +228,12 @@
                     <div class="callForm">
                         <div class="row-in-row">
                             <div class="callForm-etc">
-                                <h2 class="form-title">
-                                    비고
+                                <div class="form-title">
+                                    <h2>비고</h2>
+                                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
                                     </button>
-                                </h2>
+                                </div>
                                 <div class="row-content">
                                             <textarea class="textarea-detail" name="detail" id="detail"
                                                       required><?php echo $this->
@@ -236,11 +255,11 @@
                     <div class="callForm">
                         <div class="row-in-row">
                             <div class="callForm-etc">
-                                <h2 class="form-title">
-                                    삭제비고
+                                <div class="form-title">
+                                    <h2>삭제비고</h2>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
                                     </button>
-                                </h2>
+                                </div>
                                 <div class="row-content">
                                             <textarea name="deleteDetail" id="detail"><?php echo $this->
                                                 employeeData['deleteDetail']; ?></textarea>
@@ -255,10 +274,11 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                블랙
+                            <div class="form-title">
+                                <h2>블랙</h2>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <table>
                                     <thead>
@@ -297,10 +317,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                일 주세요 / 일 못가
+                            <div class="form-title">
+                                <h2>일 주세요 / 일 못가</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <table>
                                     <thead>
@@ -344,16 +366,19 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                가입시작일
+                            <div class="form-title">
+                                <h2>가입시작일</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="date" id="startDate" name="startDate" required>
 
-                                <h2 class="form-subtitle">
-                                    가입만기일
-                                </h2>
+                                <div class="form-subtitle">
+                                    <h2>가입만기일</h2>
+                                    <span class="form-section-required"></span>
+                                </div>
                                 <input type="date" id="endDate" name="endDate" required>
                             </div>
                         </div>
@@ -376,17 +401,20 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                가입금액
+                            <div class="form-title">
+                                <h2>가입금액</h2>
+                                <span class="form-section-required"></span>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="number" id="price" name="price" required placeholder="30000">
-                                <h2 class="form-title">
-                                    수금
-                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
-                                    </button>
-                                </h2>
+                                <div class="form-title">
+                                    <h2>수금</h2>
+                                    <span class="form-section-required"></span>
+                                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
+                                    <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
+                                </div>
                                 <input type="checkbox" id="paid" name="paid" value="1"
                                        style="margin-left: 16px;">
                                 <input type="text" id="paid" name="receiver" value="지명희" required>
@@ -399,11 +427,12 @@
                     <div class="callForm">
                         <div class="row-in-row">
                             <div class="callForm-etc">
-                                <h2 class="form-title">
-                                    가입비고
+                                <div class="form-title">
+                                    <h2>가입비고</h2>
+                                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
                                     </button>
-                                </h2>
+                                </div>
                                 <textarea name="joinDetail">내용: </textarea>
                             </div>
                         </div>

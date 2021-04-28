@@ -1,0 +1,12 @@
+.wrap {max-width: 900px; margin:0 auto; background:#f1f1f1;}
+.sec01 {height: 3000px;}
+.open_modal {display: inline-block;}
+body.modal_in {overflow: hidden;}
+.modal_wrap {display:none;position: absolute; left:0; top:0; z-index:100; width:100%; height:100%; }
+.modal_wrap.active {display: block;}
+.modal_wrap .modal_dim {position: absolute; left: 0; top: 0; z-index: 10; display: block; width:100%; height:100%; content:''; background:rgba(0,0,0,.5);}
+.modal_wrap .modal_cnt {position:relative; top:80px; z-index:20; width: 650px; min-height:500px; padding:20px  20px 0 20px; margin:0 auto;; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,.5); -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.5); border-radius: 4px;}
+.modal_wrap .modal_cnt .close_btn {position: absolute; top:0; right:0; z-index:50; display: inline-block; width:50px; height:50px; background: url('../img/btn_colse.png') no-repeat 0 0; background-size: 100% 100%; text-indent:-99999px;}
+.modal_wrap .modal_cnt .modal_header {padding-bottom:5px; border-bottom:1px solid #ddd; }
+.modal_wrap .modal_cnt .modal_body {padding-top:20px;}
+.fake_sjwidth {overflow: scroll; position: absolute; top: -99999px; width: 60px; height: 60px;}

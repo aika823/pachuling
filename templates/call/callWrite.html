@@ -18,12 +18,12 @@
     <div class="form-row">
         <div class="callForm">
             <div class="row-in-row">
-                <h2 class="form-title">
-                    상호명
+                <div class="form-title">
+                    <h2>상호명</h2>
                     <span class="form-section-required"></span>
-                    <a class="help" href="">도움말</a>
+                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                </h2>
+                </div>
                 <div class="row-content">
                     <input type="text" class="input-companyName" list="companyList" name="companyName" id="companyName"
                         placeholder="배정 요청한 거래처를 입력하세요">
@@ -34,10 +34,10 @@
                             </option>
                             <?php endforeach ?> -->
                     </datalist>
-                    <h2 class="form-subtitle">
-                        구직자 성명
-                        <a class="help" href="">도움말</a>
-                    </h2>
+                    <div class="form-subtitle">
+                        <h2>구직자 성명</h2>
+                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
+                    </div>
                     <input type="text" list="employeeList" name="employeeName" class="employee" id="employeeName"
                         placeholder="배정할 구직자을 입력하세요 (생략가능)">
                     <datalist id="employeeList" class="input-field">
@@ -60,12 +60,12 @@
     <div class="form-row">
         <div class="callForm" id="workDay">
             <div class="row-in-row">
-                <h2 class="form-title">
-                    근무요일
+                <div class="form-title">
+                    <h2>근무요일</h2>
                     <span class="form-section-required"></span>
-                    <a class="help" href="">도움말</a>
+                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                </h2>
+                </div>
                 <div class="row-content">
                     <table>
                         <tr>
@@ -95,12 +95,12 @@
     <div class="form-row">
         <div class="callForm">
             <div class="row-in-row">
-                <h2 class="form-title">
-                    근무기간
+                <div class="form-title">
+                    <h2>근무기간</h2>
                     <span class="form-section-required"></span>
-                    <a class="help" href="">도움말</a>
+                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                </h2>
+                </div>
                 <div class="row-content">
                     <div class="btn-wrap">
                         <button class="fixable btn btn-option fix-auto-date half-month" type="button" style="display: none" value="15">15일</button>
@@ -135,12 +135,12 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="callForm-time" id="">
-                    <h2 class="form-title">
-                        근무시간
+                    <div class="form-title">
+                        <h2>근무시간</h2>
                         <span class="form-section-required"></span>
-                        <a class="help" href="">도움말</a>
+                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                    </h2>
+                    </div>
                     <div class="row-content">
                         <div class="btn-wrap">
                             <button type="button" class="btn btn-option timeSelect selected" id="morningBtn">오전</button>
@@ -183,12 +183,12 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="">
-                    <h2 class="form-title">
-                        임금
+                    <div class="form-title">
+                        <h2>임금</h2>
                         <span class="form-section-required"></span>
-                        <a class="help" href="">도움말</a>
+                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                    </h2>
+                    </div>
                     <div class="row-content">
                         <p id="salaryInfo">근무시간을 선택해주세요</p>
                     </div>
@@ -202,12 +202,12 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="callForm-jobs">
-                    <h2 class="form-title">
-                        업종
+                    <div class="form-title">
+                        <h2>업종</h2>
                         <span class="form-section-required"></span>
-                        <a class="help" href="">도움말</a>
+                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                    </h2>
+                    </div>
                     <div class="row-content">
                         <div class="container-jobs btn-wrap">
                             <button type="button" class="btn btn-option btn-work-field wash">설거지</button>
@@ -247,12 +247,12 @@
         <div class="callForm">
             <div class="row-in-row">
                 <div class="callForm-etc">
-                    <h2 class="form-title">
-                        기타 요청 사항
+                    <div class="form-title">
+                        <h2>기타 요청 사항</h2>
                         <span class="form-section-required"></span>
-                        <a class="help" href="">도움말</a>
+                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                    </h2>
+                    </div>
                     <div class="row-content">
                         <textarea name="detail" id="detail" cols="30" rows="6"></textarea>
                     </div>
