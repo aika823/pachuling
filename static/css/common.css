@@ -71,7 +71,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .makeCall2 { top: 153px;}
 .makeCall:hover,
 .makeCall2:hover { background: #268DFF; color: #fff; box-shadow: 3px 3px 5px #c1c1c1;}
-.timetable { z-index: 9; position: absolute; top: 100px; left: 50px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius:; -moz-border-radius:; -ms-border-radius:; -o-border-radius:; -webkit-transition:; -moz-transition:; -ms-transition:; -o-transition:; cursor: pointer; background: #fff; }
+.timetable { z-index: 9; position: absolute; top: 100px; left: 50px; font-size: .8rem; font-weight: 600; transition: all .5s; padding: .4rem 1rem; border-radius: 10px; background: none; color: #268DFF; border: 1px solid #268DFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; -webkit-transition: all .5s; -moz-transition: all .5s; -ms-transition: all .5s; -o-transition: all .5s; cursor: pointer; background: #fff; }
 /* #callForm { margin: 0 auto;} */
 .top-title { margin: 3rem 8rem 0; padding: 0 2rem;}
 .top-title .title-main { display: inline-block;}
@@ -82,7 +82,9 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .form-row .callForm .row-in-row { padding: 1rem 0;}
 .form-row .callForm .form-title { margin: 2px 30px 10px;}
 .form-row .callForm .form-subtitle { margin: 1rem 30px 10px 0;}
-.form-row .callForm .help { font-size: .6rem; font-weight: 500; color: #3e7df3;}
+.form-row .callForm .form-title h2,
+.form-row .callForm .form-subtitle h2 { display: inline-block;}
+.form-row .callForm .help { font-size: .6rem; font-weight: 500; color: #3e7df3; cursor: pointer;}
 .form-row .callForm .help:hover { text-decoration: underline;}
 .form-row .callForm .form-section-required { width: 6px; height: 6px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; }
 .form-row .callForm input[type="text"],
@@ -705,7 +707,7 @@ button.btn-call-cancel-modal.btn.btn-small { background: #fff; color: #c1c1c1; f
     .btn.btn-option { font-size: 1rem;}
     .form-row .callForm { padding: 0;}
     .form-row .callForm .form-title,
-    .form-row .callForm .form-subtitle { font-size: 1.2rem; }
+    .form-row .callForm .form-subtitle { font-size: 1.2rem;}
     .form-row .row-content td { font-size: 1rem;}
     .form-row .callForm .callForm-term .workDate { width: 80%; font-size: 1rem;}
     .form-row .callForm input[type="text"],

@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+{% include "help.html" %}
 <div class="top-title">
     <h1 class="title-main">거래처정보</h1>
     <span class="form-section-required"></span>
@@ -19,12 +20,12 @@
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
-                                <h2 class="form-title">
-                                    상호명
+                                <div class="form-title">
+                                    <h2>상호명</h2>
                                     <span class="form-section-required"></span>
-                                    <a class="help" href="">도움말</a>
+                                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                                </h2>
+                                </div>
                                 <div class="row-content">
                                     <input type="text" name="companyName" size="20" required autofocus
                                            value="" placeholder="상호명">
@@ -32,11 +33,11 @@
                             </div>
 
                             <div class="row-in-row">
-                                <h2 class="form-title">
-                                    대표자명
+                                <div class="form-title">
+                                    <h2>대표자명</h2>
                                     <span class="form-section-required"></span>
-                                    <a class="help" href="">도움말</a>
-                                </h2>
+                                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
+                                </div>
                                 <div class="row-content">
                                     <input type="text" list="ceoList" name="ceoName" size="20" required
                                            value="" placeholder="대표자명">
@@ -54,12 +55,12 @@
                 <div class="form-row">
                     <div class="callForm">
                         <div class="row-in-row">
-                            <h2 class="form-title">
-                                업종
+                            <div class="form-title">
+                                <h2>업종</h2>
                                 <span class="form-section-required"></span>
-                                <a class="help" href="">도움말</a>
+                                <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                 <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                            </h2>
+                            </div>
                             <div class="row-content">
                                 <input type="text" list="businessTypeList" name="businessType" size="20"
                                        required value="" placeholder="업종">
@@ -74,20 +75,20 @@
                     <div class="form-row">
                         <div class="callForm">
                             <div class="row-in-row">
-                                <h2 class="form-title">
-                                    거래처 전화
+                                <div class="form-title">
+                                    <h2>거래처 전화</h2>
                                     <span class="form-section-required"></span>
-                                    <a class="help" href="">도움말</a>
+                                    <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                     <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                                </h2>
+                                </div>
                                 <div class="row-content">
                                     <input type="text" name="companyPhoneNumber" size="20" required value=""
                                            placeholder="010-XXXX-XXXX">
-                                    <h2 class="form-subtitle">
-                                        사장 전화
+                                    <div class="form-subtitle">
+                                        <h2>사장 전화</h2>
                                         <span class="form-section-required"></span>
-                                        <a class="help" href="">도움말</a>
-                                    </h2>
+                                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
+                                    </div>
                                     <input type="text" name="ceoPhoneNumber" size="20" required value=""
                                            placeholder="010-XXXX-XXXX">
                                 </div>
@@ -97,12 +98,12 @@
                         <div class="form-row">
                             <div class="callForm">
                                 <div class="row-in-row">
-                                    <h2 class="form-title">
-                                        간단주소
+                                    <div class="form-title">
+                                        <h2>간단주소</h2>
                                         <span class="form-section-required"></span>
-                                        <a class="help" href="">도움말</a>
+                                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                                    </h2>
+                                    </div>
                                     <div class="row-content">
                                         <input type="text" list="addressList" name="address" value="" placeholder="청담">
                                         <datalist id="addressList">
@@ -111,11 +112,11 @@
                                                 <?php endforeach ?> -->
                                         </datalist>
 
-                                        <h2 class="form-subtitle">
-                                            상세주소
+                                        <div class="form-subtitle">
+                                            <h2>상세주소</h2>
                                             <span class="form-section-required"></span>
-                                            <a class="help" href="">도움말</a>
-                                        </h2>
+                                            <a class="help open_modal" herf="javascript:void(0)">도움말</a>
+                                        </div>
                                         <!-- <div class="row-content"> -->
                                             <input type="text" name="detailAddress" size="50" value=""
                                                    placeholder="서울특별시 중구 00동 00로 ...">
@@ -128,11 +129,11 @@
                         <div class="form-row">
                             <div class="callForm">
                                 <div class="row-in-row">
-                                    <h2 class="form-title">
-                                        점수
-                                        <a class="help" href="">도움말</a>
+                                    <div class="form-title">
+                                        <h2>점수</h2>
+                                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                                    </h2>
+                                    </div>
                                     <div class="row-content">
                                         <input type="number" name="grade" min="0" max="100" required value=""
                                                placeholder="0 ~ 100">
@@ -145,12 +146,12 @@
                             <div class="callForm">
                                 <div class="row-in-row">
                                     <div class="callForm-etc">
-                                        <h2 class="form-title">
-                                            비고
-                                            <a class="help" href="">도움말</a>
+                                        <div class="form-title">
+                                            <h2>비고</h2>
+                                            <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                             <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
                                             </button>
-                                        </h2>
+                                        </div>
                                         <div class="row-content">
                                             <textarea id="detail" class="textarea-detail" name="detail">
                                             </textarea>
@@ -165,11 +166,11 @@
                             <div class="callForm">
                                 <div class="row-in-row">
                                     <div class="callForm-etc">
-                                        <h2 class="form-title">
+                                        <div class="form-title">
                                             삭제비고
                                             <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i>
                                             </button>
-                                        </h2>
+                                        </div>
                                         <div class="row-content">
                                             <textarea class="textarea-detail" id="delete_detail" name="deleteDetail">
                                                 {{company['deleteDetail']}}
@@ -185,11 +186,11 @@
                         <div class="form-row">
                             <div class="callForm">
                                 <div class="row-in-row">
-                                    <h2 class="form-title">
-                                        블랙
-                                        <a class="help" href="">도움말</a>
+                                    <div class="form-title">
+                                        <h2>블랙</h2>
+                                        <a class="help open_modal" herf="javascript:void(0)">도움말</a>
                                         <button type="button" class="icon-up"><i class="fas fa-chevron-up"></i></button>
-                                    </h2>
+                                    </div>
                                     <div class="row-content">
                                         <table>
                                             <thead>
