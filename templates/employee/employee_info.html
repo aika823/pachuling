@@ -1,9 +1,10 @@
 <div class="write-layout">
     <div class="board-write auto-center">
         <div class="form-style-1">
-            <form id="formInsertEmployee" action="" method="post">
+            <form id="formInsertEmployee" action="/employee/update" method="post">
                 <fieldset>
                     <!--POST 전송 시 작업, 파라미터-->
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                     <input type="hidden" name="action" value="{{action}}">
                     <input type="hidden" name="employeeID" value="{{employee['employeeID']}}">
 

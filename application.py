@@ -1,84 +1,35 @@
 from datetime import timedelta
 from flask import Flask, url_for, render_template, request, redirect, session, flash
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, Date, ForeignKey
 from sqlalchemy.orm import sessionmaker
 from functools import wraps
 from sqlalchemy import create_engine
+from flask_wtf.csrf import CSRFProtect
+
+from flask_wtf import CsrfProtect
 
 import function_database
 import function_call
 import function_company
 import secret
 
+from models import *
+from forms import *
+
 # Default Settings
-application = app = Flask(__name__)
+application = Flask(__name__)
+csrf = CSRFProtect(application)
+csrf.init_app(application)
+db.init_app(application)  # models.py에 있는 클래스 이용하기 위해 필요
 application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{host}/{db}' \
     .format(user=secret.user, password=secret.password, host=secret.host, db=secret.db)
 application.secret_key = "123"
-db = SQLAlchemy(application)
+# db = SQLAlchemy(application)
 page_list = {'call': None, 'company': None, 'employee': None, 'manage': None}
 login_error_message = "ID: admin, PW: bestgood"
-app.permanent_session_lifetime = timedelta(hours=24)
+application.permanent_session_lifetime = timedelta(hours=24)
 Session = sessionmaker()
 engine = create_engine('sqlite:///:memory:', echo=True)
 Session.configure(bind=engine)
-
-
-# Database Classes
-class User(db.Model):
-    userID = Column(Integer, primary_key=True, nullable=False)
-    userName = Column(String(20), primary_key=False, nullable=False)
-    userPW = Column(String(20), primary_key=False, nullable=False)
-    companyID = Column(Integer, primary_key=False, nullable=False)
-
-
-class Company(db.Model):
-    userID = Column(Integer, primary_key=False, nullable=False)
-    companyID = Column(Integer, primary_key=True, nullable=False)
-    ceoID = Column(Integer, primary_key=False, nullable=False)
-    businessType = Column(Integer, primary_key=False, nullable=False)
-    companyName = Column(Integer, primary_key=False, nullable=False)
-    deleted = Column(Integer, nullable=False)
-    activated = Column(Integer, nullable=False)
-    address = Column(String(20), nullable=False)
-
-
-class Employee(db.Model):
-    employeeID = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    employeeName = Column(String(20))
-    sex = Column(String(10))
-
-
-class Workfield(db.Model):
-    workFieldID = Column(Integer, primary_key=True, nullable=False)
-    workField = Column(String(20), primary_key=False, nullable=False)
-    userID = Column(Integer, primary_key=False, nullable=False)
-
-
-class Address(db.Model):
-    addressID = Column(Integer, primary_key=True, nullable=False)
-    address = Column(String(50), primary_key=False, nullable=False)
-    userID = Column(Integer, primary_key=False, nullable=False)
-
-
-class Blacklist(db.Model):
-    blackListID = Column(Integer, primary_key=True, nullable=False)
-    companyID = Column(Integer, ForeignKey(Company.companyID))
-    employeeID = Column(Integer, ForeignKey(Employee.employeeID))
-    detail = Column(String(100), primary_key=False, nullable=True)
-    ceoReg = Column(Boolean, primary_key=False, nullable=False)
-    createdTime = Column(TIMESTAMP, primary_key=False, nullable=False)
-    userID = Column(Integer, primary_key=False, nullable=False)
-
-
-class EmployeeAvailableDate(db.Model):
-    availableDateID = Column(Integer, primary_key=True, nullable=False)
-    employeeID = Column(Integer, primary_key=False, nullable=False)
-    availableDate = Column(Date, primary_key=False, nullable=True)
-    notAvailableDate = Column(Date, primary_key=False, nullable=True)
-    detail = Column(String(500), primary_key=False, nullable=True)
-    userID = Column(Integer, primary_key=False, nullable=False)
 
 
 def select_page(page):
@@ -218,13 +169,13 @@ def employee_form():
 def view_employee(employee_id):
     select_page('employee')
     user_id = session.get('user_id')
-    work_field = Workfield.query.filter_by(userID=user_id)
-    print(work_field)
-    address_list = Address.query.filter_by(userID=user_id)
+    work_field = Workfield.query.filter_by(userID=user_id).all()
+    address_list = Address.query.filter_by(userID=user_id).all()
     black_list = Blacklist.query.join(Company, Blacklist.companyID == Company.companyID) \
         .add_columns(Company.companyName) \
         .filter(Blacklist.userID == user_id) \
         .filter(Blacklist.employeeID == employee_id)
+
     available_date_list = EmployeeAvailableDate.query.filter_by(userID=user_id, employeeID=employee_id)
     my_employee = function_database.get_employee(user_id=user_id, employee_id=employee_id)
     return render_template('employee/employee_view.html',
@@ -235,6 +186,38 @@ def view_employee(employee_id):
                            black_list=black_list,
                            available_date_list=available_date_list,
                            page_list=page_list)
+
+
+# @application.route('/employee/view/<employee_id>', methods=['POST'])
+# @login_required
+# def update_employee(employee_id):
+#     user_id = session.get('user_id')
+#     my_employee = Employee.query.filter_by(userID=user_id, employeeID=employee_id).first()
+#     print(request.form)
+#
+#     for i in request.form:
+#         print(i)
+#         print(request.form[i])
+#         my_employee[i] = request.form[i]
+#
+#
+#
+#     # my_employee.employeeName = request.form['employeeName']
+#
+#     db.session.commit()
+#     return redirect(url_for('update_employee', employee_id))
+
+
+@application.route('/employee/update', methods=['POST'])
+def update_employee():  # get 요청 단순히 페이지 표시 post요청 회원가입-등록을 눌렀을때 정보 가져오는것
+    form = EmployeeForm()
+    employee_id = form.data.get('employeeID')
+    print(employee_id)
+    if form.validate_on_submit():
+        my_employee = Employee.query.filter_by(employeeID=employee_id).first()
+        my_employee.employeeName = form.data.get('employeeName')
+        db.session.commit()  # 커밋
+        return redirect(url_for('view_employee', employee_id=employee_id))
 
 
 @application.route('/employee/available')
@@ -271,6 +254,7 @@ def show_ceo(ceo_id):
 def login():
     return render_template('login/login.html',
                            page_list=page_list)
+
 
 @application.route('/login', methods=['GET', 'POST'])
 def login_check():
@@ -312,7 +296,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.errorhandler(404)
+@application.errorhandler(404)
 def error_404(e):
     return render_template("error/404.html")
 
